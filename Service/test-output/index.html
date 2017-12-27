@@ -1,0 +1,884 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+  <meta charset='utf-8'>
+  <title>TestNG reports</title>
+
+    <link type="text/css" href="testng-reports.css" rel="stylesheet" />
+    <script type="text/javascript" src="jquery-1.7.1.min.js"></script>
+    <script type="text/javascript" src="testng-reports.js"></script>
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+    <script type='text/javascript'>
+      google.load('visualization', '1', {packages:['table']});
+      google.setOnLoadCallback(drawTable);
+      var suiteTableInitFunctions = new Array();
+      var suiteTableData = new Array();
+    </script>
+    <!--
+      <script type="text/javascript" src="jquery-ui/js/jquery-ui-1.8.16.custom.min.js"></script>
+     -->
+  </head>
+
+  <body>
+    <div class="top-banner-root">
+      <span class="top-banner-title-font">Test results</span>
+      <br/>
+      <span class="top-banner-font-1">1 suite</span>
+    </div> <!-- top-banner-root -->
+    <div class="navigator-root">
+      <div class="navigator-suite-header">
+        <span>All suites</span>
+        <a href="#" class="collapse-all-link" title="Collapse/expand all the suites">
+          <img class="collapse-all-icon" src="collapseall.gif">
+          </img> <!-- collapse-all-icon -->
+        </a> <!-- collapse-all-link -->
+      </div> <!-- navigator-suite-header -->
+      <div class="suite">
+        <div class="rounded-window">
+          <div class="suite-header light-rounded-window-top">
+            <a href="#" class="navigator-link" panel-name="suite-Default_suite">
+              <span class="suite-name border-passed">Default suite</span>
+            </a> <!-- navigator-link -->
+          </div> <!-- suite-header light-rounded-window-top -->
+          <div class="navigator-suite-content">
+            <div class="suite-section-title">
+              <span>Info</span>
+            </div> <!-- suite-section-title -->
+            <div class="suite-section-content">
+              <ul>
+                <li>
+                  <a href="#" class="navigator-link " panel-name="test-xml-Default_suite">
+                    <span>C:\Users\Pavel\AppData\Local\Temp\testng-eclipse-313144103\testng-customsuite.xml</span>
+                  </a> <!-- navigator-link  -->
+                </li>
+                <li>
+                  <a href="#" class="navigator-link " panel-name="testlist-Default_suite">
+                    <span class="test-stats">1 test</span>
+                  </a> <!-- navigator-link  -->
+                </li>
+                <li>
+                  <a href="#" class="navigator-link " panel-name="group-Default_suite">
+                    <span>0 groups</span>
+                  </a> <!-- navigator-link  -->
+                </li>
+                <li>
+                  <a href="#" class="navigator-link " panel-name="times-Default_suite">
+                    <span>Times</span>
+                  </a> <!-- navigator-link  -->
+                </li>
+                <li>
+                  <a href="#" class="navigator-link " panel-name="reporter-Default_suite">
+                    <span>Reporter output</span>
+                  </a> <!-- navigator-link  -->
+                </li>
+                <li>
+                  <a href="#" class="navigator-link " panel-name="ignored-methods-Default_suite">
+                    <span>Ignored methods</span>
+                  </a> <!-- navigator-link  -->
+                </li>
+                <li>
+                  <a href="#" class="navigator-link " panel-name="chronological-Default_suite">
+                    <span>Chronological view</span>
+                  </a> <!-- navigator-link  -->
+                </li>
+              </ul>
+            </div> <!-- suite-section-content -->
+            <div class="result-section">
+              <div class="suite-section-title">
+                <span>Results</span>
+              </div> <!-- suite-section-title -->
+              <div class="suite-section-content">
+                <ul>
+                  <li>
+                    <span class="method-stats">32 methods,   32 passed</span>
+                  </li>
+                  <li>
+                    <span class="method-list-title passed">Passed methods</span>
+                    <span class="show-or-hide-methods passed">
+                      <a href="#" panel-name="suite-Default_suite" class="hide-methods passed suite-Default_suite"> (hide)</a> <!-- hide-methods passed suite-Default_suite -->
+                      <a href="#" panel-name="suite-Default_suite" class="show-methods passed suite-Default_suite"> (show)</a> <!-- show-methods passed suite-Default_suite -->
+                    </span>
+                    <div class="method-list-content passed suite-Default_suite">
+                      <span>
+                        <img width="3%" src="passed.png"/>
+                        <a href="#" class="method navigator-link" panel-name="suite-Default_suite" title="by.epam.internetprovider.service.impl.util.ValidationTest" hash-for-method="checkInvalidBallance(1000)">checkInvalidBallance(1000)</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img width="3%" src="passed.png"/>
+                        <a href="#" class="method navigator-link" panel-name="suite-Default_suite" title="by.epam.internetprovider.service.impl.util.ValidationTest" hash-for-method="checkInvalidBallance(-999.9)">checkInvalidBallance(-999.9)</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img width="3%" src="passed.png"/>
+                        <a href="#" class="method navigator-link" panel-name="suite-Default_suite" title="by.epam.internetprovider.service.impl.util.ValidationTest" hash-for-method="checkInvalidBallance(null)">checkInvalidBallance(null)</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img width="3%" src="passed.png"/>
+                        <a href="#" class="method navigator-link" panel-name="suite-Default_suite" title="by.epam.internetprovider.service.impl.util.ValidationTest" hash-for-method="checkInvalidLogin(&amp;user1)">checkInvalidLogin(&user1)</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img width="3%" src="passed.png"/>
+                        <a href="#" class="method navigator-link" panel-name="suite-Default_suite" title="by.epam.internetprovider.service.impl.util.ValidationTest" hash-for-method="checkInvalidLogin(john)">checkInvalidLogin(john)</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img width="3%" src="passed.png"/>
+                        <a href="#" class="method navigator-link" panel-name="suite-Default_suite" title="by.epam.internetprovider.service.impl.util.ValidationTest" hash-for-method="checkInvalidLogin(1qwErty)">checkInvalidLogin(1qwErty)</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img width="3%" src="passed.png"/>
+                        <a href="#" class="method navigator-link" panel-name="suite-Default_suite" title="by.epam.internetprovider.service.impl.util.ValidationTest" hash-for-method="checkInvalidLogin(null)">checkInvalidLogin(null)</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img width="3%" src="passed.png"/>
+                        <a href="#" class="method navigator-link" panel-name="suite-Default_suite" title="by.epam.internetprovider.service.impl.util.ValidationTest" hash-for-method="checkInvalidMail(null)">checkInvalidMail(null)</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img width="3%" src="passed.png"/>
+                        <a href="#" class="method navigator-link" panel-name="suite-Default_suite" title="by.epam.internetprovider.service.impl.util.ValidationTest" hash-for-method="checkInvalidMail(more-test@mail.ru)">checkInvalidMail(more-test@mail.ru)</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img width="3%" src="passed.png"/>
+                        <a href="#" class="method navigator-link" panel-name="suite-Default_suite" title="by.epam.internetprovider.service.impl.util.ValidationTest" hash-for-method="checkInvalidMail(sample$.adress@usa.de)">checkInvalidMail(sample$.adress@usa.de)</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img width="3%" src="passed.png"/>
+                        <a href="#" class="method navigator-link" panel-name="suite-Default_suite" title="by.epam.internetprovider.service.impl.util.ValidationTest" hash-for-method="checkInvalidMail(bad@adress)">checkInvalidMail(bad@adress)</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img width="3%" src="passed.png"/>
+                        <a href="#" class="method navigator-link" panel-name="suite-Default_suite" title="by.epam.internetprovider.service.impl.util.ValidationTest" hash-for-method="checkInvalidMail(testmail@test)">checkInvalidMail(testmail@test)</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img width="3%" src="passed.png"/>
+                        <a href="#" class="method navigator-link" panel-name="suite-Default_suite" title="by.epam.internetprovider.service.impl.util.ValidationTest" hash-for-method="checkInvalidName(na me)">checkInvalidName(na me)</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img width="3%" src="passed.png"/>
+                        <a href="#" class="method navigator-link" panel-name="suite-Default_suite" title="by.epam.internetprovider.service.impl.util.ValidationTest" hash-for-method="checkInvalidName(null)">checkInvalidName(null)</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img width="3%" src="passed.png"/>
+                        <a href="#" class="method navigator-link" panel-name="suite-Default_suite" title="by.epam.internetprovider.service.impl.util.ValidationTest" hash-for-method="checkInvalidName()">checkInvalidName()</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img width="3%" src="passed.png"/>
+                        <a href="#" class="method navigator-link" panel-name="suite-Default_suite" title="by.epam.internetprovider.service.impl.util.ValidationTest" hash-for-method="checkInvalidName(  )">checkInvalidName(  )</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img width="3%" src="passed.png"/>
+                        <a href="#" class="method navigator-link" panel-name="suite-Default_suite" title="by.epam.internetprovider.service.impl.util.ValidationTest" hash-for-method="checkValidBallance(-80.9)">checkValidBallance(-80.9)</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img width="3%" src="passed.png"/>
+                        <a href="#" class="method navigator-link" panel-name="suite-Default_suite" title="by.epam.internetprovider.service.impl.util.ValidationTest" hash-for-method="checkValidBallance(0)">checkValidBallance(0)</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img width="3%" src="passed.png"/>
+                        <a href="#" class="method navigator-link" panel-name="suite-Default_suite" title="by.epam.internetprovider.service.impl.util.ValidationTest" hash-for-method="checkValidBallance(-666.666)">checkValidBallance(-666.666)</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img width="3%" src="passed.png"/>
+                        <a href="#" class="method navigator-link" panel-name="suite-Default_suite" title="by.epam.internetprovider.service.impl.util.ValidationTest" hash-for-method="checkValidBallance(-999)">checkValidBallance(-999)</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img width="3%" src="passed.png"/>
+                        <a href="#" class="method navigator-link" panel-name="suite-Default_suite" title="by.epam.internetprovider.service.impl.util.ValidationTest" hash-for-method="checkValidBallance(100.5)">checkValidBallance(100.5)</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img width="3%" src="passed.png"/>
+                        <a href="#" class="method navigator-link" panel-name="suite-Default_suite" title="by.epam.internetprovider.service.impl.util.ValidationTest" hash-for-method="checkValidBallance(998.67)">checkValidBallance(998.67)</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img width="3%" src="passed.png"/>
+                        <a href="#" class="method navigator-link" panel-name="suite-Default_suite" title="by.epam.internetprovider.service.impl.util.ValidationTest" hash-for-method="checkValidmail(testmail@test.com)">checkValidmail(testmail@test.com)</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img width="3%" src="passed.png"/>
+                        <a href="#" class="method navigator-link" panel-name="suite-Default_suite" title="by.epam.internetprovider.service.impl.util.ValidationTest" hash-for-method="checkValidmail(more_test@mail.ru)">checkValidmail(more_test@mail.ru)</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img width="3%" src="passed.png"/>
+                        <a href="#" class="method navigator-link" panel-name="suite-Default_suite" title="by.epam.internetprovider.service.impl.util.ValidationTest" hash-for-method="checkValidmail(sample.adress@usa.de)">checkValidmail(sample.adress@usa.de)</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img width="3%" src="passed.png"/>
+                        <a href="#" class="method navigator-link" panel-name="suite-Default_suite" title="by.epam.internetprovider.service.impl.util.ValidationTest" hash-for-method="checkvalidLogin(john_sm)">checkvalidLogin(john_sm)</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img width="3%" src="passed.png"/>
+                        <a href="#" class="method navigator-link" panel-name="suite-Default_suite" title="by.epam.internetprovider.service.impl.util.ValidationTest" hash-for-method="checkvalidLogin(_user1)">checkvalidLogin(_user1)</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img width="3%" src="passed.png"/>
+                        <a href="#" class="method navigator-link" panel-name="suite-Default_suite" title="by.epam.internetprovider.service.impl.util.ValidationTest" hash-for-method="checkvalidLogin(qwErty)">checkvalidLogin(qwErty)</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img width="3%" src="passed.png"/>
+                        <a href="#" class="method navigator-link" panel-name="suite-Default_suite" title="by.epam.internetprovider.service.impl.util.ValidationTest" hash-for-method="checkvalidName(_user1)">checkvalidName(_user1)</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img width="3%" src="passed.png"/>
+                        <a href="#" class="method navigator-link" panel-name="suite-Default_suite" title="by.epam.internetprovider.service.impl.util.ValidationTest" hash-for-method="checkvalidName(qwErty)">checkvalidName(qwErty)</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img width="3%" src="passed.png"/>
+                        <a href="#" class="method navigator-link" panel-name="suite-Default_suite" title="by.epam.internetprovider.service.impl.util.ValidationTest" hash-for-method="checkvalidName(john_sm)">checkvalidName(john_sm)</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img width="3%" src="passed.png"/>
+                        <a href="#" class="method navigator-link" panel-name="suite-Default_suite" title="by.epam.internetprovider.service.impl.util.ValidationTest" hash-for-method="checkvalidName(11242-34)">checkvalidName(11242-34)</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                    </div> <!-- method-list-content passed suite-Default_suite -->
+                  </li>
+                </ul>
+              </div> <!-- suite-section-content -->
+            </div> <!-- result-section -->
+          </div> <!-- navigator-suite-content -->
+        </div> <!-- rounded-window -->
+      </div> <!-- suite -->
+    </div> <!-- navigator-root -->
+    <div class="wrapper">
+      <div class="main-panel-root">
+        <div panel-name="suite-Default_suite" class="panel Default_suite">
+          <div class="suite-Default_suite-class-passed">
+            <div class="main-panel-header rounded-window-top">
+              <img src="passed.png"/>
+              <span class="class-name">by.epam.internetprovider.service.impl.util.ValidationTest</span>
+            </div> <!-- main-panel-header rounded-window-top -->
+            <div class="main-panel-content rounded-window-bottom">
+              <div class="method">
+                <div class="method-content">
+                  <a name="checkInvalidBallance(1000)">
+                  </a> <!-- checkInvalidBallance(1000) -->
+                  <span class="method-name">checkInvalidBallance</span>
+                  <span class="parameters">(1000)</span>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+              <div class="method">
+                <div class="method-content">
+                  <a name="checkInvalidBallance(-999.9)">
+                  </a> <!-- checkInvalidBallance(-999.9) -->
+                  <span class="method-name">checkInvalidBallance</span>
+                  <span class="parameters">(-999.9)</span>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+              <div class="method">
+                <div class="method-content">
+                  <a name="checkInvalidBallance(null)">
+                  </a> <!-- checkInvalidBallance(null) -->
+                  <span class="method-name">checkInvalidBallance</span>
+                  <span class="parameters">(null)</span>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+              <div class="method">
+                <div class="method-content">
+                  <a name="checkInvalidLogin(&amp;user1)">
+                  </a> <!-- checkInvalidLogin(&user1) -->
+                  <span class="method-name">checkInvalidLogin</span>
+                  <span class="parameters">(&user1)</span>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+              <div class="method">
+                <div class="method-content">
+                  <a name="checkInvalidLogin(john)">
+                  </a> <!-- checkInvalidLogin(john) -->
+                  <span class="method-name">checkInvalidLogin</span>
+                  <span class="parameters">(john)</span>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+              <div class="method">
+                <div class="method-content">
+                  <a name="checkInvalidLogin(1qwErty)">
+                  </a> <!-- checkInvalidLogin(1qwErty) -->
+                  <span class="method-name">checkInvalidLogin</span>
+                  <span class="parameters">(1qwErty)</span>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+              <div class="method">
+                <div class="method-content">
+                  <a name="checkInvalidLogin(null)">
+                  </a> <!-- checkInvalidLogin(null) -->
+                  <span class="method-name">checkInvalidLogin</span>
+                  <span class="parameters">(null)</span>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+              <div class="method">
+                <div class="method-content">
+                  <a name="checkInvalidMail(null)">
+                  </a> <!-- checkInvalidMail(null) -->
+                  <span class="method-name">checkInvalidMail</span>
+                  <span class="parameters">(null)</span>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+              <div class="method">
+                <div class="method-content">
+                  <a name="checkInvalidMail(more-test@mail.ru)">
+                  </a> <!-- checkInvalidMail(more-test@mail.ru) -->
+                  <span class="method-name">checkInvalidMail</span>
+                  <span class="parameters">(more-test@mail.ru)</span>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+              <div class="method">
+                <div class="method-content">
+                  <a name="checkInvalidMail(sample$.adress@usa.de)">
+                  </a> <!-- checkInvalidMail(sample$.adress@usa.de) -->
+                  <span class="method-name">checkInvalidMail</span>
+                  <span class="parameters">(sample$.adress@usa.de)</span>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+              <div class="method">
+                <div class="method-content">
+                  <a name="checkInvalidMail(bad@adress)">
+                  </a> <!-- checkInvalidMail(bad@adress) -->
+                  <span class="method-name">checkInvalidMail</span>
+                  <span class="parameters">(bad@adress)</span>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+              <div class="method">
+                <div class="method-content">
+                  <a name="checkInvalidMail(testmail@test)">
+                  </a> <!-- checkInvalidMail(testmail@test) -->
+                  <span class="method-name">checkInvalidMail</span>
+                  <span class="parameters">(testmail@test)</span>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+              <div class="method">
+                <div class="method-content">
+                  <a name="checkInvalidName(na me)">
+                  </a> <!-- checkInvalidName(na me) -->
+                  <span class="method-name">checkInvalidName</span>
+                  <span class="parameters">(na me)</span>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+              <div class="method">
+                <div class="method-content">
+                  <a name="checkInvalidName(null)">
+                  </a> <!-- checkInvalidName(null) -->
+                  <span class="method-name">checkInvalidName</span>
+                  <span class="parameters">(null)</span>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+              <div class="method">
+                <div class="method-content">
+                  <a name="checkInvalidName()">
+                  </a> <!-- checkInvalidName() -->
+                  <span class="method-name">checkInvalidName</span>
+                  <span class="parameters">()</span>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+              <div class="method">
+                <div class="method-content">
+                  <a name="checkInvalidName(  )">
+                  </a> <!-- checkInvalidName(  ) -->
+                  <span class="method-name">checkInvalidName</span>
+                  <span class="parameters">(  )</span>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+              <div class="method">
+                <div class="method-content">
+                  <a name="checkValidBallance(-80.9)">
+                  </a> <!-- checkValidBallance(-80.9) -->
+                  <span class="method-name">checkValidBallance</span>
+                  <span class="parameters">(-80.9)</span>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+              <div class="method">
+                <div class="method-content">
+                  <a name="checkValidBallance(0)">
+                  </a> <!-- checkValidBallance(0) -->
+                  <span class="method-name">checkValidBallance</span>
+                  <span class="parameters">(0)</span>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+              <div class="method">
+                <div class="method-content">
+                  <a name="checkValidBallance(-666.666)">
+                  </a> <!-- checkValidBallance(-666.666) -->
+                  <span class="method-name">checkValidBallance</span>
+                  <span class="parameters">(-666.666)</span>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+              <div class="method">
+                <div class="method-content">
+                  <a name="checkValidBallance(-999)">
+                  </a> <!-- checkValidBallance(-999) -->
+                  <span class="method-name">checkValidBallance</span>
+                  <span class="parameters">(-999)</span>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+              <div class="method">
+                <div class="method-content">
+                  <a name="checkValidBallance(100.5)">
+                  </a> <!-- checkValidBallance(100.5) -->
+                  <span class="method-name">checkValidBallance</span>
+                  <span class="parameters">(100.5)</span>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+              <div class="method">
+                <div class="method-content">
+                  <a name="checkValidBallance(998.67)">
+                  </a> <!-- checkValidBallance(998.67) -->
+                  <span class="method-name">checkValidBallance</span>
+                  <span class="parameters">(998.67)</span>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+              <div class="method">
+                <div class="method-content">
+                  <a name="checkValidmail(testmail@test.com)">
+                  </a> <!-- checkValidmail(testmail@test.com) -->
+                  <span class="method-name">checkValidmail</span>
+                  <span class="parameters">(testmail@test.com)</span>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+              <div class="method">
+                <div class="method-content">
+                  <a name="checkValidmail(more_test@mail.ru)">
+                  </a> <!-- checkValidmail(more_test@mail.ru) -->
+                  <span class="method-name">checkValidmail</span>
+                  <span class="parameters">(more_test@mail.ru)</span>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+              <div class="method">
+                <div class="method-content">
+                  <a name="checkValidmail(sample.adress@usa.de)">
+                  </a> <!-- checkValidmail(sample.adress@usa.de) -->
+                  <span class="method-name">checkValidmail</span>
+                  <span class="parameters">(sample.adress@usa.de)</span>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+              <div class="method">
+                <div class="method-content">
+                  <a name="checkvalidLogin(john_sm)">
+                  </a> <!-- checkvalidLogin(john_sm) -->
+                  <span class="method-name">checkvalidLogin</span>
+                  <span class="parameters">(john_sm)</span>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+              <div class="method">
+                <div class="method-content">
+                  <a name="checkvalidLogin(_user1)">
+                  </a> <!-- checkvalidLogin(_user1) -->
+                  <span class="method-name">checkvalidLogin</span>
+                  <span class="parameters">(_user1)</span>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+              <div class="method">
+                <div class="method-content">
+                  <a name="checkvalidLogin(qwErty)">
+                  </a> <!-- checkvalidLogin(qwErty) -->
+                  <span class="method-name">checkvalidLogin</span>
+                  <span class="parameters">(qwErty)</span>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+              <div class="method">
+                <div class="method-content">
+                  <a name="checkvalidName(_user1)">
+                  </a> <!-- checkvalidName(_user1) -->
+                  <span class="method-name">checkvalidName</span>
+                  <span class="parameters">(_user1)</span>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+              <div class="method">
+                <div class="method-content">
+                  <a name="checkvalidName(qwErty)">
+                  </a> <!-- checkvalidName(qwErty) -->
+                  <span class="method-name">checkvalidName</span>
+                  <span class="parameters">(qwErty)</span>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+              <div class="method">
+                <div class="method-content">
+                  <a name="checkvalidName(john_sm)">
+                  </a> <!-- checkvalidName(john_sm) -->
+                  <span class="method-name">checkvalidName</span>
+                  <span class="parameters">(john_sm)</span>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+              <div class="method">
+                <div class="method-content">
+                  <a name="checkvalidName(11242-34)">
+                  </a> <!-- checkvalidName(11242-34) -->
+                  <span class="method-name">checkvalidName</span>
+                  <span class="parameters">(11242-34)</span>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+            </div> <!-- main-panel-content rounded-window-bottom -->
+          </div> <!-- suite-Default_suite-class-passed -->
+        </div> <!-- panel Default_suite -->
+        <div panel-name="test-xml-Default_suite" class="panel">
+          <div class="main-panel-header rounded-window-top">
+            <span class="header-content">C:\Users\Pavel\AppData\Local\Temp\testng-eclipse-313144103\testng-customsuite.xml</span>
+          </div> <!-- main-panel-header rounded-window-top -->
+          <div class="main-panel-content rounded-window-bottom">
+            <pre>
+&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;!DOCTYPE suite SYSTEM &quot;http://testng.org/testng-1.0.dtd&quot;&gt;
+&lt;suite guice-stage=&quot;DEVELOPMENT&quot; name=&quot;Default suite&quot;&gt;
+  &lt;test verbose=&quot;2&quot; name=&quot;Default test&quot;&gt;
+    &lt;classes&gt;
+      &lt;class name=&quot;by.epam.internetprovider.service.impl.util.ValidationTest&quot;/&gt;
+    &lt;/classes&gt;
+  &lt;/test&gt; &lt;!-- Default test --&gt;
+&lt;/suite&gt; &lt;!-- Default suite --&gt;
+            </pre>
+          </div> <!-- main-panel-content rounded-window-bottom -->
+        </div> <!-- panel -->
+        <div panel-name="testlist-Default_suite" class="panel">
+          <div class="main-panel-header rounded-window-top">
+            <span class="header-content">Tests for Default suite</span>
+          </div> <!-- main-panel-header rounded-window-top -->
+          <div class="main-panel-content rounded-window-bottom">
+            <ul>
+              <li>
+                <span class="test-name">Default test (1 class)</span>
+              </li>
+            </ul>
+          </div> <!-- main-panel-content rounded-window-bottom -->
+        </div> <!-- panel -->
+        <div panel-name="group-Default_suite" class="panel">
+          <div class="main-panel-header rounded-window-top">
+            <span class="header-content">Groups for Default suite</span>
+          </div> <!-- main-panel-header rounded-window-top -->
+          <div class="main-panel-content rounded-window-bottom">
+          </div> <!-- main-panel-content rounded-window-bottom -->
+        </div> <!-- panel -->
+        <div panel-name="times-Default_suite" class="panel">
+          <div class="main-panel-header rounded-window-top">
+            <span class="header-content">Times for Default suite</span>
+          </div> <!-- main-panel-header rounded-window-top -->
+          <div class="main-panel-content rounded-window-bottom">
+            <div class="times-div">
+              <script type="text/javascript">
+suiteTableInitFunctions.push('tableData_Default_suite');
+function tableData_Default_suite() {
+var data = new google.visualization.DataTable();
+data.addColumn('number', 'Number');
+data.addColumn('string', 'Method');
+data.addColumn('string', 'Class');
+data.addColumn('number', 'Time (ms)');
+data.addRows(32);
+data.setCell(0, 0, 0)
+data.setCell(0, 1, 'checkInvalidBallance')
+data.setCell(0, 2, 'by.epam.internetprovider.service.impl.util.ValidationTest')
+data.setCell(0, 3, 428);
+data.setCell(1, 0, 1)
+data.setCell(1, 1, 'checkValidBallance')
+data.setCell(1, 2, 'by.epam.internetprovider.service.impl.util.ValidationTest')
+data.setCell(1, 3, 5);
+data.setCell(2, 0, 2)
+data.setCell(2, 1, 'checkValidmail')
+data.setCell(2, 2, 'by.epam.internetprovider.service.impl.util.ValidationTest')
+data.setCell(2, 3, 3);
+data.setCell(3, 0, 3)
+data.setCell(3, 1, 'checkInvalidLogin')
+data.setCell(3, 2, 'by.epam.internetprovider.service.impl.util.ValidationTest')
+data.setCell(3, 3, 3);
+data.setCell(4, 0, 4)
+data.setCell(4, 1, 'checkInvalidLogin')
+data.setCell(4, 2, 'by.epam.internetprovider.service.impl.util.ValidationTest')
+data.setCell(4, 3, 3);
+data.setCell(5, 0, 5)
+data.setCell(5, 1, 'checkvalidLogin')
+data.setCell(5, 2, 'by.epam.internetprovider.service.impl.util.ValidationTest')
+data.setCell(5, 3, 3);
+data.setCell(6, 0, 6)
+data.setCell(6, 1, 'checkInvalidBallance')
+data.setCell(6, 2, 'by.epam.internetprovider.service.impl.util.ValidationTest')
+data.setCell(6, 3, 3);
+data.setCell(7, 0, 7)
+data.setCell(7, 1, 'checkInvalidMail')
+data.setCell(7, 2, 'by.epam.internetprovider.service.impl.util.ValidationTest')
+data.setCell(7, 3, 3);
+data.setCell(8, 0, 8)
+data.setCell(8, 1, 'checkInvalidLogin')
+data.setCell(8, 2, 'by.epam.internetprovider.service.impl.util.ValidationTest')
+data.setCell(8, 3, 2);
+data.setCell(9, 0, 9)
+data.setCell(9, 1, 'checkInvalidMail')
+data.setCell(9, 2, 'by.epam.internetprovider.service.impl.util.ValidationTest')
+data.setCell(9, 3, 2);
+data.setCell(10, 0, 10)
+data.setCell(10, 1, 'checkvalidLogin')
+data.setCell(10, 2, 'by.epam.internetprovider.service.impl.util.ValidationTest')
+data.setCell(10, 3, 2);
+data.setCell(11, 0, 11)
+data.setCell(11, 1, 'checkInvalidLogin')
+data.setCell(11, 2, 'by.epam.internetprovider.service.impl.util.ValidationTest')
+data.setCell(11, 3, 2);
+data.setCell(12, 0, 12)
+data.setCell(12, 1, 'checkvalidName')
+data.setCell(12, 2, 'by.epam.internetprovider.service.impl.util.ValidationTest')
+data.setCell(12, 3, 2);
+data.setCell(13, 0, 13)
+data.setCell(13, 1, 'checkvalidName')
+data.setCell(13, 2, 'by.epam.internetprovider.service.impl.util.ValidationTest')
+data.setCell(13, 3, 1);
+data.setCell(14, 0, 14)
+data.setCell(14, 1, 'checkInvalidName')
+data.setCell(14, 2, 'by.epam.internetprovider.service.impl.util.ValidationTest')
+data.setCell(14, 3, 1);
+data.setCell(15, 0, 15)
+data.setCell(15, 1, 'checkValidmail')
+data.setCell(15, 2, 'by.epam.internetprovider.service.impl.util.ValidationTest')
+data.setCell(15, 3, 1);
+data.setCell(16, 0, 16)
+data.setCell(16, 1, 'checkvalidName')
+data.setCell(16, 2, 'by.epam.internetprovider.service.impl.util.ValidationTest')
+data.setCell(16, 3, 1);
+data.setCell(17, 0, 17)
+data.setCell(17, 1, 'checkValidBallance')
+data.setCell(17, 2, 'by.epam.internetprovider.service.impl.util.ValidationTest')
+data.setCell(17, 3, 1);
+data.setCell(18, 0, 18)
+data.setCell(18, 1, 'checkInvalidMail')
+data.setCell(18, 2, 'by.epam.internetprovider.service.impl.util.ValidationTest')
+data.setCell(18, 3, 1);
+data.setCell(19, 0, 19)
+data.setCell(19, 1, 'checkValidBallance')
+data.setCell(19, 2, 'by.epam.internetprovider.service.impl.util.ValidationTest')
+data.setCell(19, 3, 1);
+data.setCell(20, 0, 20)
+data.setCell(20, 1, 'checkInvalidMail')
+data.setCell(20, 2, 'by.epam.internetprovider.service.impl.util.ValidationTest')
+data.setCell(20, 3, 1);
+data.setCell(21, 0, 21)
+data.setCell(21, 1, 'checkInvalidMail')
+data.setCell(21, 2, 'by.epam.internetprovider.service.impl.util.ValidationTest')
+data.setCell(21, 3, 1);
+data.setCell(22, 0, 22)
+data.setCell(22, 1, 'checkValidBallance')
+data.setCell(22, 2, 'by.epam.internetprovider.service.impl.util.ValidationTest')
+data.setCell(22, 3, 1);
+data.setCell(23, 0, 23)
+data.setCell(23, 1, 'checkValidBallance')
+data.setCell(23, 2, 'by.epam.internetprovider.service.impl.util.ValidationTest')
+data.setCell(23, 3, 1);
+data.setCell(24, 0, 24)
+data.setCell(24, 1, 'checkvalidName')
+data.setCell(24, 2, 'by.epam.internetprovider.service.impl.util.ValidationTest')
+data.setCell(24, 3, 1);
+data.setCell(25, 0, 25)
+data.setCell(25, 1, 'checkInvalidBallance')
+data.setCell(25, 2, 'by.epam.internetprovider.service.impl.util.ValidationTest')
+data.setCell(25, 3, 1);
+data.setCell(26, 0, 26)
+data.setCell(26, 1, 'checkValidmail')
+data.setCell(26, 2, 'by.epam.internetprovider.service.impl.util.ValidationTest')
+data.setCell(26, 3, 1);
+data.setCell(27, 0, 27)
+data.setCell(27, 1, 'checkInvalidName')
+data.setCell(27, 2, 'by.epam.internetprovider.service.impl.util.ValidationTest')
+data.setCell(27, 3, 1);
+data.setCell(28, 0, 28)
+data.setCell(28, 1, 'checkvalidLogin')
+data.setCell(28, 2, 'by.epam.internetprovider.service.impl.util.ValidationTest')
+data.setCell(28, 3, 1);
+data.setCell(29, 0, 29)
+data.setCell(29, 1, 'checkInvalidName')
+data.setCell(29, 2, 'by.epam.internetprovider.service.impl.util.ValidationTest')
+data.setCell(29, 3, 0);
+data.setCell(30, 0, 30)
+data.setCell(30, 1, 'checkValidBallance')
+data.setCell(30, 2, 'by.epam.internetprovider.service.impl.util.ValidationTest')
+data.setCell(30, 3, 0);
+data.setCell(31, 0, 31)
+data.setCell(31, 1, 'checkInvalidName')
+data.setCell(31, 2, 'by.epam.internetprovider.service.impl.util.ValidationTest')
+data.setCell(31, 3, 0);
+window.suiteTableData['Default_suite']= { tableData: data, tableDiv: 'times-div-Default_suite'}
+return data;
+}
+              </script>
+              <span class="suite-total-time">Total running time: 477 ms</span>
+              <div id="times-div-Default_suite">
+              </div> <!-- times-div-Default_suite -->
+            </div> <!-- times-div -->
+          </div> <!-- main-panel-content rounded-window-bottom -->
+        </div> <!-- panel -->
+        <div panel-name="reporter-Default_suite" class="panel">
+          <div class="main-panel-header rounded-window-top">
+            <span class="header-content">Reporter output for Default suite</span>
+          </div> <!-- main-panel-header rounded-window-top -->
+          <div class="main-panel-content rounded-window-bottom">
+          </div> <!-- main-panel-content rounded-window-bottom -->
+        </div> <!-- panel -->
+        <div panel-name="ignored-methods-Default_suite" class="panel">
+          <div class="main-panel-header rounded-window-top">
+            <span class="header-content">0 ignored methods</span>
+          </div> <!-- main-panel-header rounded-window-top -->
+          <div class="main-panel-content rounded-window-bottom">
+          </div> <!-- main-panel-content rounded-window-bottom -->
+        </div> <!-- panel -->
+        <div panel-name="chronological-Default_suite" class="panel">
+          <div class="main-panel-header rounded-window-top">
+            <span class="header-content">Methods in chronological order</span>
+          </div> <!-- main-panel-header rounded-window-top -->
+          <div class="main-panel-content rounded-window-bottom">
+            <div class="chronological-class">
+              <div class="chronological-class-name">by.epam.internetprovider.service.impl.util.ValidationTest</div> <!-- chronological-class-name -->
+              <div class="test-method">
+                <span class="method-name">checkInvalidBallance(1000)</span>
+                <span class="method-start">0 ms</span>
+              </div> <!-- test-method -->
+              <div class="test-method">
+                <span class="method-name">checkInvalidBallance(-999.9)</span>
+                <span class="method-start">429 ms</span>
+              </div> <!-- test-method -->
+              <div class="test-method">
+                <span class="method-name">checkInvalidBallance(null)</span>
+                <span class="method-start">433 ms</span>
+              </div> <!-- test-method -->
+              <div class="test-method">
+                <span class="method-name">checkInvalidLogin(1qwErty)</span>
+                <span class="method-start">437 ms</span>
+              </div> <!-- test-method -->
+              <div class="test-method">
+                <span class="method-name">checkInvalidLogin(&user1)</span>
+                <span class="method-start">442 ms</span>
+              </div> <!-- test-method -->
+              <div class="test-method">
+                <span class="method-name">checkInvalidLogin(john)</span>
+                <span class="method-start">446 ms</span>
+              </div> <!-- test-method -->
+              <div class="test-method">
+                <span class="method-name">checkInvalidLogin(null)</span>
+                <span class="method-start">450 ms</span>
+              </div> <!-- test-method -->
+              <div class="test-method">
+                <span class="method-name">checkInvalidMail(null)</span>
+                <span class="method-start">459 ms</span>
+              </div> <!-- test-method -->
+              <div class="test-method">
+                <span class="method-name">checkInvalidMail(testmail@test)</span>
+                <span class="method-start">462 ms</span>
+              </div> <!-- test-method -->
+              <div class="test-method">
+                <span class="method-name">checkInvalidMail(more-test@mail.ru)</span>
+                <span class="method-start">468 ms</span>
+              </div> <!-- test-method -->
+              <div class="test-method">
+                <span class="method-name">checkInvalidMail(sample$.adress@usa.de)</span>
+                <span class="method-start">470 ms</span>
+              </div> <!-- test-method -->
+              <div class="test-method">
+                <span class="method-name">checkInvalidMail(bad@adress)</span>
+                <span class="method-start">473 ms</span>
+              </div> <!-- test-method -->
+              <div class="test-method">
+                <span class="method-name">checkInvalidName()</span>
+                <span class="method-start">476 ms</span>
+              </div> <!-- test-method -->
+              <div class="test-method">
+                <span class="method-name">checkInvalidName(na me)</span>
+                <span class="method-start">477 ms</span>
+              </div> <!-- test-method -->
+              <div class="test-method">
+                <span class="method-name">checkInvalidName(  )</span>
+                <span class="method-start">479 ms</span>
+              </div> <!-- test-method -->
+              <div class="test-method">
+                <span class="method-name">checkInvalidName(null)</span>
+                <span class="method-start">481 ms</span>
+              </div> <!-- test-method -->
+              <div class="test-method">
+                <span class="method-name">checkValidBallance(0)</span>
+                <span class="method-start">483 ms</span>
+              </div> <!-- test-method -->
+              <div class="test-method">
+                <span class="method-name">checkValidBallance(100.5)</span>
+                <span class="method-start">484 ms</span>
+              </div> <!-- test-method -->
+              <div class="test-method">
+                <span class="method-name">checkValidBallance(998.67)</span>
+                <span class="method-start">486 ms</span>
+              </div> <!-- test-method -->
+              <div class="test-method">
+                <span class="method-name">checkValidBallance(-80.9)</span>
+                <span class="method-start">492 ms</span>
+              </div> <!-- test-method -->
+              <div class="test-method">
+                <span class="method-name">checkValidBallance(-666.666)</span>
+                <span class="method-start">494 ms</span>
+              </div> <!-- test-method -->
+              <div class="test-method">
+                <span class="method-name">checkValidBallance(-999)</span>
+                <span class="method-start">495 ms</span>
+              </div> <!-- test-method -->
+              <div class="test-method">
+                <span class="method-name">checkValidmail(testmail@test.com)</span>
+                <span class="method-start">497 ms</span>
+              </div> <!-- test-method -->
+              <div class="test-method">
+                <span class="method-name">checkValidmail(more_test@mail.ru)</span>
+                <span class="method-start">499 ms</span>
+              </div> <!-- test-method -->
+              <div class="test-method">
+                <span class="method-name">checkValidmail(sample.adress@usa.de)</span>
+                <span class="method-start">503 ms</span>
+              </div> <!-- test-method -->
+              <div class="test-method">
+                <span class="method-name">checkvalidLogin(qwErty)</span>
+                <span class="method-start">505 ms</span>
+              </div> <!-- test-method -->
+              <div class="test-method">
+                <span class="method-name">checkvalidLogin(_user1)</span>
+                <span class="method-start">508 ms</span>
+              </div> <!-- test-method -->
+              <div class="test-method">
+                <span class="method-name">checkvalidLogin(john_sm)</span>
+                <span class="method-start">517 ms</span>
+              </div> <!-- test-method -->
+              <div class="test-method">
+                <span class="method-name">checkvalidName(qwErty)</span>
+                <span class="method-start">522 ms</span>
+              </div> <!-- test-method -->
+              <div class="test-method">
+                <span class="method-name">checkvalidName(_user1)</span>
+                <span class="method-start">524 ms</span>
+              </div> <!-- test-method -->
+              <div class="test-method">
+                <span class="method-name">checkvalidName(john_sm)</span>
+                <span class="method-start">526 ms</span>
+              </div> <!-- test-method -->
+              <div class="test-method">
+                <span class="method-name">checkvalidName(11242-34)</span>
+                <span class="method-start">533 ms</span>
+              </div> <!-- test-method -->
+          </div> <!-- main-panel-content rounded-window-bottom -->
+        </div> <!-- panel -->
+      </div> <!-- main-panel-root -->
+    </div> <!-- wrapper -->
+  </body>
+</html>

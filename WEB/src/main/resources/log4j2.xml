@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration status="WARN" name="InternetProvider"
+	monitorInterval="3">
+	<!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+	<!-- +++++++++++++++++ APPENDERS ++++++++++++++++++++++++ -->
+	<!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+
+	<appenders>
+
+		<File name="controller" fileName="${log4j:configParentLocation}/logs/controller.log">
+			<PatternLayout>
+				<pattern>%d %p %m%n</pattern>
+			</PatternLayout>
+		</File>
+
+		<File name="logination"
+			fileName="${log4j:configParentLocation}/logs/user-logination.log">
+			<PatternLayout>
+				<pattern>%d %p %c{1.} [%t] %m%n</pattern>
+			</PatternLayout>
+		</File>
+		
+		<File name="application"
+			fileName="${log4j:configParentLocation}/logs/application.log">
+			<PatternLayout>
+				<pattern>%d %p %c{1.} [%t] %m%n</pattern>
+			</PatternLayout>
+		</File>
+
+		<File name="connection-pool"
+			fileName="${log4j:configParentLocation}/logs/connection-pool.log">
+			<PatternLayout>
+				<pattern>%d %p %c{1.} [%t] %m%n</pattern>
+			</PatternLayout>
+		</File>
+
+		<Console name="console" target="SYSTEM_OUT">
+			<PatternLayout>
+				<pattern>%d %p %c{1.} [%t] %m%n</pattern>
+			</PatternLayout>
+		</Console>
+
+	</appenders>
+
+	<!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+	<!-- +++++++++++++++++ LOGGERS ++++++++++++++++++++++++++ -->
+	<!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+	<loggers>
+
+		<root level="WARN">
+			<AppenderRef ref="console" level="WARN" />
+			<AppenderRef ref="application" level="WARN" />
+		</root>
+
+		<Logger level="debug" name="by.epam.internetprovider.controller.Controller"
+			additivity="true">
+			<appender-ref ref="controller" />
+		</Logger>
+
+		<Logger level="info"
+			name="by.epam.internetprovider.dao.database.connectionpool.impl.ConnectionPoolOne"
+			additivity="true">
+			<appender-ref ref="connection-pool" />
+		</Logger>
+
+		<Logger level="debug"
+			name="by.epam.internetprovider.controller.listener.LoginationListener"
+			additivity="true">
+			<appender-ref ref="logination" />
+		</Logger>
+
+	</loggers>
+
+</configuration>

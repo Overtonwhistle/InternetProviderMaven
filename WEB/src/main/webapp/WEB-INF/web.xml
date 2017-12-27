@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+	id="WebApp_ID" version="2.5">
+	<display-name>InternetProvider</display-name>
+
+	<servlet>
+		<description>Main Servlet, "CONTROLLER"</description>
+		<display-name>Controller</display-name>
+		<servlet-name>Controller</servlet-name>
+		<servlet-class>by.epam.internetprovider.controller.Controller</servlet-class>
+		<load-on-startup>0</load-on-startup>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>Controller</servlet-name>
+		<url-pattern>/Controller</url-pattern>
+	</servlet-mapping>
+
+	<welcome-file-list>
+		<welcome-file>index.html</welcome-file>
+		<welcome-file>index.htm</welcome-file>
+		<welcome-file>index.jsp</welcome-file>
+		<welcome-file>default.html</welcome-file>
+		<welcome-file>default.htm</welcome-file>
+		<welcome-file>default.jsp</welcome-file>
+	</welcome-file-list>
+
+	<context-param> <!-- Starting language: "ru" or "en" only -->
+		<param-name>start_lang</param-name>
+		<param-value>ru</param-value>
+	</context-param>
+
+	<filter>
+		<display-name>CharsetFilter</display-name>
+		<filter-name>CharsetFilter</filter-name>
+		<filter-class>by.epam.internetprovider.controller.filter.CharsetFilter</filter-class>
+		<init-param>
+			<param-name>characterEncoding</param-name>
+			<param-value>utf-8</param-value>
+		</init-param>
+	</filter>
+	<filter-mapping>
+		<filter-name>CharsetFilter</filter-name>
+		<url-pattern>/Controller</url-pattern>
+	</filter-mapping>
+
+	<filter>
+		<display-name>AuthorizationFilter</display-name>
+		<filter-name>AuthorizationFilter</filter-name>
+		<filter-class>by.epam.internetprovider.controller.filter.AuthorizationFilter</filter-class>
+		<init-param>
+			<param-name>start_page</param-name>
+			<param-value>index.jsp</param-value>
+		</init-param>
+	</filter>
+	<filter-mapping>
+		<filter-name>AuthorizationFilter</filter-name>
+		<url-pattern>/Controller</url-pattern>
+	</filter-mapping>
+
+	<!-- Error handler - servlet -->
+	<servlet>
+		<servlet-name>ErrorHandler</servlet-name>
+		<servlet-class>by.epam.internetprovider.controller.ErrorHandler</servlet-class>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>ErrorHandler</servlet-name>
+		<url-pattern>/ErrorHandler</url-pattern>
+	</servlet-mapping>
+	<error-page>
+		<exception-type>by.epam.internetprovider.controller.command.exception.CommandException</exception-type>
+		<location>/ErrorHandler</location>
+	</error-page>
+
+	<error-page>
+		<error-code>404</error-code>
+		<location>/404.jsp</location>
+	</error-page>
+
+	<!-- User logination logger -->
+	<listener>
+		<listener-class>by.epam.internetprovider.controller.listener.LoginationListener</listener-class>
+	</listener>
+
+</web-app>
