@@ -16,7 +16,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import by.epam.internetprovider.bean.User;
-import by.epam.internetprovider.bean.builder.UserBuilder;
+import by.epam.internetprovider.bean.data_object.UserData;
 import by.epam.internetprovider.controller.command.Command;
 import by.epam.internetprovider.controller.command.exception.CommandException;
 import by.epam.internetprovider.service.IInternetProviderService;
@@ -27,7 +27,6 @@ public class ClientEditProfileProcess implements Command {
 
 	private static final Logger logger = LogManager.getLogger();
 	private static String DONE_PAGE = "Controller?command=goto_client_edit_profile";
-	// private static String DONE_PAGE = "Controller?command=goto_client";
 	private static String WRONG_CURRENT_PASSWORD_PAGE = "Controller?command=goto_client_edit_profile";
 	private static String ERROR_PAGE = "WEB-INF/jsp/errors-pages/client_edit_profile_error.jsp";
 
@@ -53,22 +52,22 @@ public class ClientEditProfileProcess implements Command {
 			return;
 		}
 
-		UserBuilder userBuilder = new UserBuilder();
+		UserData userData = new UserData();
 
-		userBuilder.setFirstName(request.getParameter(PARAMETER_NEW_F_NAME));
-		userBuilder.setLastName(request.getParameter(PARAMETER_NEW_L_NAME));
-		userBuilder.setPassportNumber(request.getParameter(PARAMETER_NEW_PASSPORT));
-		userBuilder.setEmail(request.getParameter(PARAMETER_NEW_EMAIL));
-		userBuilder.setCurrentPassword(currentPassword);
+		userData.setFirstName(request.getParameter(PARAMETER_NEW_F_NAME));
+		userData.setLastName(request.getParameter(PARAMETER_NEW_L_NAME));
+		userData.setPassportNumber(request.getParameter(PARAMETER_NEW_PASSPORT));
+		userData.setEmail(request.getParameter(PARAMETER_NEW_EMAIL));
+		userData.setCurrentPassword(currentPassword);
 
 		if (!request.getParameter(PARAMETER_NEW_PASSWORD).isEmpty()) {
-			userBuilder.setPassword(request.getParameter(PARAMETER_NEW_PASSWORD));
+			userData.setPassword(request.getParameter(PARAMETER_NEW_PASSWORD));
 		} else {
-			userBuilder.setPassword(user.getPassword());
+			userData.setPassword(user.getPassword());
 		}
 
 		try {
-			errors = (ArrayList<String>) internetProviderService.editClientProfile(userBuilder,
+			errors = (ArrayList<String>) internetProviderService.editClientProfile(userData,
 					user.getId());
 		} catch (ServiceException e) {
 			logger.log(Level.ERROR, "Failed to edit user data in command:ClientEditProfileProcess");

@@ -11,10 +11,6 @@ import java.util.Map;
 import java.util.ResourceBundle;
 import java.util.stream.Collectors;
 
-import org.apache.logging.log4j.Level;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
-
 import by.epam.internetprovider.bean.Ban;
 import by.epam.internetprovider.bean.BanReason;
 import by.epam.internetprovider.bean.Payment;
@@ -23,8 +19,8 @@ import by.epam.internetprovider.bean.Tariff;
 import by.epam.internetprovider.bean.Technology;
 import by.epam.internetprovider.bean.User;
 import by.epam.internetprovider.bean.Param.UserRole;
-import by.epam.internetprovider.bean.builder.TariffBuilder;
-import by.epam.internetprovider.bean.builder.UserBuilder;
+import by.epam.internetprovider.bean.data_object.TariffData;
+import by.epam.internetprovider.bean.data_object.UserData;
 import by.epam.internetprovider.dao.IBanDAO;
 import by.epam.internetprovider.dao.IDataBaseDAO;
 import by.epam.internetprovider.dao.IPaymentDAO;
@@ -57,13 +53,21 @@ import by.epam.internetprovider.service.impl.util.Validation;
 
 public class InternetProviderService implements IInternetProviderService {
 
-	private static final Logger logger = LogManager.getLogger();
-	private final static String LOCAL_ERRORS_BASENAME = "local_errors";
+	private static final String NO_ERRORS = "";
+	private static final String LOCAL_ERRORS_BASENAME = "local_errors";
+	private static final String ERROR_TARIFF_IS_USED = "add_request.user_already_has_tariff";
+	private static final String ERROR_TARIFF_IS_DELETED = "delete_request.already_processed";
+	private static final String ERROR_TARIFF_TITLE_IS_BUSY = "add_tariff.title_busy";
+	private static final String ERROR_WRONG_CURR_PASSWORD = "edit_user.wrong_current_passwords";
+	private static final String ERROR_WRONG_AMOUNT = "make_payment.wront_amount";
+	private static final String ERROR_NEG_AMOUNT = "make_payment.negative_amount";
 
+	private static final String LIMITED_TARIFF_FIELD = "no";
 	private static final int INITIAL_MONTHLY_DATA = 0;
 	private static final int INITIAL_TOTAL_DATA = 0;
 	private static final int MONTHLY_DATA_FOR_UNLIM = 0;
 	private static final int OVERLOAD_COST_FOR_UNLIM = 0;
+	private static final int ZERO_BALLANCE_VALUE = 0;
 	private static final BigDecimal INITIAL_ACCOUNT_BALLANCE = new BigDecimal("0");
 	private static final int INITIAL_TARIFF_ID = 0;
 	private static final int FIRST_LIST_INDEX = 0;
@@ -102,10 +106,8 @@ public class InternetProviderService implements IInternetProviderService {
 	@Override
 	public User getUserByLogin(String login, String password) throws ServiceException {
 
-		if (login == null || password == null) {
-			logger.log(Level.ERROR, "Null parameter reference.");
-			throw new ServiceException("Null parameter reference in getUserByLogin()");
-		}
+		checkForNull(login);
+		checkForNull(password);
 
 		try {
 			return userDAO.getUserByLogin(login, password);
@@ -113,7 +115,7 @@ public class InternetProviderService implements IInternetProviderService {
 			throw new ServiceUserNotFoundException("User " + login + ":" + password + " not found.",
 					e);
 		} catch (DAOException e) {
-			throw new ServiceException("Error getting user from getUserByLogin()", e);
+			throw new ServiceException("Data source error in getUserByLogin()", e);
 		}
 
 	}
@@ -128,19 +130,16 @@ public class InternetProviderService implements IInternetProviderService {
 		} catch (DAOUserNotFoundException e) {
 			throw new ServiceUserNotFoundException("User:" + userId + " not found.", e);
 		} catch (DAOException e) {
-			throw new ServiceException("Error getting user from getUserById()", e);
+			throw new ServiceException("Data source error in getUserById()", e);
 		}
 	}
 
 	@Override
-	public List<String> createUser(UserBuilder userBuilder) throws ServiceException {
+	public List<String> createUser(UserData userData) throws ServiceException {
 
-		if (userBuilder == null) {
-			logger.log(Level.ERROR, "Null parameter reference in createUser()");
-			throw new ServiceException("Null parameter reference in createUser()");
-		}
+		checkForNull(userData);
 
-		List<String> errors = Validation.newUserBuilderValidation(userBuilder);
+		List<String> errors = Validation.newUserDataValidation(userData);
 
 		if (errors.isEmpty()) {
 
@@ -152,12 +151,7 @@ public class InternetProviderService implements IInternetProviderService {
 			user.setAccountBallance(INITIAL_ACCOUNT_BALLANCE);
 			user.setTariffId(INITIAL_TARIFF_ID);
 
-			user.setFirstName(userBuilder.getFirstName());
-			user.setLastName(userBuilder.getLastName());
-			user.setPassportNumber(userBuilder.getPassportNumber());
-			user.setEmail(userBuilder.getEmail());
-			user.setLogin(userBuilder.getLogin());
-			user.setPassword(userBuilder.getPassword());
+			setUserData(user, userData);
 
 			try {
 				userDAO.addUser(user);
@@ -169,28 +163,17 @@ public class InternetProviderService implements IInternetProviderService {
 	}
 
 	@Override
-	public List<String> editUser(UserBuilder userBuilder, int userId) throws ServiceException {
+	public List<String> editUser(UserData userData, int userId) throws ServiceException {
 
 		checkId(userId);
+		checkForNull(userData);
 
-		ArrayList<String> errors = (ArrayList<String>) Validation
-				.editUserBuilderValidation(userBuilder);
+		ArrayList<String> errors = (ArrayList<String>) Validation.editUserDataValidation(userData);
 
 		if (errors.isEmpty()) {
 
 			User user = new User();
-			user.setRole(UserRole.valueOf(userBuilder.getRole()));
-			user.setFirstName(userBuilder.getFirstName());
-			user.setLastName(userBuilder.getLastName());
-			user.setPassportNumber(userBuilder.getPassportNumber());
-			user.setEmail(userBuilder.getEmail());
-			user.setRegDate(java.sql.Date.valueOf(userBuilder.getRegDate()));
-			user.setLogin(userBuilder.getLogin());
-			user.setPassword(userBuilder.getPassword());
-			user.setMonthlyDataUsage(Long.parseLong(userBuilder.getMonthlyDataUsage()));
-			user.setTotalDataUsage(Long.parseLong(userBuilder.getTotalDataUsage()));
-			user.setAccountBallance(new BigDecimal(userBuilder.getAccountBallance()));
-			user.setTariffId(Integer.parseInt(userBuilder.getTariffId()));
+			setUserData(user, userData);
 
 			try {
 				userDAO.editUser(userId, user);
@@ -202,28 +185,28 @@ public class InternetProviderService implements IInternetProviderService {
 	}
 
 	@Override
-	public List<String> editClientProfile(UserBuilder userBuilder, int userId)
-			throws ServiceException {
+	public List<String> editClientProfile(UserData userData, int userId) throws ServiceException {
 
 		checkId(userId);
+		checkForNull(userData);
 
 		ArrayList<String> errors = (ArrayList<String>) Validation
-				.editClientProfileValidation(userBuilder);
+				.editClientProfileValidation(userData);
 
 		ResourceBundle errorsResource = ResourceBundle.getBundle(LOCAL_ERRORS_BASENAME);
 		User user = getUserById(userId);
 
-		if (!userBuilder.getCurrentPassword().equals(user.getPassword())) {
-			errors.add(errorsResource.getString("edit_user.wrong_current_passwords"));
+		if (!userData.getCurrentPassword().equals(user.getPassword())) {
+			errors.add(errorsResource.getString(ERROR_WRONG_CURR_PASSWORD));
 		}
 
 		if (errors.isEmpty()) {
 
-			user.setFirstName(userBuilder.getFirstName());
-			user.setLastName(userBuilder.getLastName());
-			user.setPassportNumber(userBuilder.getPassportNumber());
-			user.setEmail(userBuilder.getEmail());
-			user.setPassword(userBuilder.getPassword());
+			user.setFirstName(userData.getFirstName());
+			user.setLastName(userData.getLastName());
+			user.setPassportNumber(userData.getPassportNumber());
+			user.setEmail(userData.getEmail());
+			user.setPassword(userData.getPassword());
 
 			try {
 				userDAO.editUser(userId, user);
@@ -314,10 +297,7 @@ public class InternetProviderService implements IInternetProviderService {
 	@Override
 	public List<User> getUsersList(UserSearchFilter filter) throws ServiceException {
 
-		if (filter == null) {
-			logger.log(Level.ERROR, "Null parameter reference.");
-			throw new ServiceException("Null parameter reference in getUsersList()");
-		}
+		checkForNull(filter);
 
 		try {
 			return userDAO.getUsersList(filter);
@@ -329,10 +309,7 @@ public class InternetProviderService implements IInternetProviderService {
 	@Override
 	public List<User> getUsersList(Map<String, String> parameters) throws ServiceException {
 
-		if (parameters == null) {
-			logger.log(Level.ERROR, "Null parameter reference.");
-			throw new ServiceException("Null parameter reference in getUsersList(Map)");
-		}
+		checkForNull(parameters);
 
 		UserSearchFilter searchFilter = new UserSearchFilter();
 
@@ -403,6 +380,7 @@ public class InternetProviderService implements IInternetProviderService {
 
 	@Override
 	public List<User> getClientsList() throws ServiceException {
+
 		UserSearchFilter usersFilter = new UserSearchFilter();
 		usersFilter.addSubFilter(new SubFilter(FilterParameter.USER_ROLE_CLIENT));
 		return getUsersList(usersFilter);
@@ -411,14 +389,16 @@ public class InternetProviderService implements IInternetProviderService {
 
 	@Override
 	public List<User> getUsersWithNegBallance() throws ServiceException {
+
 		UserSearchFilter usersFilter = new UserSearchFilter();
-		usersFilter.addSubFilter(
-				new SubFilter(FilterParameter.USER_BALLANCE, PARAMETER_CONDITION_LESS, 0));
+		usersFilter.addSubFilter(new SubFilter(FilterParameter.USER_BALLANCE,
+				PARAMETER_CONDITION_LESS, ZERO_BALLANCE_VALUE));
 		return getUsersList(usersFilter);
 	}
 
 	@Override
 	public List<User> getUsersInBan() throws ServiceException {
+
 		UserSearchFilter usersFilter = new UserSearchFilter();
 		usersFilter.addSubFilter(new SubFilter(FilterParameter.USER_BANNED));
 		return getUsersList(usersFilter);
@@ -445,8 +425,7 @@ public class InternetProviderService implements IInternetProviderService {
 		ResourceBundle errorsResource = ResourceBundle.getBundle(LOCAL_ERRORS_BASENAME);
 
 		if (isUserHasTariff(userId, tariffId)) {
-			return errorsResource.getString("add_request.user_already_has_tariff");
-
+			return errorsResource.getString(ERROR_TARIFF_IS_USED);
 		} else {
 			try {
 				Request request = new Request();
@@ -458,7 +437,7 @@ public class InternetProviderService implements IInternetProviderService {
 				throw new ServiceException("Error in addRequest()", e);
 			}
 		}
-		return "";
+		return NO_ERRORS;
 	}
 
 	@Override
@@ -483,9 +462,6 @@ public class InternetProviderService implements IInternetProviderService {
 		checkId(requestId);
 
 		User admin = null;
-		Request request = null;
-
-		request = getRequest(requestId);
 
 		admin = getUserById(adminId);
 
@@ -496,11 +472,6 @@ public class InternetProviderService implements IInternetProviderService {
 		try {
 			requestDAO.processRequest(requestId, new java.sql.Timestamp(new Date().getTime()),
 					adminId);
-
-			User client = getUserById(request.getUserId());
-
-			client.setTariffId(request.getTariffId());
-			userDAO.editUser(request.getUserId(), client);
 
 		} catch (DAOException e) {
 			throw new ServiceException("Error in processRequest()", e);
@@ -518,7 +489,7 @@ public class InternetProviderService implements IInternetProviderService {
 		try {
 			Request request = requestDAO.getRequest(requestId);
 			if (request.getProcessedDate() != null) {
-				return errorsResource.getString("delete_request.already_processed");
+				return errorsResource.getString(ERROR_TARIFF_IS_DELETED);
 			} else {
 				requestDAO.deleteRequest(requestId);
 			}
@@ -526,7 +497,7 @@ public class InternetProviderService implements IInternetProviderService {
 			throw new ServiceException("Error in deleteRequest()", e);
 		}
 
-		return "";
+		return NO_ERRORS;
 	}
 
 	@Override
@@ -554,10 +525,7 @@ public class InternetProviderService implements IInternetProviderService {
 	@Override
 	public List<Request> getRequestsList(RequestSearchFilter filter) throws ServiceException {
 
-		if (filter == null) {
-			logger.log(Level.ERROR, "Null parameter reference.");
-			throw new ServiceException("Null parameter reference in getRequestsList()");
-		}
+		checkForNull(filter);
 
 		try {
 			return requestDAO.getRequestsList(filter);
@@ -568,12 +536,9 @@ public class InternetProviderService implements IInternetProviderService {
 
 	@Override
 	public List<Request> getRequestsList(Map<String, String> parameters) throws ServiceException {
-		RequestSearchFilter searchFilter = new RequestSearchFilter();
 
-		if (parameters == null) {
-			logger.log(Level.ERROR, "Null parameter reference.");
-			throw new ServiceException("Null parameter reference in getRequestsList(Map)");
-		}
+		checkForNull(parameters);
+		RequestSearchFilter searchFilter = new RequestSearchFilter();
 
 		if (parameters.get(PARAMETER_STATUS).equals(PARAMETER_STATUS_ACTIVE)) {
 			searchFilter.addSubFilter(new SubFilter(FilterParameter.REQUEST_ACTIVE));
@@ -647,31 +612,28 @@ public class InternetProviderService implements IInternetProviderService {
 		}
 	}
 
-	public List<String> createTariff(TariffBuilder tariffBuilder) throws ServiceException {
+	public List<String> createTariff(TariffData tariffData) throws ServiceException {
 
-		if (tariffBuilder == null) {
-			logger.log(Level.ERROR, "Null parameter reference.");
-			throw new ServiceException("Null parameter reference in createTariff()");
-		}
+		checkForNull(tariffData);
 
 		ResourceBundle errorsResource = ResourceBundle.getBundle(LOCAL_ERRORS_BASENAME);
 
-		List<String> errors = Validation.tariffBuilderValidation(tariffBuilder);
+		List<String> errors = Validation.tariffDataValidation(tariffData);
 
-		if (isTariffTitleBusy(tariffBuilder.getTitle())) {
-			errors.add(errorsResource.getString("add_tariff.title_busy"));
+		if (isTariffTitleBusy(tariffData.getTitle())) {
+			errors.add(errorsResource.getString(ERROR_TARIFF_TITLE_IS_BUSY));
 		}
 
 		if (errors.isEmpty()) {
 
 			Tariff tariff = new Tariff();
-			tariff.setTitle(tariffBuilder.getTitle());
-			tariff.setMonthlyCost(new BigDecimal(tariffBuilder.getMonthlyCost()));
+			tariff.setTitle(tariffData.getTitle());
+			tariff.setMonthlyCost(new BigDecimal(tariffData.getMonthlyCost()));
 
-			if (tariffBuilder.getUnlimTraffic().equals("no")) {
+			if (tariffData.getUnlimTraffic().equals(LIMITED_TARIFF_FIELD)) {
 				tariff.setUnlimTraffic(false);
-				tariff.setMonthlyDataLimit(Long.parseLong(tariffBuilder.getMonthlyDataLimit()));
-				tariff.setOverloadLimitCost(new BigDecimal(tariffBuilder.getOverloadLimitCost()));
+				tariff.setMonthlyDataLimit(Long.parseLong(tariffData.getMonthlyDataLimit()));
+				tariff.setOverloadLimitCost(new BigDecimal(tariffData.getOverloadLimitCost()));
 
 			} else {
 				tariff.setUnlimTraffic(true);
@@ -679,9 +641,9 @@ public class InternetProviderService implements IInternetProviderService {
 				tariff.setOverloadLimitCost(BigDecimal.valueOf(OVERLOAD_COST_FOR_UNLIM));
 			}
 
-			tariff.setTechnologyId(Integer.parseInt(tariffBuilder.getTechnologyId()));
+			tariff.setTechnologyId(Integer.parseInt(tariffData.getTechnologyId()));
 
-			tariff.setDescription(tariffBuilder.getDescription());
+			tariff.setDescription(tariffData.getDescription());
 
 			try {
 				tariffDAO.addTariff(tariff);
@@ -694,19 +656,15 @@ public class InternetProviderService implements IInternetProviderService {
 	}
 
 	@Override
-	public List<String> editTariff(int tariffId, TariffBuilder tariffBuilder)
-			throws ServiceException {
+	public List<String> editTariff(int tariffId, TariffData tariffData) throws ServiceException {
 
 		checkId(tariffId);
 
-		if (tariffBuilder == null) {
-			logger.log(Level.ERROR, "Null parameter reference.");
-			throw new ServiceException("Null parameter reference in editTariff()");
-		}
+		checkForNull(tariffData);
 
 		ResourceBundle errorsResource = ResourceBundle.getBundle(LOCAL_ERRORS_BASENAME);
 
-		List<String> errors = Validation.tariffBuilderValidation(tariffBuilder);
+		List<String> errors = Validation.tariffDataValidation(tariffData);
 
 		String currentTitle = null;
 
@@ -716,11 +674,10 @@ public class InternetProviderService implements IInternetProviderService {
 			throw new ServiceException("Error in editTariff()", e);
 		}
 
-		if (!currentTitle.equals(tariffBuilder.getTitle())
-				&& (tariffBuilder.getTitle().length() > 0))
+		if (!currentTitle.equals(tariffData.getTitle()) && (tariffData.getTitle().length() > 0))
 			try {
-				if (isTariffTitleBusy(tariffBuilder.getTitle())) {
-					errors.add(errorsResource.getString("add_tariff.title_busy"));
+				if (isTariffTitleBusy(tariffData.getTitle())) {
+					errors.add(errorsResource.getString(ERROR_TARIFF_TITLE_IS_BUSY));
 				}
 			} catch (ServiceException e1) {
 				throw new ServiceException("Error in editTariff()", e1);
@@ -728,13 +685,13 @@ public class InternetProviderService implements IInternetProviderService {
 
 		if (errors.isEmpty()) {
 			Tariff tariff = new Tariff();
-			tariff.setTitle(tariffBuilder.getTitle());
-			tariff.setMonthlyCost(new BigDecimal(tariffBuilder.getMonthlyCost()));
+			tariff.setTitle(tariffData.getTitle());
+			tariff.setMonthlyCost(new BigDecimal(tariffData.getMonthlyCost()));
 
-			if (tariffBuilder.getUnlimTraffic().equals("no")) {
+			if (tariffData.getUnlimTraffic().equals(LIMITED_TARIFF_FIELD)) {
 				tariff.setUnlimTraffic(false);
-				tariff.setMonthlyDataLimit(Long.parseLong(tariffBuilder.getMonthlyDataLimit()));
-				tariff.setOverloadLimitCost(new BigDecimal(tariffBuilder.getOverloadLimitCost()));
+				tariff.setMonthlyDataLimit(Long.parseLong(tariffData.getMonthlyDataLimit()));
+				tariff.setOverloadLimitCost(new BigDecimal(tariffData.getOverloadLimitCost()));
 
 			} else {
 				tariff.setUnlimTraffic(true);
@@ -742,8 +699,8 @@ public class InternetProviderService implements IInternetProviderService {
 				tariff.setOverloadLimitCost(BigDecimal.valueOf(OVERLOAD_COST_FOR_UNLIM));
 			}
 
-			tariff.setTechnologyId(Integer.parseInt(tariffBuilder.getTechnologyId()));
-			tariff.setDescription(tariffBuilder.getDescription());
+			tariff.setTechnologyId(Integer.parseInt(tariffData.getTechnologyId()));
+			tariff.setDescription(tariffData.getDescription());
 
 			try {
 				tariffDAO.editTariff(tariffId, tariff);
@@ -793,10 +750,7 @@ public class InternetProviderService implements IInternetProviderService {
 	@Override
 	public List<Tariff> getTariffsList(TariffSearchFilter filter) throws ServiceException {
 
-		if (filter == null) {
-			logger.log(Level.ERROR, "Null parameter reference.");
-			throw new ServiceException("Null parameter reference in getTariffsList()");
-		}
+		checkForNull(filter);
 
 		try {
 			return tariffDAO.getTariffsList(filter);
@@ -808,10 +762,7 @@ public class InternetProviderService implements IInternetProviderService {
 	@Override
 	public List<Tariff> getTariffsList(Map<String, String> parameters) throws ServiceException {
 
-		if (parameters == null) {
-			logger.log(Level.ERROR, "Null parameter reference.");
-			throw new ServiceException("Null parameter reference in getTariffsList(Map)");
-		}
+		checkForNull(parameters);
 
 		TariffSearchFilter searchFilter = new TariffSearchFilter();
 
@@ -906,11 +857,7 @@ public class InternetProviderService implements IInternetProviderService {
 	public List<String> makePayment(int userId, String amount) throws ServiceException {
 
 		checkId(userId);
-
-		if (amount == null) {
-			logger.log(Level.ERROR, "Null parameter reference.");
-			throw new ServiceException("Null parameter reference in makePayment()");
-		}
+		checkForNull(amount);
 
 		ResourceBundle errorsResource = ResourceBundle.getBundle(LOCAL_ERRORS_BASENAME);
 		ArrayList<String> errors = new ArrayList<>();
@@ -920,12 +867,12 @@ public class InternetProviderService implements IInternetProviderService {
 		try {
 			realAmount = new BigDecimal(amount);
 		} catch (NumberFormatException e) {
-			errors.add(errorsResource.getString("make_payment.wront_amount"));
+			errors.add(errorsResource.getString(ERROR_WRONG_AMOUNT));
 			return errors;
 		}
 
 		if (realAmount.compareTo(new BigDecimal(0)) != 1) {
-			errors.add(errorsResource.getString("make_payment.negative_amount"));
+			errors.add(errorsResource.getString(ERROR_NEG_AMOUNT));
 		} else
 			try {
 				paymentDAO.makePayment(user, realAmount,
@@ -940,10 +887,7 @@ public class InternetProviderService implements IInternetProviderService {
 	@Override
 	public List<Payment> getPaymentsList(PaymentSearchFilter filter) throws ServiceException {
 
-		if (filter == null) {
-			logger.log(Level.ERROR, "Null parameter reference.");
-			throw new ServiceException("Null parameter reference in getPaymentsList()");
-		}
+		checkForNull(filter);
 
 		try {
 			return paymentDAO.getPaymentsList(filter);
@@ -955,10 +899,7 @@ public class InternetProviderService implements IInternetProviderService {
 	@Override
 	public List<Payment> getPaymentsList(Map<String, String> parameters) throws ServiceException {
 
-		if (parameters == null) {
-			logger.log(Level.ERROR, "Null parameter reference.");
-			throw new ServiceException("Null parameter reference in getPaymentsList(Map)");
-		}
+		checkForNull(parameters);
 
 		PaymentSearchFilter searchFilter = new PaymentSearchFilter();
 
@@ -1003,14 +944,9 @@ public class InternetProviderService implements IInternetProviderService {
 			throws ServiceException {
 
 		checkId(userId);
-
-		if (parameters == null) {
-			logger.log(Level.ERROR, "Null parameter reference.");
-			throw new ServiceException("Null parameter reference in getPaymentsList(Map)");
-		}
+		checkForNull(parameters);
 
 		PaymentSearchFilter searchFilter = new PaymentSearchFilter();
-
 		searchFilter.addSubFilter(new SubFilter(FilterParameter.PAYMENT_USER_ID, userId));
 
 		if (parameters.containsKey(PARAMETER_AMOUNT)) {
@@ -1058,10 +994,7 @@ public class InternetProviderService implements IInternetProviderService {
 	@Override
 	public List<Ban> getBansList(BanSearchFilter filter) throws ServiceException {
 
-		if (filter == null) {
-			logger.log(Level.ERROR, "Null parameter reference.");
-			throw new ServiceException("Null parameter reference in getBansList()");
-		}
+		checkForNull(filter);
 
 		try {
 			return banDAO.getBansList(filter);
@@ -1078,10 +1011,7 @@ public class InternetProviderService implements IInternetProviderService {
 	@Override
 	public List<BanReason> getBanReasonsList(BanReasonSearchFilter filter) throws ServiceException {
 
-		if (filter == null) {
-			logger.log(Level.ERROR, "Null parameter reference.");
-			throw new ServiceException("Null parameter reference in getBanReasonsList()");
-		}
+		checkForNull(filter);
 
 		try {
 			return banDAO.getBanReasonsList(filter);
@@ -1099,10 +1029,7 @@ public class InternetProviderService implements IInternetProviderService {
 	public List<Technology> getTechologiesList(TechnologySearchFilter filter)
 			throws ServiceException {
 
-		if (filter == null) {
-			logger.log(Level.ERROR, "Null parameter reference.");
-			throw new ServiceException("Null parameter reference in getTechologiesList()");
-		}
+		checkForNull(filter);
 
 		try {
 			return tariffDAO.getTechnologiesList(filter);
@@ -1139,6 +1066,54 @@ public class InternetProviderService implements IInternetProviderService {
 
 	}
 
+	private void checkForNull(Object referenceToCheck) throws ServiceException {
+
+		if (referenceToCheck == null) {
+			throw new ServiceException("Null reference!");
+		}
+	}
+
+	private static void setUserData(User user, UserData userData) {
+		if (userData.getRole() != null)
+			user.setRole(UserRole.valueOf(userData.getRole()));
+
+		if (userData.getFirstName() != null)
+			user.setFirstName(userData.getFirstName());
+
+		if (userData.getFirstName() != null)
+			user.setLastName(userData.getLastName());
+
+		if (userData.getPassportNumber() != null)
+			user.setPassportNumber(userData.getPassportNumber());
+
+		if (userData.getEmail() != null)
+			user.setEmail(userData.getEmail());
+
+		if (userData.getLogin() != null)
+			user.setLogin(userData.getLogin());
+
+		if (userData.getRegDate() != null)
+			user.setRegDate(java.sql.Date.valueOf(userData.getRegDate()));
+
+		if (userData.getLogin() != null)
+			user.setLogin(userData.getLogin());
+
+		if (userData.getPassword() != null)
+			user.setPassword(userData.getPassword());
+
+		if (userData.getMonthlyDataUsage() != null)
+			user.setMonthlyDataUsage(Long.parseLong(userData.getMonthlyDataUsage()));
+
+		if (userData.getTotalDataUsage() != null)
+			user.setTotalDataUsage(Long.parseLong(userData.getTotalDataUsage()));
+
+		if (userData.getAccountBallance() != null)
+			user.setAccountBallance(new BigDecimal(userData.getAccountBallance()));
+
+		if (userData.getTariffId() != null)
+			user.setTariffId(Integer.parseInt(userData.getTariffId()));
+	}
+
 	private boolean isUserHasTariff(int userId, int tariffId) throws ServiceException {
 
 		checkId(userId);
@@ -1161,10 +1136,7 @@ public class InternetProviderService implements IInternetProviderService {
 
 	private boolean isTariffTitleBusy(String title) throws ServiceException {
 
-		if (title == null) {
-			logger.log(Level.ERROR, "Null parameter reference.");
-			throw new ServiceException("Null parameter reference in getTechologiesList()");
-		}
+		checkForNull(title);
 
 		List<Tariff> list;
 

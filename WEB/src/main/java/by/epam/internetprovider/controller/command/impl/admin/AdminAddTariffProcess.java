@@ -15,7 +15,7 @@ import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import by.epam.internetprovider.bean.builder.TariffBuilder;
+import by.epam.internetprovider.bean.data_object.TariffData;
 import by.epam.internetprovider.controller.command.Command;
 import by.epam.internetprovider.controller.command.exception.CommandException;
 import by.epam.internetprovider.service.IInternetProviderService;
@@ -38,18 +38,18 @@ public class AdminAddTariffProcess implements Command {
 		HttpSession session = request.getSession(true);
 		ArrayList<String> errors = new ArrayList<>();
 
-		TariffBuilder tariffBuilder = (TariffBuilder) session.getAttribute(ATTRIBUTE_TARIFF_TO_WORK);
+		TariffData tariffData = (TariffData) session.getAttribute(ATTRIBUTE_TARIFF_TO_WORK);
 
-		tariffBuilder.setTitle(request.getParameter(PARAMETER_NEW_TITLE));
-		tariffBuilder.setMonthlyCost(request.getParameter(PARAMETER_NEW_MONTHLY_COST));
-		tariffBuilder.setUnlimTraffic(request.getParameter(PARAMETER_NEW_UNLIM));
-		tariffBuilder.setMonthlyDataLimit(request.getParameter(PARAMETER_NEW_LIMIT));
-		tariffBuilder.setOverloadLimitCost(request.getParameter(PARAMETER_NEW_OVERLOAD_COST));
-		tariffBuilder.setTechnologyId(request.getParameter(PARAMETER_NEW_TECHNOLOGY));
-		tariffBuilder.setDescription(request.getParameter(PARAMETER_NEW_DESCRIPTION));
+		tariffData.setTitle(request.getParameter(PARAMETER_NEW_TITLE));
+		tariffData.setMonthlyCost(request.getParameter(PARAMETER_NEW_MONTHLY_COST));
+		tariffData.setUnlimTraffic(request.getParameter(PARAMETER_NEW_UNLIM));
+		tariffData.setMonthlyDataLimit(request.getParameter(PARAMETER_NEW_LIMIT));
+		tariffData.setOverloadLimitCost(request.getParameter(PARAMETER_NEW_OVERLOAD_COST));
+		tariffData.setTechnologyId(request.getParameter(PARAMETER_NEW_TECHNOLOGY));
+		tariffData.setDescription(request.getParameter(PARAMETER_NEW_DESCRIPTION));
 
 		try {
-			errors = (ArrayList<String>) internetProviderService.createTariff(tariffBuilder);
+			errors = (ArrayList<String>) internetProviderService.createTariff(tariffData);
 		} catch (ServiceException e) {
 			logger.log(Level.ERROR,
 					"Failed to creating tariff data in	command:AdminAddTariffProcess");
@@ -57,7 +57,6 @@ public class AdminAddTariffProcess implements Command {
 		}
 
 		if (!errors.isEmpty()) {
-			System.out.println(errors);
 			request.setAttribute(ATTRIBUTE_ERRORS, errors);
 			RequestDispatcher dispatcher = request.getRequestDispatcher(ERROR_PAGE);
 			dispatcher.forward(request, response);

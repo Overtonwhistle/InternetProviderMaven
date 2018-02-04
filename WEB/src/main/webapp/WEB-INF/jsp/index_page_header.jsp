@@ -36,7 +36,7 @@
 				</a></li>
 				<li><a href="404.html" target='_self'> <img src="images/favorite.png" alt="${offers}"><span>&nbsp;${offers}</span>
 				</a></li>
-				<li><a href="404.html" target='_self'> <img src="images/comment.png" alt="${about}"><span>&nbsp;${about}</span>
+				<li><a href="https://careers.epam.by/company" target='_self'> <img src="images/comment.png" alt="${about}"><span>&nbsp;${about}</span>
 				</a>
 				<li><a href="#"><img src="images/user.png" alt="${user_menu}"><span>&nbsp;${user_menu}</span></a>
 					<ul class="items">

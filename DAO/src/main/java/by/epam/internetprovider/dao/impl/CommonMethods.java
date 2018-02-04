@@ -176,7 +176,6 @@ public class CommonMethods {
 		if (con != null) {
 			try {
 				pool.releaseConnection(con);
-//				con=null; /////?????
 			} catch (SQLException e) {
 				logger.log(Level.ERROR, "Error closing connection in closeConStatementResultSet()");
 			}

@@ -15,7 +15,7 @@ import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import by.epam.internetprovider.bean.builder.TariffBuilder;
+import by.epam.internetprovider.bean.data_object.TariffData;
 import by.epam.internetprovider.controller.command.Command;
 import by.epam.internetprovider.controller.command.exception.CommandException;
 import by.epam.internetprovider.service.IInternetProviderService;
@@ -40,20 +40,20 @@ public class AdminEditTariffProcess implements Command {
 		ArrayList<String> errors = new ArrayList<>();
 
 		int tariffId = (int) session.getAttribute(ATTRIBUTE_ID_TO_WORK);
-		TariffBuilder tariffBuilder = (TariffBuilder) session
+		TariffData tariffData = (TariffData) session
 				.getAttribute(ATTRIBUTE_TARIFF_TO_WORK);
 
-		tariffBuilder.setTitle(request.getParameter(PARAMETER_EDIT_TITLE));
-		tariffBuilder.setMonthlyCost(request.getParameter(PARAMETER_EDIT_MONTHLY_COST));
-		tariffBuilder.setUnlimTraffic(request.getParameter(PARAMETER_EDIT_UNLIM));
-		tariffBuilder.setMonthlyDataLimit(request.getParameter(PARAMETER_EDIT_LIMIT));
-		tariffBuilder.setOverloadLimitCost(request.getParameter(PARAMETER_EDIT_OVERLOAD_COST));
-		tariffBuilder.setTechnologyId(request.getParameter(PARAMETER_EDIT_TECHNOLOGY));
-		tariffBuilder.setDescription(request.getParameter(PARAMETER_EDIT_DESCRIPTION));
+		tariffData.setTitle(request.getParameter(PARAMETER_EDIT_TITLE));
+		tariffData.setMonthlyCost(request.getParameter(PARAMETER_EDIT_MONTHLY_COST));
+		tariffData.setUnlimTraffic(request.getParameter(PARAMETER_EDIT_UNLIM));
+		tariffData.setMonthlyDataLimit(request.getParameter(PARAMETER_EDIT_LIMIT));
+		tariffData.setOverloadLimitCost(request.getParameter(PARAMETER_EDIT_OVERLOAD_COST));
+		tariffData.setTechnologyId(request.getParameter(PARAMETER_EDIT_TECHNOLOGY));
+		tariffData.setDescription(request.getParameter(PARAMETER_EDIT_DESCRIPTION));
 
 		try {
 			errors = (ArrayList<String>) internetProviderService.editTariff(tariffId,
-					tariffBuilder);
+					tariffData);
 		} catch (ServiceException e) {
 			logger.log(Level.ERROR, "Failed to edit tariff data in command:AdminEditTariffProcess");
 			throw new CommandException("Error executing command:AdminEditTariffProcess", e);

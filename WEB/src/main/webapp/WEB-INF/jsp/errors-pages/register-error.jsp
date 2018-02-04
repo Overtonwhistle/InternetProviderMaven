@@ -28,15 +28,15 @@
 				<div class="cont-column">
 					<span> <c:forEach items="${requestScope.errors}" var="error"
 							varStatus="status">
-							<c:out value="${error}" />,
+							<c:out value="${error}" /><br>
            </c:forEach>
 					</span>
 					<div class="cont-hint">
 						<span>${try_again}</span>
 					</div>
-				</div>
-				<div class="cont-back">
-					<button class="submit" type="submit" onclick="history.back();">${go_back}</button>
+					<div class="cont-back">
+						<button class="submit" type="submit" onclick="history.back();">${go_back}</button>
+					</div>
 				</div>
 			</div>
 		</div>

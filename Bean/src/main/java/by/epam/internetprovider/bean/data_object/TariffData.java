@@ -1,4 +1,4 @@
-package by.epam.internetprovider.bean.builder;
+package by.epam.internetprovider.bean.data_object;
 
 import java.io.Serializable;
 
@@ -11,7 +11,7 @@ import by.epam.internetprovider.bean.Tariff;
  * @author Pavel Sorokoletov
  */
 
-public class TariffBuilder implements Serializable {
+public class TariffData implements Serializable {
 
 	private static final long serialVersionUID = -2568293733642879638L;
 
@@ -34,7 +34,7 @@ public class TariffBuilder implements Serializable {
 	 * Default constructor. Initializes some fields with default values, used for
 	 * creating new, or editing a {@link Tariff} object.
 	 */
-	public TariffBuilder() {
+	public TariffData() {
 
 		this.setTitle(DEFAULT_TARIFF_TITLE);
 		this.setDescription(DEFAULT_TARIFF_DESCRIPTION);
@@ -50,7 +50,7 @@ public class TariffBuilder implements Serializable {
 	 * @param tariff
 	 *            {@code Tariff} object.
 	 */
-	public TariffBuilder(Tariff tariff) {
+	public TariffData(Tariff tariff) {
 
 		this.id = String.valueOf(tariff.getId());
 		this.technologyId = String.valueOf(tariff.getTechnologyId());
@@ -132,7 +132,7 @@ public class TariffBuilder implements Serializable {
 
 	@Override
 	public String toString() {
-		return "TariffBuilder [id=" + id + ", technologyId=" + technologyId + ", unlimTraffic="
+		return "TariffData [id=" + id + ", technologyId=" + technologyId + ", unlimTraffic="
 				+ unlimTraffic + ", monthlyDataLimit=" + monthlyDataLimit + ", monthlyCost="
 				+ monthlyCost + ", overloadLimitCost=" + overloadLimitCost + ", title=" + title
 				+ ", description=" + description + "]";

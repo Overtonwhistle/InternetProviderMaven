@@ -6,13 +6,7 @@ package by.epam.internetprovider.dao.impl;
 import static by.epam.internetprovider.dao.impl.CommonMethods.closeConAndPreStatement;
 import static by.epam.internetprovider.dao.impl.CommonMethods.getExecuteUpdateResult;
 import static by.epam.internetprovider.dao.impl.CommonMethods.getList;
-import static by.epam.internetprovider.dao.impl.Constant.ADD_PAYMENT_AMOUNT_FIELD;
-import static by.epam.internetprovider.dao.impl.Constant.ADD_PAYMENT_DATE_FIELD;
-import static by.epam.internetprovider.dao.impl.Constant.ADD_PAYMENT_QUERY;
-import static by.epam.internetprovider.dao.impl.Constant.ADD_PAYMENT_USER_ID;
-import static by.epam.internetprovider.dao.impl.Constant.EDIT_CLIENT_BALLANCE_QUERY;
-import static by.epam.internetprovider.dao.impl.Constant.EDIT_CLIENT_BALLANCE_QUERY_AMOUNT_FIELD;
-import static by.epam.internetprovider.dao.impl.Constant.EDIT_CLIENT_BALLANCE_QUERY_USER_ID_FIELD;
+import static by.epam.internetprovider.dao.impl.Constant.*;
 
 import java.math.BigDecimal;
 import java.sql.Connection;

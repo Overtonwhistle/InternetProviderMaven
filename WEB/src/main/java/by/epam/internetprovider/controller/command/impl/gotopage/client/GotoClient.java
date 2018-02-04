@@ -27,12 +27,6 @@ public class GotoClient implements Command {
 	private static final String PAGE = "WEB-INF/jsp/client_page.jsp";
 	private static final String URL = "Controller?command=goto_client";
 
-//	private static final String ATTRIBUTE_USER = "user";
-//	private static final String ATTRIBUTE_USER_BAN = "user_ban";
-//	private static final String ATTRIBUTE_CURRENT_TARIFF = "current_tariff";
-//	private static final String ATTRIBUTE_IS_BLOCKED = "is_blocked";
-//	private static final String ATTRIBUTE_URL = "url";
-
 	private static final ServiceFactory serviceFactoryObject = ServiceFactory.getInstance();
 	private static final IInternetProviderService internetProviderService = serviceFactoryObject
 			.getServiceImpl();

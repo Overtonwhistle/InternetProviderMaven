@@ -17,7 +17,7 @@ import javax.servlet.ServletResponse;
  * encoding of Request and Response to value read from the WEB.XML file.
  */
 public class CharsetFilter implements Filter {
-	private static final String WEB_XML_INIT_VALUE = "characterEncoding";
+	private static final String CHAR_ENCODING_INIT_VALUE = "characterEncoding";
 	private String encoding;
 
 	/**
@@ -25,7 +25,7 @@ public class CharsetFilter implements Filter {
 	 */
 	@Override
 	public void init(FilterConfig fConfig) throws ServletException {
-		encoding = fConfig.getInitParameter(WEB_XML_INIT_VALUE);
+		encoding = fConfig.getInitParameter(CHAR_ENCODING_INIT_VALUE);
 	}
 
 	@Override
@@ -35,6 +35,10 @@ public class CharsetFilter implements Filter {
 		request.setCharacterEncoding(encoding);
 		response.setCharacterEncoding(encoding);
 		chain.doFilter(request, response);
+	}
+
+	public void destroy() {
+		encoding = null;
 	}
 
 }

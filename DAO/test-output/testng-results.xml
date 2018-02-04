@@ -2,35 +2,35 @@
 <testng-results skipped="0" failed="0" ignored="0" total="7" passed="7">
   <reporter-output>
   </reporter-output>
-  <suite name="Default suite" duration-ms="427" started-at="2017-12-27T10:23:46Z" finished-at="2017-12-27T10:23:46Z">
+  <suite name="Default suite" duration-ms="453" started-at="2018-01-08T19:31:00Z" finished-at="2018-01-08T19:31:00Z">
     <groups>
     </groups>
-    <test name="Default test" duration-ms="427" started-at="2017-12-27T10:23:46Z" finished-at="2017-12-27T10:23:46Z">
+    <test name="Default test" duration-ms="453" started-at="2018-01-08T19:31:00Z" finished-at="2018-01-08T19:31:00Z">
       <class name="by.epam.internetprovider.dao.database.connectionpool.impl.ConnectionPoolOneTest">
-        <test-method status="PASS" signature="initPoll()[pri:0, instance:by.epam.internetprovider.dao.database.connectionpool.impl.ConnectionPoolOneTest@123ef382]" name="initPoll" is-config="true" duration-ms="255" started-at="2017-12-27T13:23:46Z" finished-at="2017-12-27T13:23:46Z">
+        <test-method status="PASS" signature="initPoll()[pri:0, instance:by.epam.internetprovider.dao.database.connectionpool.impl.ConnectionPoolOneTest@123ef382]" name="initPoll" is-config="true" duration-ms="271" started-at="2018-01-08T22:31:00Z" finished-at="2018-01-08T22:31:00Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- initPoll -->
-        <test-method status="PASS" signature="closeAllConnections()[pri:0, instance:by.epam.internetprovider.dao.database.connectionpool.impl.ConnectionPoolOneTest@123ef382]" name="closeAllConnections" duration-ms="6" started-at="2017-12-27T13:23:46Z" finished-at="2017-12-27T13:23:46Z">
+        <test-method status="PASS" signature="closeAllConnections()[pri:0, instance:by.epam.internetprovider.dao.database.connectionpool.impl.ConnectionPoolOneTest@123ef382]" name="closeAllConnections" duration-ms="7" started-at="2018-01-08T22:31:00Z" finished-at="2018-01-08T22:31:00Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- closeAllConnections -->
-        <test-method status="PASS" signature="closePool()[pri:0, instance:by.epam.internetprovider.dao.database.connectionpool.impl.ConnectionPoolOneTest@123ef382]" name="closePool" is-config="true" duration-ms="0" started-at="2017-12-27T13:23:46Z" finished-at="2017-12-27T13:23:46Z">
+        <test-method status="PASS" signature="closePool()[pri:0, instance:by.epam.internetprovider.dao.database.connectionpool.impl.ConnectionPoolOneTest@123ef382]" name="closePool" is-config="true" duration-ms="0" started-at="2018-01-08T22:31:00Z" finished-at="2018-01-08T22:31:00Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- closePool -->
-        <test-method status="PASS" signature="initPoll()[pri:0, instance:by.epam.internetprovider.dao.database.connectionpool.impl.ConnectionPoolOneTest@123ef382]" name="initPoll" is-config="true" duration-ms="25" started-at="2017-12-27T13:23:46Z" finished-at="2017-12-27T13:23:46Z">
+        <test-method status="PASS" signature="initPoll()[pri:0, instance:by.epam.internetprovider.dao.database.connectionpool.impl.ConnectionPoolOneTest@123ef382]" name="initPoll" is-config="true" duration-ms="20" started-at="2018-01-08T22:31:00Z" finished-at="2018-01-08T22:31:00Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- initPoll -->
-        <test-method status="PASS" signature="closeClosedconnection()[pri:0, instance:by.epam.internetprovider.dao.database.connectionpool.impl.ConnectionPoolOneTest@123ef382]" name="closeClosedconnection" duration-ms="2" started-at="2017-12-27T13:23:46Z" finished-at="2017-12-27T13:23:46Z">
+        <test-method status="PASS" signature="closeClosedconnection()[pri:0, instance:by.epam.internetprovider.dao.database.connectionpool.impl.ConnectionPoolOneTest@123ef382]" name="closeClosedconnection" duration-ms="2" started-at="2018-01-08T22:31:00Z" finished-at="2018-01-08T22:31:00Z">
           <exception class="by.epam.internetprovider.dao.database.connectionpool.exception.ConnectionPoolException">
             <message>
               <![CDATA[Attempting to close closed connection.]]>
             </message>
             <full-stacktrace>
               <![CDATA[by.epam.internetprovider.dao.database.connectionpool.exception.ConnectionPoolException: Attempting to close closed connection.
-	at by.epam.internetprovider.dao.database.connectionpool.impl.ConnectionPoolOne$PooledConnection.close(ConnectionPoolOne.java:227)
+	at by.epam.internetprovider.dao.database.connectionpool.impl.ConnectionPoolOne$PooledConnection.close(ConnectionPoolOne.java:228)
 	at by.epam.internetprovider.dao.database.connectionpool.impl.ConnectionPoolOneTest.closeClosedconnection(ConnectionPoolOneTest.java:67)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
@@ -63,67 +63,67 @@
           <reporter-output>
           </reporter-output>
         </test-method> <!-- closeClosedconnection -->
-        <test-method status="PASS" signature="closePool()[pri:0, instance:by.epam.internetprovider.dao.database.connectionpool.impl.ConnectionPoolOneTest@123ef382]" name="closePool" is-config="true" duration-ms="1" started-at="2017-12-27T13:23:46Z" finished-at="2017-12-27T13:23:46Z">
+        <test-method status="PASS" signature="closePool()[pri:0, instance:by.epam.internetprovider.dao.database.connectionpool.impl.ConnectionPoolOneTest@123ef382]" name="closePool" is-config="true" duration-ms="0" started-at="2018-01-08T22:31:00Z" finished-at="2018-01-08T22:31:00Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- closePool -->
-        <test-method status="PASS" signature="initPoll()[pri:0, instance:by.epam.internetprovider.dao.database.connectionpool.impl.ConnectionPoolOneTest@123ef382]" name="initPoll" is-config="true" duration-ms="18" started-at="2017-12-27T13:23:46Z" finished-at="2017-12-27T13:23:46Z">
+        <test-method status="PASS" signature="initPoll()[pri:0, instance:by.epam.internetprovider.dao.database.connectionpool.impl.ConnectionPoolOneTest@123ef382]" name="initPoll" is-config="true" duration-ms="20" started-at="2018-01-08T22:31:00Z" finished-at="2018-01-08T22:31:00Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- initPoll -->
-        <test-method status="PASS" signature="getBusyConnections()[pri:0, instance:by.epam.internetprovider.dao.database.connectionpool.impl.ConnectionPoolOneTest@123ef382]" name="getBusyConnections" duration-ms="2" started-at="2017-12-27T13:23:46Z" finished-at="2017-12-27T13:23:46Z">
+        <test-method status="PASS" signature="getBusyConnections()[pri:0, instance:by.epam.internetprovider.dao.database.connectionpool.impl.ConnectionPoolOneTest@123ef382]" name="getBusyConnections" duration-ms="1" started-at="2018-01-08T22:31:00Z" finished-at="2018-01-08T22:31:00Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- getBusyConnections -->
-        <test-method status="PASS" signature="closePool()[pri:0, instance:by.epam.internetprovider.dao.database.connectionpool.impl.ConnectionPoolOneTest@123ef382]" name="closePool" is-config="true" duration-ms="0" started-at="2017-12-27T13:23:46Z" finished-at="2017-12-27T13:23:46Z">
+        <test-method status="PASS" signature="closePool()[pri:0, instance:by.epam.internetprovider.dao.database.connectionpool.impl.ConnectionPoolOneTest@123ef382]" name="closePool" is-config="true" duration-ms="1" started-at="2018-01-08T22:31:00Z" finished-at="2018-01-08T22:31:00Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- closePool -->
-        <test-method status="PASS" signature="initPoll()[pri:0, instance:by.epam.internetprovider.dao.database.connectionpool.impl.ConnectionPoolOneTest@123ef382]" name="initPoll" is-config="true" duration-ms="19" started-at="2017-12-27T13:23:46Z" finished-at="2017-12-27T13:23:46Z">
+        <test-method status="PASS" signature="initPoll()[pri:0, instance:by.epam.internetprovider.dao.database.connectionpool.impl.ConnectionPoolOneTest@123ef382]" name="initPoll" is-config="true" duration-ms="20" started-at="2018-01-08T22:31:00Z" finished-at="2018-01-08T22:31:00Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- initPoll -->
-        <test-method status="PASS" signature="getConnection()[pri:0, instance:by.epam.internetprovider.dao.database.connectionpool.impl.ConnectionPoolOneTest@123ef382]" name="getConnection" duration-ms="1" started-at="2017-12-27T13:23:46Z" finished-at="2017-12-27T13:23:46Z">
+        <test-method status="PASS" signature="getConnection()[pri:0, instance:by.epam.internetprovider.dao.database.connectionpool.impl.ConnectionPoolOneTest@123ef382]" name="getConnection" duration-ms="0" started-at="2018-01-08T22:31:00Z" finished-at="2018-01-08T22:31:00Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- getConnection -->
-        <test-method status="PASS" signature="closePool()[pri:0, instance:by.epam.internetprovider.dao.database.connectionpool.impl.ConnectionPoolOneTest@123ef382]" name="closePool" is-config="true" duration-ms="0" started-at="2017-12-27T13:23:46Z" finished-at="2017-12-27T13:23:46Z">
+        <test-method status="PASS" signature="closePool()[pri:0, instance:by.epam.internetprovider.dao.database.connectionpool.impl.ConnectionPoolOneTest@123ef382]" name="closePool" is-config="true" duration-ms="1" started-at="2018-01-08T22:31:00Z" finished-at="2018-01-08T22:31:00Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- closePool -->
-        <test-method status="PASS" signature="initPoll()[pri:0, instance:by.epam.internetprovider.dao.database.connectionpool.impl.ConnectionPoolOneTest@123ef382]" name="initPoll" is-config="true" duration-ms="17" started-at="2017-12-27T13:23:46Z" finished-at="2017-12-27T13:23:46Z">
+        <test-method status="PASS" signature="initPoll()[pri:0, instance:by.epam.internetprovider.dao.database.connectionpool.impl.ConnectionPoolOneTest@123ef382]" name="initPoll" is-config="true" duration-ms="17" started-at="2018-01-08T22:31:00Z" finished-at="2018-01-08T22:31:00Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- initPoll -->
-        <test-method status="PASS" signature="getFreeConnections()[pri:0, instance:by.epam.internetprovider.dao.database.connectionpool.impl.ConnectionPoolOneTest@123ef382]" name="getFreeConnections" duration-ms="1" started-at="2017-12-27T13:23:46Z" finished-at="2017-12-27T13:23:46Z">
+        <test-method status="PASS" signature="getFreeConnections()[pri:0, instance:by.epam.internetprovider.dao.database.connectionpool.impl.ConnectionPoolOneTest@123ef382]" name="getFreeConnections" duration-ms="2" started-at="2018-01-08T22:31:00Z" finished-at="2018-01-08T22:31:00Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- getFreeConnections -->
-        <test-method status="PASS" signature="closePool()[pri:0, instance:by.epam.internetprovider.dao.database.connectionpool.impl.ConnectionPoolOneTest@123ef382]" name="closePool" is-config="true" duration-ms="1" started-at="2017-12-27T13:23:46Z" finished-at="2017-12-27T13:23:46Z">
+        <test-method status="PASS" signature="closePool()[pri:0, instance:by.epam.internetprovider.dao.database.connectionpool.impl.ConnectionPoolOneTest@123ef382]" name="closePool" is-config="true" duration-ms="1" started-at="2018-01-08T22:31:00Z" finished-at="2018-01-08T22:31:00Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- closePool -->
-        <test-method status="PASS" signature="initPoll()[pri:0, instance:by.epam.internetprovider.dao.database.connectionpool.impl.ConnectionPoolOneTest@123ef382]" name="initPoll" is-config="true" duration-ms="20" started-at="2017-12-27T13:23:46Z" finished-at="2017-12-27T13:23:46Z">
+        <test-method status="PASS" signature="initPoll()[pri:0, instance:by.epam.internetprovider.dao.database.connectionpool.impl.ConnectionPoolOneTest@123ef382]" name="initPoll" is-config="true" duration-ms="30" started-at="2018-01-08T22:31:00Z" finished-at="2018-01-08T22:31:00Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- initPoll -->
-        <test-method status="PASS" signature="getInstance()[pri:0, instance:by.epam.internetprovider.dao.database.connectionpool.impl.ConnectionPoolOneTest@123ef382]" name="getInstance" duration-ms="1" started-at="2017-12-27T13:23:46Z" finished-at="2017-12-27T13:23:46Z">
+        <test-method status="PASS" signature="getInstance()[pri:0, instance:by.epam.internetprovider.dao.database.connectionpool.impl.ConnectionPoolOneTest@123ef382]" name="getInstance" duration-ms="1" started-at="2018-01-08T22:31:00Z" finished-at="2018-01-08T22:31:00Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- getInstance -->
-        <test-method status="PASS" signature="closePool()[pri:0, instance:by.epam.internetprovider.dao.database.connectionpool.impl.ConnectionPoolOneTest@123ef382]" name="closePool" is-config="true" duration-ms="1" started-at="2017-12-27T13:23:46Z" finished-at="2017-12-27T13:23:46Z">
+        <test-method status="PASS" signature="closePool()[pri:0, instance:by.epam.internetprovider.dao.database.connectionpool.impl.ConnectionPoolOneTest@123ef382]" name="closePool" is-config="true" duration-ms="1" started-at="2018-01-08T22:31:00Z" finished-at="2018-01-08T22:31:00Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- closePool -->
-        <test-method status="PASS" signature="initPoll()[pri:0, instance:by.epam.internetprovider.dao.database.connectionpool.impl.ConnectionPoolOneTest@123ef382]" name="initPoll" is-config="true" duration-ms="20" started-at="2017-12-27T13:23:46Z" finished-at="2017-12-27T13:23:46Z">
+        <test-method status="PASS" signature="initPoll()[pri:0, instance:by.epam.internetprovider.dao.database.connectionpool.impl.ConnectionPoolOneTest@123ef382]" name="initPoll" is-config="true" duration-ms="16" started-at="2018-01-08T22:31:00Z" finished-at="2018-01-08T22:31:00Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- initPoll -->
-        <test-method status="PASS" signature="releaseConnection()[pri:0, instance:by.epam.internetprovider.dao.database.connectionpool.impl.ConnectionPoolOneTest@123ef382]" name="releaseConnection" duration-ms="2" started-at="2017-12-27T13:23:46Z" finished-at="2017-12-27T13:23:46Z">
+        <test-method status="PASS" signature="releaseConnection()[pri:0, instance:by.epam.internetprovider.dao.database.connectionpool.impl.ConnectionPoolOneTest@123ef382]" name="releaseConnection" duration-ms="1" started-at="2018-01-08T22:31:00Z" finished-at="2018-01-08T22:31:00Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- releaseConnection -->
-        <test-method status="PASS" signature="closePool()[pri:0, instance:by.epam.internetprovider.dao.database.connectionpool.impl.ConnectionPoolOneTest@123ef382]" name="closePool" is-config="true" duration-ms="0" started-at="2017-12-27T13:23:46Z" finished-at="2017-12-27T13:23:46Z">
+        <test-method status="PASS" signature="closePool()[pri:0, instance:by.epam.internetprovider.dao.database.connectionpool.impl.ConnectionPoolOneTest@123ef382]" name="closePool" is-config="true" duration-ms="0" started-at="2018-01-08T22:31:00Z" finished-at="2018-01-08T22:31:00Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- closePool -->

@@ -23,12 +23,14 @@ public class queryConstant {
 	public static final String LAST_NAME_ADDITIONAL_QUERY = "user_u_id in "
 			+ "(select u_id from internet_provider.user where u_last_name ";
 
-	public static final String GET_TECHNOLOGIES_QUERY = "select * from `internet_provider`.`technology`";
+	public static final String GET_TECHNOLOGIES_QUERY = "select tech_id, tech_title,"
+			+ " tech_rent_equipment from `internet_provider`.`technology`";
 	public static final String TECH_ID_SUBFILTER = "tech_id";
 	public static final String TECH_TITLE_SUBFILTER = "tech_title";
 	public static final String TECH_NEED_EQUIP_SUBFILTER = "tech_rent_equipment";
 
-	public static final String GET_PAYMENTS_QUERY = "select * from `internet_provider`.`payment`";
+	public static final String GET_PAYMENTS_QUERY = "select p_id, p_payment_date, "
+			+ "p_amount, user_u_id from `internet_provider`.`payment`";
 	public static final String PAYMENT_ID_SUBFILTER = "p_id";
 	public static final String PAYMENT_AMOUNT_SUBFILTER = "p_amount";
 	public static final String PAYMENT_USER_ID_SUBFILTER = "user_u_id";
@@ -37,7 +39,9 @@ public class queryConstant {
 	public static final String PAYMENT_BYUSER_SUBQUERY = " order by user_u_id";
 	public static final String PAYMENT_BYAMOUNT_SUBQUERY = " order by p_amount";
 
-	public static final String GET_REQUESTS_QUERY = "select * from `internet_provider`.`request`";
+	public static final String GET_REQUESTS_QUERY = "select r_id, r_request_date,"
+			+ " r_processed_date, r_processed_by, user_u_id, tariff_t_id from "
+			+ "`internet_provider`.`request`";
 	public static final String REQUEST_ID_SUBFILTER = "r_id";
 	public static final String REQUEST_DATE_SUBFILTER = "r_request_date";
 	public static final String REQUEST_PROC_DATE_SUBFILTER = "r_processed_date";
@@ -50,7 +54,9 @@ public class queryConstant {
 	public static final String REQUEST_BY_USER_SUBQUERY = "order by user_u_id";
 	public static final String REQUEST_BY_TARIFF_SUBQUERY = "order by tariff_t_id";
 
-	public static final String GET_TARIFFS_QUERY = "select * from `internet_provider`.`tariff`";
+	public static final String GET_TARIFFS_QUERY = "select t_id, t_title, t_monthly_cost,"
+			+ " t_monthly_data_limit, t_is_unlim_traffic, t_overload_limit_cost, t_description, "
+			+ "technology_tech_id from `internet_provider`.`tariff`";
 	public static final String TARIFF_ID_SUBFILTER = "t_id";
 	public static final String TARIFF_TITLE_SUBFILTER = "t_title";
 	public static final String TARIFF_MCOST_SUBFILTER = "t_monthly_cost";
@@ -69,7 +75,8 @@ public class queryConstant {
 	public static final String RENT_TARIFF_SUBQUERY = "technology_tech_id in"
 			+ " (SELECT tech_id FROM internet_provider.technology where tech_rent_equipment=1)";
 
-	public static final String GET_BANS_QUERY = "select * from `internet_provider`.`ban`";
+	public static final String GET_BANS_QUERY = "select b_id, b_set_date, b_reset_date, b_comment,"
+			+ " ban_reason_br_id, user_u_id from `internet_provider`.`ban`";
 	public static final String BAN_ID_SUBFILTER = "b_id";
 	public static final String BAN_SETDATE_SUBFILTER = "b_set_date";
 	public static final String BAN_RESETDATE_SUBFILTER = "b_reset_date";
@@ -77,11 +84,14 @@ public class queryConstant {
 	public static final String BAN_BAN_REASON_ID_SUBFILTER = "ban_reason_br_id";
 	public static final String BAN_USER_ID_SUBFILTER = "user_u_id";
 
-	public static final String GET_BAN_REASON_QUERY = "select * from `internet_provider`.`ban_reason`";
+	public static final String GET_BAN_REASON_QUERY = "select br_id, br_title from "
+			+ "`internet_provider`.`ban_reason`";
 	public static final String BAN_REASON_ID_SUBFILTER = "br_id";
 	public static final String BAN_REASON_TITLE_SUBFILTER = "br_title";
 
-	public static final String GET_USERS_QUERY = "select * from `internet_provider`.`user`";
+	public static final String GET_USERS_QUERY = "select u_id, u_role, u_login, u_password, u_email,"
+			+ " u_first_name, u_last_name, u_passport_number, u_reg_date, u_monthly_data_usage,"
+			+ " u_total_data_usage, u_account_ballance, tariff_t_id from `internet_provider`.`user`";
 	public static final String USER_ID_SUBFILTER = "u_id";
 	public static final String USER_ROLE_ADMIN_SUBQUERY = "u_role = 'admin'";
 	public static final String USER_ROLE_CLIENT_SUBQUERY = "u_role = 'client'";

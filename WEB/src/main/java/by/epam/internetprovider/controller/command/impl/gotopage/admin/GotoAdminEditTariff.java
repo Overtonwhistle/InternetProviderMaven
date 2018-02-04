@@ -17,7 +17,7 @@ import org.apache.logging.log4j.Logger;
 
 import by.epam.internetprovider.bean.Tariff;
 import by.epam.internetprovider.bean.Technology;
-import by.epam.internetprovider.bean.builder.TariffBuilder;
+import by.epam.internetprovider.bean.data_object.TariffData;
 import by.epam.internetprovider.controller.command.Command;
 import by.epam.internetprovider.controller.command.exception.CommandException;
 import by.epam.internetprovider.service.IInternetProviderService;
@@ -28,14 +28,6 @@ public class GotoAdminEditTariff implements Command {
 	private static final Logger logger = LogManager.getLogger();
 	private static final String PAGE = "WEB-INF/jsp/admin_edit_tariff_page.jsp";
 	private static final String URL = "Controller?command=goto_ad_edit_tariff";
-
-//	private static final String PARAMETER_TARIFF_ID_SELECTOR = "tariff_id_selector";
-//	private static final String PARAMETER_TARRIFS_LIST = "tarrifs_list";
-//	private static final String PARAMETER_TECHNOLOGY_LIST = "technology_list";
-//	private static final String PARAMETER_ID_TO_WORK = "id_to_work";
-//	private static final String PARAMETER_TARIFF_TO_WORK = "tariff_to_work";
-//
-//	private static final String ATTRIBUTE_URL = "url";
 
 	private static final ServiceFactory serviceFactoryObject = ServiceFactory.getInstance();
 	private static final IInternetProviderService internetProviderService = serviceFactoryObject
@@ -70,10 +62,9 @@ public class GotoAdminEditTariff implements Command {
 			throw new CommandException("Error executing command:GotoAdminEditTariff", e);
 		}
 
-		TariffBuilder tariffBuilder = new TariffBuilder(tariff);
+		TariffData tariffData = new TariffData(tariff);
 
-//		session.setAttribute(PARAMETER_ID_TO_WORK, tariffId);
-		session.setAttribute(PARAMETER_TARIFF_TO_WORK, tariffBuilder);
+		session.setAttribute(PARAMETER_TARIFF_TO_WORK, tariffData);
 
 		RequestDispatcher dispatcher = request.getRequestDispatcher(PAGE);
 		dispatcher.forward(request, response);

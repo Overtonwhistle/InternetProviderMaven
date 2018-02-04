@@ -1,4 +1,4 @@
-package by.epam.internetprovider.bean.builder;
+package by.epam.internetprovider.bean.data_object;
 
 import java.io.Serializable;
 
@@ -11,7 +11,7 @@ import by.epam.internetprovider.bean.User;
  * @author Pavel Sorokoletov
  */
 
-public class UserBuilder implements Serializable {
+public class UserData implements Serializable {
 
 	private static final long serialVersionUID = -3124956375266837181L;
 	private String role;
@@ -30,7 +30,7 @@ public class UserBuilder implements Serializable {
 	private String passportNumber;
 	private String regDate;
 
-	public UserBuilder() {
+	public UserData() {
 	}
 
 	/**
@@ -39,7 +39,7 @@ public class UserBuilder implements Serializable {
 	 * 
 	 * @param user {@code User} object.
 	 */
-	public UserBuilder(User user) {
+	public UserData(User user) {
 		this.role = String.valueOf(user.getRole());
 		this.id = String.valueOf(user.getId());
 		this.tariffId = String.valueOf(user.getTariffId());
@@ -181,7 +181,7 @@ public class UserBuilder implements Serializable {
 
 	@Override
 	public String toString() {
-		return "UserBuilder [role=" + role + ", id=" + id + ", tariffId=" + tariffId
+		return "UserData [role=" + role + ", id=" + id + ", tariffId=" + tariffId
 				+ ", monthlyDataUsage=" + monthlyDataUsage + ", totalDataUsage=" + totalDataUsage
 				+ ", accountBallance=" + accountBallance + ", login=" + login + ", password="
 				+ password + ", repeatePassword=" + repeatePassword + ", currentPassword="

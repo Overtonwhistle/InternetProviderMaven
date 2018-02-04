@@ -25,13 +25,6 @@ public class GotoAdminDeleteUser implements Command {
 	private static final String PAGE = "WEB-INF/jsp/admin_del_user_page.jsp";
 	private static final String URL = "Controller?command=goto_ad_delete_user";
 
-//	private static final String PARAMETER_USER_ID_SELECTOR = "user_id_selector";
-//	private static final String PARAMETER_ID_TO_WORK = "id_to_work";
-//
-//	private static final String ATTRIBUTE_ID_TO_WORK = "id_to_work";
-//	private static final String ATTRIBUTE_USER_TO_WORK = "user_to_work";
-//	private static final String ATTRIBUTE_URL = "url";
-
 	private static final ServiceFactory serviceFactoryObject = ServiceFactory.getInstance();
 	private static final IInternetProviderService internetProviderService = serviceFactoryObject
 			.getServiceImpl();

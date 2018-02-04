@@ -14,7 +14,6 @@ import by.epam.internetprovider.controller.command.Command;
 public class GotoClientDeleteRequest implements Command {
 	private static final String PAGE = "WEB-INF/jsp/client_delete_request_page.jsp";
 	private static final String URL = "Controller?command=goto_client_delete_request";
-//	private static final String ATTRIBUTE_URL = "url";
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response)

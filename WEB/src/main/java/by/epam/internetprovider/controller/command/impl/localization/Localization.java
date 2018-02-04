@@ -12,7 +12,6 @@ import by.epam.internetprovider.controller.command.Command;
 
 public class Localization implements Command {
 	private static final String DEFAULT_PAGE = "index.jsp";
-
 	private static final String COOCKIE_LOCALE_NAME = "locale";
 	private static final String PARAMETER_LOCAL = "local";
 	private static final String ATTRIBUTE_LOCAL = "local";
@@ -50,6 +49,7 @@ public class Localization implements Command {
 
 		Cookie cookie = new Cookie(COOCKIE_LOCALE_NAME, local);
 		cookie.setMaxAge(3600 * 24 * 30); // 30 days
+		cookie.setComment("User's language cookie");
 		response.addCookie(cookie);
 
 		String url = (String) session.getAttribute(ATTRIBUTE_URL);

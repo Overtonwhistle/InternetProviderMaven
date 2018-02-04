@@ -13,6 +13,7 @@
 
 <fmt:setLocale value="${sessionScope.local}" />
 <fmt:setBundle basename="localization.local" var="loc" />
+
 <fmt:message bundle="${loc}" key="local.main_message" var="header_text" />
 <fmt:message bundle="${loc}" key="local.article_one" var="article_one" />
 <fmt:message bundle="${loc}" key="local.link_one" var="link_one" />
@@ -36,7 +37,6 @@
 <body>
 	<!--  HEADER -->
 	<%@ include file="WEB-INF/jsp/index_page_header.jsp"%>
-	<%-- <c:import url="WEB-INF/jsp/index_page_header.jsp" charEncoding="utf-8" /> --%>
 	<!-- CONTENT -->
 	<div class="content">
 		<div class="row_of_two">

@@ -49,8 +49,9 @@
 		<filter-name>AuthorizationFilter</filter-name>
 		<filter-class>by.epam.internetprovider.controller.filter.AuthorizationFilter</filter-class>
 		<init-param>
-			<param-name>start_page</param-name>
-			<param-value>index.jsp</param-value>
+			<param-name>goto-auth-error-page</param-name>
+	<!-- 'no' value or the absence of this parameter will lead to the redirect to index page -->
+			<param-value>yes</param-value> 
 		</init-param>
 	</filter>
 	<filter-mapping>
@@ -62,7 +63,6 @@
 	<servlet>
 		<servlet-name>ErrorHandler</servlet-name>
 		<servlet-class>by.epam.internetprovider.controller.ErrorHandler</servlet-class>
-		<load-on-startup>1</load-on-startup>
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>ErrorHandler</servlet-name>

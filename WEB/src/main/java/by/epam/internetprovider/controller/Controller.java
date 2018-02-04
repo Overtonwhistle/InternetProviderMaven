@@ -2,6 +2,7 @@
 package by.epam.internetprovider.controller;
 
 import java.io.IOException;
+import java.util.Enumeration;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -29,7 +30,7 @@ import by.epam.internetprovider.service.factory.ServiceFactory;
 public class Controller extends HttpServlet {
 
 	private static final long serialVersionUID = 3778903914073650227L;
-	
+
 	private static final Logger logger = LogManager.getLogger(Controller.class);
 	private static final CommandProvider provider = new CommandProvider();
 	private static final String REQUEST_COMMAND = "command";

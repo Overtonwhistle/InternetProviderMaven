@@ -2,10 +2,8 @@
 package by.epam.internetprovider.dao;
 
 import java.math.BigDecimal;
-import java.sql.Timestamp;
 import java.util.List;
 
-import by.epam.internetprovider.bean.BanReason;
 import by.epam.internetprovider.bean.User;
 import by.epam.internetprovider.dao.exception.DAOException;
 import by.epam.internetprovider.dao.exception.DAOUserNotFoundException;
@@ -66,29 +64,6 @@ public interface IUserDAO {
 	 * @throws DAOException
 	 */
 	public boolean deleteUserById(int userId) throws DAOException;
-
-//	/**
-//	 * Set user to banned state.
-//	 * 
-//	 * @param userId {@code int} user id
-//	 * @param banReason {@link BanReason}
-//	 * @param setDateTime {@link Timestamp} of date and time of banning
-//	 * @param comment {@code String} comment
-//	 * @return {@code true} if user was banned
-//	 * @throws DAOException
-//	 */
-//	public boolean banUser(int userId, int banReason, Timestamp setDateTime, String comment)
-//			throws DAOException;
-//
-//	/**
-//	 * Unbans the user.
-//	 *
-//	 * @param userId {@code int} user id
-//	 * @param resetDateTime {@link Timestamp} of date and time of banning
-//	 * @return {@code true} if user was unbanned
-//	 * @throws DAOException
-//	 */
-//	public boolean unbanUser(int userId, Timestamp resetDateTime) throws DAOException;
 
 	/**
 	 * Adds amount to user's account ballance

@@ -17,11 +17,11 @@ import by.epam.internetprovider.bean.User;
 
 public class LoginationListener implements HttpSessionAttributeListener {
 
-	public LoginationListener() {
-	}
-
 	private static final Logger logger = LogManager.getLogger();
 	private static final String ATTRIBUTE_USER = "user";
+
+	public LoginationListener() {
+	}
 
 	@Override
 	public void attributeAdded(HttpSessionBindingEvent event) {

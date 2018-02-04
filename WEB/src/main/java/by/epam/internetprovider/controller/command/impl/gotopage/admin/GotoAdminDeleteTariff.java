@@ -26,12 +26,6 @@ public class GotoAdminDeleteTariff implements Command {
 	private static final String DONE_PAGE = "WEB-INF/jsp/admin_del_tariff_page.jsp";
 	private static final String ERROR_PAGE = "WEB-INF/jsp/errors-pages/del_tariff_error.jsp";
 
-//	private static final String PARAMETER_TARIFF_ID_SELECTOR = "tariff_id_selector";
-//	private static final String PARAMETER_ID_TO_WORK = "id_to_work";
-//	private static final String PARAMETER_TARIFF_TO_WORK = "tariff_to_work";
-//
-//	private static final String ATTRIBUTE_URL = "url";
-
 	private static final ServiceFactory serviceFactoryObject = ServiceFactory.getInstance();
 	private static final IInternetProviderService internetProviderService = serviceFactoryObject
 			.getServiceImpl();

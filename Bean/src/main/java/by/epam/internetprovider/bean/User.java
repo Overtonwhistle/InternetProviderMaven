@@ -8,6 +8,7 @@ import by.epam.internetprovider.bean.Param.UserRole;
 
 /**
  * This class is a Java Bean entity. Stores all necessary user data.
+ * 
  * @author Pavel Sorokoletov
  *         <p>
  */

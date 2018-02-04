@@ -57,7 +57,7 @@ public class Constant {
 	protected static final int UNBAN_USER_QUERY_RESET_DATETIME_FIELD = 1;
 	protected static final int UNBAN_USER_QUERY_USER_ID_FIELD = 2;
 
-	protected static final String USERS_TO_BAN_QUERY = "SELECT * FROM user WHERE u_account_ballance < 0"
+	protected static final String USERS_TO_BAN_QUERY = "SELECT u_id, u_role, u_login, u_password, u_email, u_first_name, u_last_name, u_passport_number, u_reg_date, u_monthly_data_usage, u_total_data_usage, u_account_ballance, tariff_t_id FROM user WHERE u_account_ballance < 0"
 			+ " AND user.u_id NOT IN (SELECT user_u_id FROM ban)";
 
 	protected static final String EDIT_TARIFF_QUERY = "UPDATE `internet_provider`.`tariff` SET `t_title`=?,"

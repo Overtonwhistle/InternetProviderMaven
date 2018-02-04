@@ -15,7 +15,7 @@ import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import by.epam.internetprovider.bean.builder.UserBuilder;
+import by.epam.internetprovider.bean.data_object.UserData;
 import by.epam.internetprovider.controller.command.Command;
 import by.epam.internetprovider.controller.command.exception.CommandException;
 import by.epam.internetprovider.service.IInternetProviderService;
@@ -41,21 +41,21 @@ public class AdminEditUserProcess implements Command {
 
 		int userId = (int) session.getAttribute(ATTRIBUTE_ID_TO_WORK);
 
-		UserBuilder userBuilder = (UserBuilder) session.getAttribute(ATTRIBUTE_USER_TO_WORK);
+		UserData userData = (UserData) session.getAttribute(ATTRIBUTE_USER_TO_WORK);
 
-		userBuilder.setRole(request.getParameter(PARAMETER_EDIT_USER_ROLE).toUpperCase());
-		userBuilder.setFirstName(request.getParameter(PARAMETER_EDIT_FIRSTNAME));
-		userBuilder.setLastName(request.getParameter(PARAMETER_EDIT_LASTNAME));
-		userBuilder.setPassportNumber(request.getParameter(PARAMETER_EDIT_PASSPORT));
-		userBuilder.setEmail(request.getParameter(PARAMETER_EDIT_EMAIL));
-		userBuilder.setPassword(request.getParameter(PARAMETER_EDIT_PASSWORD));
-		userBuilder.setAccountBallance(request.getParameter(PARAMETER_EDIT_BALLANCE));
-		userBuilder.setMonthlyDataUsage(request.getParameter(PARAMETER_EDIT_MONTH_DATA));
-		userBuilder.setTotalDataUsage(request.getParameter(PARAMETER_EDIT_TOTAL_DATA));
-		userBuilder.setTariffId(request.getParameter(PARAMETER_EDIT_TARIFF));
+		userData.setRole(request.getParameter(PARAMETER_EDIT_USER_ROLE).toUpperCase());
+		userData.setFirstName(request.getParameter(PARAMETER_EDIT_FIRSTNAME));
+		userData.setLastName(request.getParameter(PARAMETER_EDIT_LASTNAME));
+		userData.setPassportNumber(request.getParameter(PARAMETER_EDIT_PASSPORT));
+		userData.setEmail(request.getParameter(PARAMETER_EDIT_EMAIL));
+		userData.setPassword(request.getParameter(PARAMETER_EDIT_PASSWORD));
+		userData.setAccountBallance(request.getParameter(PARAMETER_EDIT_BALLANCE));
+		userData.setMonthlyDataUsage(request.getParameter(PARAMETER_EDIT_MONTH_DATA));
+		userData.setTotalDataUsage(request.getParameter(PARAMETER_EDIT_TOTAL_DATA));
+		userData.setTariffId(request.getParameter(PARAMETER_EDIT_TARIFF));
 
 		try {
-			errors = (ArrayList<String>) (internetProviderService.editUser(userBuilder, userId));
+			errors = (ArrayList<String>) (internetProviderService.editUser(userData, userId));
 		} catch (ServiceException e) {
 			logger.log(Level.ERROR, "Failed to edit user data in command:AdminEditUserProcess");
 			throw new CommandException("Error executing command:AdminEditUserProcess", e);

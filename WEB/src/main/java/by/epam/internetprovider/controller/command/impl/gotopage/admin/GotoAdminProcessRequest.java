@@ -27,17 +27,6 @@ public class GotoAdminProcessRequest implements Command {
 	private static final String URL = "Controller?command=goto_ad_process_request";
 	private static final String PAGE = "WEB-INF/jsp/admin_process_request_page.jsp";
 
-	
-//	private static final String PARAMETER_REQUEST_ID_SELECTOR = "request_id_selector";
-//	private static final String PARAMETER_ID_TO_WORK = "id_to_work";
-//
-//	private static final String ATTRIBUTE_URL = "url";
-//	private static final String ATTRIBUTE_REQUEST_ID = "request_id";
-//	private static final String ATTRIBUTE_USER = "user";
-//	private static final String ATTRIBUTE_REQUESTED_TARIFF = "requested_tariff";
-//	private static final String ATTRIBUTE_CURRENT_TARIFF = "current_tariff";
-
-	
 	private static final ServiceFactory serviceFactoryObject = ServiceFactory.getInstance();
 	private static final IInternetProviderService internetProviderService = serviceFactoryObject
 			.getServiceImpl();

@@ -15,7 +15,6 @@ public class GotoClientEditProfile implements Command {
 
 	private static final String PAGE = "WEB-INF/jsp/client_edit_profile_page.jsp";
 	private static final String URL = "Controller?command=goto_client_edit_profile";
-//	private static final String ATTRIBUTE_URL = "url";
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response)

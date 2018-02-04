@@ -71,11 +71,11 @@
 		</form>
 	</div>
 	<%@ include file="footer.jsp"%>
-	<c:if test="${local eq 'en'}">
+ 	<c:if test="${local eq 'en'}">
 		<script src="js/register_validation_form_en.js"></script>
 	</c:if>
 	<c:if test="${local eq 'ru'}">
 		<script src="js/register_validation_form_ru.js"></script>
-	</c:if>
+	</c:if> 
 </body>
 </html>

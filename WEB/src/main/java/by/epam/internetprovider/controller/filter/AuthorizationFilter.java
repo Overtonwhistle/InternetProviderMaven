@@ -4,6 +4,7 @@ import java.io.IOException;
 
 import javax.servlet.Filter;
 import javax.servlet.FilterChain;
+import javax.servlet.FilterConfig;
 import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
@@ -24,7 +25,10 @@ import org.apache.logging.log4j.Logger;
 public class AuthorizationFilter implements Filter {
 
 	private final static Logger logger = LogManager.getLogger();
-	private final static String REDIRECT_PAGE = "index.jsp";
+	private final static String ERROR_DESTINATION_INIT_PARAMETER = "goto-auth-error-page";
+
+	private final static String INDEX_PAGE = "index.jsp";
+	private final static String AUTHORIZATION_ERROR_PAGE = "auth-error.jsp";
 	private final static String LOGGED_ATTRIBUTE = "logged";
 	private final static String COMMAND_ATTRIBUTE = "command";
 
@@ -35,6 +39,22 @@ public class AuthorizationFilter implements Filter {
 	 */
 	private enum validCommand {
 		LOG_IN, REGISTER, REG_PROCESS, LOCALIZATION, GOTO_TARIFF_INFO, GOTO_REGISTER_DONE, GOTO_TARIFFS
+	}
+
+	private static String redirect_page;
+	private String gotoValue;
+
+	/**
+	 * Reads initialization value from WEB.XML file. If value is "yes", bad request
+	 * will be redirected to specific error page. If value not "no" or missing,
+	 * request redirects to the main page.
+	 */
+	@Override
+	public void init(FilterConfig fConfig) throws ServletException {
+
+		gotoValue = fConfig.getInitParameter(ERROR_DESTINATION_INIT_PARAMETER);
+
+		redirect_page = ("yes".equals(gotoValue)) ? AUTHORIZATION_ERROR_PAGE : INDEX_PAGE;
 	}
 
 	/**
@@ -54,11 +74,6 @@ public class AuthorizationFilter implements Filter {
 		HttpServletRequest httpRequest = (HttpServletRequest) request;
 		HttpServletResponse httpResponse = (HttpServletResponse) response;
 
-		// httpResponse.setHeader("Cache-Control", "no-cache, no-store,
-		// must-revalidate"); // HTTP 1.1.
-		// httpResponse.setHeader("Pragma", "no-cache"); // HTTP 1.0.
-		// httpResponse.setDateHeader("Expires", 0); // Proxies
-
 		HttpSession session = httpRequest.getSession(true);
 
 		String command = httpRequest.getParameter(COMMAND_ATTRIBUTE);
@@ -75,10 +90,14 @@ public class AuthorizationFilter implements Filter {
 		}
 
 		if (!isValidCommand && (session.getAttribute(LOGGED_ATTRIBUTE) == null)) {
-			httpResponse.sendRedirect(REDIRECT_PAGE);
+			httpResponse.sendRedirect(redirect_page);
 		} else {
 			chain.doFilter(request, response);
 		}
+	}
+
+	public void destroy() {
+		gotoValue = null;
 	}
 
 }

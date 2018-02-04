@@ -31,8 +31,6 @@ import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import com.mysql.jdbc.Driver;
-
 import by.epam.internetprovider.dao.database.connectionpool.IConnectionPool;
 import by.epam.internetprovider.dao.database.connectionpool.exception.ConnectionPoolException;
 import by.epam.internetprovider.dao.database.dbresourcemanager.DBParameter;
@@ -43,7 +41,6 @@ public final class ConnectionPoolOne implements IConnectionPool {
 
 	private static final Logger logger = LogManager.getLogger();
 
-	// private static final ConnectionPoolOne INSTANCE = new ConnectionPoolOne();
 	private final static AtomicBoolean CREATE_INSTANCE = new AtomicBoolean(false);
 	private static ReentrantLock lock = new ReentrantLock();
 	private static ConnectionPoolOne INSTANCE;
@@ -53,15 +50,13 @@ public final class ConnectionPoolOne implements IConnectionPool {
 	private BlockingQueue<Connection> connectionQueue;
 	private BlockingQueue<Connection> givenAwayConnectionQueue;
 
-	private String driverName;
+	// optional, JDBC before 4.0
+	//private String driverName;
 	private String url;
 	private String user;
 	private String password;
 
-	// public static ConnectionPoolOne getInstance() {
-	// return INSTANCE;
-	// }
-
+	
 	public static ConnectionPoolOne getInstance() {
 		if (!CREATE_INSTANCE.get()) { // "Double check" initialization way
 			lock.lock();
@@ -92,7 +87,7 @@ public final class ConnectionPoolOne implements IConnectionPool {
 
 		try {
 			// optional, JDBC before 4.0
-			this.driverName = dbResourseManager.getValue(DBParameter.DB_DRIVER);
+			//this.driverName = dbResourseManager.getValue(DBParameter.DB_DRIVER);
 
 			this.url = dbResourseManager.getValue(DBParameter.DB_URL);
 			this.user = dbResourseManager.getValue(DBParameter.DB_USER);
@@ -109,7 +104,7 @@ public final class ConnectionPoolOne implements IConnectionPool {
 		}
 
 		try {
-			DriverManager.registerDriver(new com.mysql.jdbc.Driver()); // JDBC before 4.0
+			DriverManager.registerDriver(new com.mysql.jdbc.Driver()); 
 			// Class.forName(driverName); //JDBC before 4.0
 			givenAwayConnectionQueue = new ArrayBlockingQueue<Connection>(poolSize);
 			connectionQueue = new ArrayBlockingQueue<Connection>(poolSize);

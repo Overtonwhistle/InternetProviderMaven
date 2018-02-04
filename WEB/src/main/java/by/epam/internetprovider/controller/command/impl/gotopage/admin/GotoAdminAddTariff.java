@@ -16,7 +16,7 @@ import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import by.epam.internetprovider.bean.builder.TariffBuilder;
+import by.epam.internetprovider.bean.data_object.TariffData;
 import by.epam.internetprovider.controller.command.Command;
 import by.epam.internetprovider.controller.command.exception.CommandException;
 import by.epam.internetprovider.service.IInternetProviderService;
@@ -38,11 +38,7 @@ public class GotoAdminAddTariff implements Command {
 
 		HttpSession session = request.getSession(true);
 
-		// List<Technology> technologysList = new ArrayList<>();
-		// TariffBuilder tariffBuilder = new TariffBuilder();
-
 		try {
-			// technologysList = internetProviderService.getTechologiesList();
 			request.setAttribute(ATTRIBUTE_TECHNOLOGY_LIST,
 					internetProviderService.getTechologiesList());
 
@@ -52,7 +48,7 @@ public class GotoAdminAddTariff implements Command {
 		}
 
 		session.setAttribute(ATTRIBUTE_URL, URL);
-		session.setAttribute(ATTRIBUTE_TARIFF_TO_WORK, new TariffBuilder());
+		session.setAttribute(ATTRIBUTE_TARIFF_TO_WORK, new TariffData());
 
 		RequestDispatcher dispatcher = request.getRequestDispatcher(PAGE);
 		dispatcher.forward(request, response);

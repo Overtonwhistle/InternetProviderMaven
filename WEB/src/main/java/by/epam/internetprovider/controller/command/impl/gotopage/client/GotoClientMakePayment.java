@@ -15,7 +15,6 @@ public class GotoClientMakePayment implements Command {
 
 	private static final String PAGE = "WEB-INF/jsp/client_make_payment_page.jsp";
 	private static final String URL = "Controller?command=goto_client_make_payment";
-//	private static final String ATTRIBUTE_URL = "url";
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response)

@@ -14,8 +14,8 @@ import by.epam.internetprovider.bean.Request;
 import by.epam.internetprovider.bean.Tariff;
 import by.epam.internetprovider.bean.Technology;
 import by.epam.internetprovider.bean.User;
-import by.epam.internetprovider.bean.builder.TariffBuilder;
-import by.epam.internetprovider.bean.builder.UserBuilder;
+import by.epam.internetprovider.bean.data_object.TariffData;
+import by.epam.internetprovider.bean.data_object.UserData;
 import by.epam.internetprovider.dao.searchfilter.impl.ban.BanSearchFilter;
 import by.epam.internetprovider.dao.searchfilter.impl.banreason.BanReasonSearchFilter;
 import by.epam.internetprovider.dao.searchfilter.impl.payment.PaymentSearchFilter;
@@ -118,39 +118,39 @@ public interface IInternetProviderService {
 	 * source. Performs validation of all user's data before putting it in data
 	 * source.
 	 *
-	 * @param userBuilder {@link UserBuilder} object
+	 * @param userData {@link UserData} object
 	 * @return {@link List} of {@code String} errors, occured during creating
 	 *         operation. If no errors occured, returns empty {@code List}.
 	 * @throws ServiceException if an error occurs
 	 */
-	public List<String> createUser(UserBuilder userBuilder) throws ServiceException;
+	public List<String> createUser(UserData userData) throws ServiceException;
 
 	/**
 	 * Edits the all existing users's data, taking new values from
-	 * {@link UserBuilder} object. Performs validation of all user's data before
+	 * {@link UserData} object. Performs validation of all user's data before
 	 * editing.
 	 *
-	 * @param userBuilder {@link UserBuilder} object, contains new user's data
+	 * @param userData {@link UserData} object, contains new user's data
 	 *            values.
 	 * @param userId {@code int} user Id
 	 * @return {@link List} of {@code String} errors, occured during editing. If no
 	 *         errors occured, returns empty {@code List}.
 	 * @throws ServiceException if an error occurs
 	 */
-	public List<String> editUser(UserBuilder userBuilder, int userId) throws ServiceException;
+	public List<String> editUser(UserData userData, int userId) throws ServiceException;
 
 	/**
 	 * Edits only client-available data of User. Taking new values from
-	 * {@link UserBuilder} object. Performs validation of all data before editing.
+	 * {@link UserData} object. Performs validation of all data before editing.
 	 *
-	 * @param userBuilder {@link UserBuilder} object, contains new user's values
+	 * @param userData {@link UserData} object, contains new user's values
 	 *            data.
 	 * @param userId {@code int} user Id
 	 * @return {@link List} of {@code String} errors, occured during editing. If no
 	 *         errors occured, returns empty {@code List}.
 	 * @throws ServiceException if an error occurs
 	 */
-	public List<String> editClientProfile(UserBuilder userBuilder, int userId)
+	public List<String> editClientProfile(UserData userData, int userId)
 			throws ServiceException;
 
 	/**
@@ -165,26 +165,26 @@ public interface IInternetProviderService {
 	 * Creates the new Tariff. Performs validation of all tariff's data before
 	 * putting it in data source.
 	 *
-	 * @param tariffBuilder {@link TariffBuilder} object, contains new tariff's
+	 * @param tariffData {@link TariffData} object, contains new tariff's
 	 *            values data.
 	 * @return {@link List} of {@code String} errors, occured during editing. If no
 	 *         errors occured, returns empty {@code List}.
 	 * @throws ServiceAddTariffException the service add tariff exception
 	 */
-	public List<String> createTariff(TariffBuilder tariffBuilder) throws ServiceException;
+	public List<String> createTariff(TariffData tariffData) throws ServiceException;
 
 	/**
 	 * Edits the all existing tariff's data, taking new values from
-	 * {@link TariffBuilder} object. Performs validation of all data before editing.
+	 * {@link TariffData} object. Performs validation of all data before editing.
 	 *
 	 * @param tariffId {@code int} Tariff ID value
-	 * @param tariffBuilder {@link TariffBuilder} object, contains new tariff's
+	 * @param tariffData {@link TariffData} object, contains new tariff's
 	 *            values data.
 	 * @return {@link List} of {@code String} errors, occured during editing. If no
 	 *         errors occured, returns empty {@code List}.
 	 * @throws ServiceException
 	 */
-	public List<String> editTariff(int tariffId, TariffBuilder tariffBuilder)
+	public List<String> editTariff(int tariffId, TariffData tariffData)
 			throws ServiceException;
 
 	/**
