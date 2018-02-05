@@ -6,9 +6,11 @@ import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.Date;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.ResourceBundle;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 import by.epam.internetprovider.bean.Ban;
@@ -142,7 +144,6 @@ public class InternetProviderService implements IInternetProviderService {
 		List<String> errors = Validation.newUserDataValidation(userData);
 
 		if (errors.isEmpty()) {
-
 			User user = new User();
 			user.setRole(UserRole.CLIENT);
 			user.setRegDate(new java.sql.Date(System.currentTimeMillis()));
@@ -150,7 +151,6 @@ public class InternetProviderService implements IInternetProviderService {
 			user.setTotalDataUsage(INITIAL_TOTAL_DATA);
 			user.setAccountBallance(INITIAL_ACCOUNT_BALLANCE);
 			user.setTariffId(INITIAL_TARIFF_ID);
-
 			setUserData(user, userData);
 
 			try {
@@ -171,10 +171,8 @@ public class InternetProviderService implements IInternetProviderService {
 		ArrayList<String> errors = (ArrayList<String>) Validation.editUserDataValidation(userData);
 
 		if (errors.isEmpty()) {
-
 			User user = new User();
 			setUserData(user, userData);
-
 			try {
 				userDAO.editUser(userId, user);
 			} catch (DAOException e) {
@@ -189,11 +187,11 @@ public class InternetProviderService implements IInternetProviderService {
 
 		checkId(userId);
 		checkForNull(userData);
+		ResourceBundle errorsResource = ResourceBundle.getBundle(LOCAL_ERRORS_BASENAME);
 
 		ArrayList<String> errors = (ArrayList<String>) Validation
 				.editClientProfileValidation(userData);
 
-		ResourceBundle errorsResource = ResourceBundle.getBundle(LOCAL_ERRORS_BASENAME);
 		User user = getUserById(userId);
 
 		if (!userData.getCurrentPassword().equals(user.getPassword())) {
@@ -223,7 +221,6 @@ public class InternetProviderService implements IInternetProviderService {
 		checkId(userId);
 
 		UserSearchFilter filter = new UserSearchFilter();
-
 		filter.addSubFilter(new SubFilter(FilterParameter.USER_ID, userId));
 		filter.addSubFilter(new SubFilter(FilterParameter.USER_BANNED));
 
@@ -313,57 +310,42 @@ public class InternetProviderService implements IInternetProviderService {
 
 		UserSearchFilter searchFilter = new UserSearchFilter();
 
-		if (parameters.containsKey(PARAMETER_USER_ROLE)) {
+		if (parameters.containsKey(PARAMETER_IS_PAGE_SEARCHING)) {
+
 			if (parameters.get(PARAMETER_USER_ROLE).equals(PARAMETER_USER_ROLE_ADMIN)) {
 				searchFilter.addSubFilter(new SubFilter(FilterParameter.USER_ROLE_ADMIN));
 			} else if (parameters.get(PARAMETER_USER_ROLE).equals(PARAMETER_USER_ROLE_CLIENT)) {
 				searchFilter.addSubFilter(new SubFilter(FilterParameter.USER_ROLE_CLIENT));
 			}
-		}
 
-		if (parameters.containsKey(PARAMETER_BAN_STATUS)) {
 			if (parameters.get(PARAMETER_BAN_STATUS).equals(PARAMETER_BAN_STATUS_IN_BAN)) {
 				searchFilter.addSubFilter(new SubFilter(FilterParameter.USER_BANNED));
 			} else if (parameters.get(PARAMETER_BAN_STATUS)
 					.equals(PARAMETER_BAN_STATUS_NOT_IN_BAN)) {
 				searchFilter.addSubFilter(new SubFilter(FilterParameter.USER_NOT_BANNED));
 			}
-		}
 
-		if (parameters.containsKey(PARAMETER_FIRST_NAME)) {
 			searchFilter.addSubFilter(new SubFilter(FilterParameter.USER_FIRST_NAME,
 					parameters.get(PARAMETER_FIRST_NAME)));
-		}
 
-		if (parameters.containsKey(PARAMETER_LAST_NAME)) {
 			searchFilter.addSubFilter(new SubFilter(FilterParameter.USER_LAST_NAME,
 					parameters.get(PARAMETER_LAST_NAME)));
-		}
 
-		if (parameters.containsKey(PARAMETER_PASSPORT)) {
 			searchFilter.addSubFilter(new SubFilter(FilterParameter.USER_PASSPORT,
 					parameters.get(PARAMETER_PASSPORT)));
-		}
 
-		if (parameters.containsKey(PARAMETER_REG_DATE)) {
 			searchFilter.addSubFilter(new SubFilter(FilterParameter.USER_REG_DATE,
 					parameters.get(PARAMETER_REG_DATE_CONDITION),
 					parameters.get(PARAMETER_REG_DATE)));
-		}
 
-		if (parameters.containsKey(PARAMETER_MONTH_DATE)) {
 			searchFilter.addSubFilter(new SubFilter(FilterParameter.USER_MONTH_DATA,
 					parameters.get(PARAMETER_MONTH_DATE_CONDITION),
 					parameters.get(PARAMETER_MONTH_DATE)));
-		}
 
-		if (parameters.containsKey(PARAMETER_TOTAL_DATE)) {
 			searchFilter.addSubFilter(new SubFilter(FilterParameter.USER_TOTAL_DATA,
 					parameters.get(PARAMETER_TOTAL_DATE_CONDITION),
 					parameters.get(PARAMETER_TOTAL_DATE)));
-		}
 
-		if (parameters.containsKey(PARAMETER_BALLANCE)) {
 			searchFilter.addSubFilter(new SubFilter(FilterParameter.USER_BALLANCE,
 					parameters.get(PARAMETER_BALLANCE_CONDITION),
 					parameters.get(PARAMETER_BALLANCE)));
@@ -540,35 +522,38 @@ public class InternetProviderService implements IInternetProviderService {
 		checkForNull(parameters);
 		RequestSearchFilter searchFilter = new RequestSearchFilter();
 
-		if (parameters.get(PARAMETER_STATUS).equals(PARAMETER_STATUS_ACTIVE)) {
-			searchFilter.addSubFilter(new SubFilter(FilterParameter.REQUEST_ACTIVE));
-		} else if (parameters.get(PARAMETER_STATUS).equals(PARAMETER_STATUS_PROCESSED)) {
-			searchFilter.addSubFilter(new SubFilter(FilterParameter.REQUEST_PROCESSED));
-		}
+		if (parameters.containsKey(PARAMETER_IS_PAGE_SEARCHING)) {
 
-		if (!parameters.get(PARAMETER_TARIFF).equals(PARAMETER_TARIFF_ALL)) {
-			searchFilter.addSubFilter(new SubFilter(FilterParameter.REQUEST_TARIFF_ID,
-					parameters.get(PARAMETER_TARIFF)));
-		}
+			if (parameters.get(PARAMETER_STATUS).equals(PARAMETER_STATUS_ACTIVE)) {
+				searchFilter.addSubFilter(new SubFilter(FilterParameter.REQUEST_ACTIVE));
+			} else if (parameters.get(PARAMETER_STATUS).equals(PARAMETER_STATUS_PROCESSED)) {
+				searchFilter.addSubFilter(new SubFilter(FilterParameter.REQUEST_PROCESSED));
+			}
 
-		if (!parameters.get(PARAMETER_REQUEST_DATE).isEmpty()) {
-			searchFilter.addSubFilter(new SubFilter(FilterParameter.REQUEST_DATE,
-					parameters.get(PARAMETER_REQUEST_DATE_CONDITION),
-					parameters.get(PARAMETER_REQUEST_DATE)));
-		}
+			if (!parameters.get(PARAMETER_TARIFF).equals(PARAMETER_TARIFF_ALL)) {
+				searchFilter.addSubFilter(new SubFilter(FilterParameter.REQUEST_TARIFF_ID,
+						parameters.get(PARAMETER_TARIFF)));
+			}
 
-		if (!parameters.get(PARAMETER_PROCESS_DATE).isEmpty()) {
-			searchFilter.addSubFilter(new SubFilter(FilterParameter.REQUEST_PROC_DATE,
-					parameters.get(PARAMETER_PROCESS_DATE_CONDITION),
-					parameters.get(PARAMETER_PROCESS_DATE)));
-		}
+			if (!parameters.get(PARAMETER_REQUEST_DATE).isEmpty()) {
+				searchFilter.addSubFilter(new SubFilter(FilterParameter.REQUEST_DATE,
+						parameters.get(PARAMETER_REQUEST_DATE_CONDITION),
+						parameters.get(PARAMETER_REQUEST_DATE)));
+			}
 
-		if (parameters.get(PARAMETER_SORT_BY).equals(PARAMETER_SORT_BY_DATE)) {
-			searchFilter.addSubFilter(new SubFilter(FilterParameter.REQUEST_BY_DATE));
-		} else if (parameters.get(PARAMETER_SORT_BY).equals(PARAMETER_SORT_BY_USER)) {
-			searchFilter.addSubFilter(new SubFilter(FilterParameter.REQUEST_BY_USER));
-		} else if (parameters.get(PARAMETER_SORT_BY).equals(PARAMETER_SORT_BY_TARIFF)) {
-			searchFilter.addSubFilter(new SubFilter(FilterParameter.REQUEST_BY_TARIFF));
+			if (!parameters.get(PARAMETER_PROCESS_DATE).isEmpty()) {
+				searchFilter.addSubFilter(new SubFilter(FilterParameter.REQUEST_PROC_DATE,
+						parameters.get(PARAMETER_PROCESS_DATE_CONDITION),
+						parameters.get(PARAMETER_PROCESS_DATE)));
+			}
+
+			if (parameters.get(PARAMETER_SORT_BY).equals(PARAMETER_SORT_BY_DATE)) {
+				searchFilter.addSubFilter(new SubFilter(FilterParameter.REQUEST_BY_DATE));
+			} else if (parameters.get(PARAMETER_SORT_BY).equals(PARAMETER_SORT_BY_USER)) {
+				searchFilter.addSubFilter(new SubFilter(FilterParameter.REQUEST_BY_USER));
+			} else {
+				searchFilter.addSubFilter(new SubFilter(FilterParameter.REQUEST_BY_TARIFF));
+			}
 		}
 
 		return getRequestsList(searchFilter);
@@ -642,7 +627,6 @@ public class InternetProviderService implements IInternetProviderService {
 			}
 
 			tariff.setTechnologyId(Integer.parseInt(tariffData.getTechnologyId()));
-
 			tariff.setDescription(tariffData.getDescription());
 
 			try {
@@ -659,9 +643,7 @@ public class InternetProviderService implements IInternetProviderService {
 	public List<String> editTariff(int tariffId, TariffData tariffData) throws ServiceException {
 
 		checkId(tariffId);
-
 		checkForNull(tariffData);
-
 		ResourceBundle errorsResource = ResourceBundle.getBundle(LOCAL_ERRORS_BASENAME);
 
 		List<String> errors = Validation.tariffDataValidation(tariffData);
@@ -675,15 +657,12 @@ public class InternetProviderService implements IInternetProviderService {
 		}
 
 		if (!currentTitle.equals(tariffData.getTitle()) && (tariffData.getTitle().length() > 0))
-			try {
-				if (isTariffTitleBusy(tariffData.getTitle())) {
-					errors.add(errorsResource.getString(ERROR_TARIFF_TITLE_IS_BUSY));
-				}
-			} catch (ServiceException e1) {
-				throw new ServiceException("Error in editTariff()", e1);
+			if (isTariffTitleBusy(tariffData.getTitle())) {
+				errors.add(errorsResource.getString(ERROR_TARIFF_TITLE_IS_BUSY));
 			}
 
 		if (errors.isEmpty()) {
+
 			Tariff tariff = new Tariff();
 			tariff.setTitle(tariffData.getTitle());
 			tariff.setMonthlyCost(new BigDecimal(tariffData.getMonthlyCost()));
@@ -766,58 +745,49 @@ public class InternetProviderService implements IInternetProviderService {
 
 		TariffSearchFilter searchFilter = new TariffSearchFilter();
 
-		if (parameters.containsKey(PARAMETER_IS_UNLIM)) {
+		if (parameters.containsKey(PARAMETER_IS_PAGE_SEARCHING)) {
+
 			if ((parameters.get(PARAMETER_IS_UNLIM)).equals(PARAMETER_YES)) {
 				searchFilter.addSubFilter(new SubFilter(FilterParameter.TARIFF_UNLIMITED));
 			} else if ((parameters.get(PARAMETER_IS_UNLIM)).equals(PARAMETER_NO)) {
 				searchFilter.addSubFilter(new SubFilter(FilterParameter.TARIFF_LIMITED));
 			}
-		}
 
-		if (parameters.containsKey(PARAMETER_NEED_EUQIP)) {
 			if ((parameters.get(PARAMETER_NEED_EUQIP)).equals(PARAMETER_YES)) {
 				searchFilter.addSubFilter(new SubFilter(FilterParameter.TARIFF_NEED_EQUIPMENT));
 			} else if ((parameters.get(PARAMETER_NEED_EUQIP)).equals(PARAMETER_NO)) {
 				searchFilter.addSubFilter(new SubFilter(FilterParameter.TARIFF_NO_EQUIPMENT));
 			}
-		}
 
-		if (parameters.containsKey(PARAMETER_TECHNOLOGY)) {
 			if (!(parameters.get(PARAMETER_TECHNOLOGY)).equals(PARAMETER_ALL)) {
 				searchFilter.addSubFilter(new SubFilter(FilterParameter.TARIFF_TECHNOLOGY_ID,
 						(parameters.get(PARAMETER_TECHNOLOGY))));
 			}
-		}
 
-		if (parameters.containsKey(PARAMETER_IS_USED)) {
-			if (parameters.get(PARAMETER_IS_USED).equals(PARAMETER_YES)) {
-				searchFilter.addSubFilter(new SubFilter(FilterParameter.TARIFF_USED));
-			} else if (parameters.get(PARAMETER_IS_USED).equals(PARAMETER_NO)) {
-				searchFilter.addSubFilter(new SubFilter(FilterParameter.TARIFF_NOT_USED));
-			}
-		}
-
-		if (parameters.containsKey(PARAMETER_MONTHLY_COST)) {
 			if (!(parameters.get(PARAMETER_MONTHLY_COST)).isEmpty()) {
 				searchFilter.addSubFilter(new SubFilter(FilterParameter.TARIFF_MONTHLY_COST,
 						(parameters.get(PARAMETER_MONTHLY_COST_CONDITION)),
 						parameters.get(PARAMETER_MONTHLY_COST)));
 			}
-		}
 
-		if (parameters.containsKey(PARAMETER_MONTHLY_LIMIT)) {
 			if (!(parameters.get(PARAMETER_MONTHLY_LIMIT)).isEmpty()) {
 				searchFilter.addSubFilter(new SubFilter(FilterParameter.TARIFF_MONTHLY_DATA,
 						(parameters.get(PARAMETER_MONTHLY_LIMIT_CONDITION)),
 						parameters.get(PARAMETER_MONTHLY_LIMIT)));
 			}
-		}
 
-		if (parameters.containsKey(PARAMETER_OVER_COST)) {
 			if (!(parameters.get(PARAMETER_OVER_COST)).isEmpty()) {
 				searchFilter.addSubFilter(new SubFilter(FilterParameter.TARIFF_OVER_COST,
 						(parameters.get(PARAMETER_OVER_COST_CONDITION)),
 						parameters.get(PARAMETER_OVER_COST)));
+			}
+
+			if (parameters.containsKey(PARAMETER_IS_USED)) {
+				if (parameters.get(PARAMETER_IS_USED).equals(PARAMETER_YES)) {
+					searchFilter.addSubFilter(new SubFilter(FilterParameter.TARIFF_USED));
+				} else if (parameters.get(PARAMETER_IS_USED).equals(PARAMETER_NO)) {
+					searchFilter.addSubFilter(new SubFilter(FilterParameter.TARIFF_NOT_USED));
+				}
 			}
 		}
 
@@ -847,10 +817,8 @@ public class InternetProviderService implements IInternetProviderService {
 
 	@Override
 	public BigDecimal getLowestTariffCost(List<Tariff> tariffsList) {
-		{
-			return tariffsList.stream().min(Comparator.comparing(Tariff::getMonthlyCost)).get()
-					.getMonthlyCost();
-		}
+		return tariffsList.stream().min(Comparator.comparing(Tariff::getMonthlyCost)).get()
+				.getMonthlyCost();
 	}
 
 	@Override
@@ -903,28 +871,20 @@ public class InternetProviderService implements IInternetProviderService {
 
 		PaymentSearchFilter searchFilter = new PaymentSearchFilter();
 
-		if (parameters.containsKey(PARAMETER_FIRST_NAME)) {
+		if (parameters.containsKey(PARAMETER_IS_PAGE_SEARCHING)) {
+
 			searchFilter.addSubFilter(new SubFilter(FilterParameter.PAYMENT_FIRST_NAME,
 					parameters.get(PARAMETER_FIRST_NAME)));
-		}
 
-		if (parameters.containsKey(PARAMETER_LAST_NAME)) {
 			searchFilter.addSubFilter(new SubFilter(FilterParameter.PAYMENT_LAST_NAME,
 					parameters.get(PARAMETER_LAST_NAME)));
-		}
 
-		if (parameters.containsKey(PARAMETER_AMOUNT)) {
 			searchFilter.addSubFilter(new SubFilter(FilterParameter.PAYMENT_AMOUNT,
 					parameters.get(PARAMETER_AMOUNT_CONDITION), parameters.get(PARAMETER_AMOUNT)));
-		}
 
-		if (parameters.containsKey(PARAMETER_PAYMENT_DATE)) {
 			searchFilter.addSubFilter(new SubFilter(FilterParameter.PAYMENT_DATE,
 					parameters.get(PARAMETER_PAYMENT_DATE_CONDITION),
 					parameters.get(PARAMETER_PAYMENT_DATE)));
-		}
-
-		if (parameters.containsKey(PARAMETER_SORT_BY)) {
 
 			if (parameters.get(PARAMETER_SORT_BY).equals(PARAMETER_SORT_BY_DATE)) {
 				searchFilter.addSubFilter(new SubFilter(FilterParameter.PAYMENT_BY_DATE));
@@ -933,9 +893,7 @@ public class InternetProviderService implements IInternetProviderService {
 			} else if (parameters.get(PARAMETER_SORT_BY).equals(PARAMETER_SORT_BY_AMOUNT)) {
 				searchFilter.addSubFilter(new SubFilter(FilterParameter.PAYMENT_BY_AMOUNT));
 			}
-		} else
-			searchFilter.addSubFilter(new SubFilter(FilterParameter.PAYMENT_BY_DATE));
-
+		}
 		return getPaymentsList(searchFilter);
 	}
 
@@ -949,19 +907,15 @@ public class InternetProviderService implements IInternetProviderService {
 		PaymentSearchFilter searchFilter = new PaymentSearchFilter();
 		searchFilter.addSubFilter(new SubFilter(FilterParameter.PAYMENT_USER_ID, userId));
 
-		if (parameters.containsKey(PARAMETER_AMOUNT)) {
+		if (parameters.containsKey(PARAMETER_IS_PAGE_SEARCHING)) {
+
 			searchFilter.addSubFilter(new SubFilter(FilterParameter.PAYMENT_AMOUNT,
 					parameters.get(PARAMETER_AMOUNT_CONDITION), parameters.get(PARAMETER_AMOUNT)));
-		}
-
-		if (parameters.containsKey(PARAMETER_PAYMENT_DATE)) {
 
 			searchFilter.addSubFilter(new SubFilter(FilterParameter.PAYMENT_DATE,
 					parameters.get(PARAMETER_PAYMENT_DATE_CONDITION),
 					parameters.get(PARAMETER_PAYMENT_DATE)));
-		}
 
-		if (parameters.containsKey(PARAMETER_SORT_BY)) {
 			if (parameters.get(PARAMETER_SORT_BY).equals(PARAMETER_SORT_BY_DATE)) {
 				searchFilter.addSubFilter(new SubFilter(FilterParameter.PAYMENT_BY_DATE));
 			} else if (parameters.get(PARAMETER_SORT_BY).equals(PARAMETER_SORT_BY_AMOUNT)) {
@@ -1058,10 +1012,10 @@ public class InternetProviderService implements IInternetProviderService {
 
 	}
 
-	private void checkId(int userId) throws ServiceException {
+	private void checkId(int iD) throws ServiceException {
 
-		if (userId < FIRST_REAL_DB_INDEX) {
-			throw new ServiceIncorrectIdException("Incorrect user Id in service method");
+		if (iD < FIRST_REAL_DB_INDEX) {
+			throw new ServiceException("Incorrect ID=" + iD + " in service method");
 		}
 
 	}
@@ -1074,6 +1028,7 @@ public class InternetProviderService implements IInternetProviderService {
 	}
 
 	private static void setUserData(User user, UserData userData) {
+
 		if (userData.getRole() != null)
 			user.setRole(UserRole.valueOf(userData.getRole()));
 

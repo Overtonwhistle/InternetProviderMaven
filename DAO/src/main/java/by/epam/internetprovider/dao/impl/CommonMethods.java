@@ -5,7 +5,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.logging.log4j.Level;
@@ -15,7 +14,7 @@ import org.apache.logging.log4j.Logger;
 import by.epam.internetprovider.dao.database.connectionpool.exception.ConnectionPoolException;
 import by.epam.internetprovider.dao.database.connectionpool.impl.ConnectionPoolOne;
 import by.epam.internetprovider.dao.exception.DAOException;
-import by.epam.internetprovider.dao.impl.listmaker.ListMaker;
+import by.epam.internetprovider.dao.listmaker.IListMaker;
 
 public class CommonMethods {
 	private static final Logger logger = LogManager.getLogger();
@@ -30,12 +29,8 @@ public class CommonMethods {
 	 * @throws DAOException
 	 */
 	protected static boolean executeUpdate(String query) throws DAOException {
-		Connection con = null;
-		Statement st = null;
 
-		try {
-			con = pool.getConnection();
-			st = con.createStatement();
+		try (Connection con = pool.getConnection(); Statement st = con.createStatement()) {
 
 			if (st.executeUpdate(query) == 1) {
 				return true;
@@ -50,11 +45,6 @@ public class CommonMethods {
 
 		catch (SQLException e1) {
 			throw new DAOException("SQL Error in executeUpdate()", e1);
-		}
-
-		finally {
-
-			closeConAndStatement(con, st);
 		}
 
 	}
@@ -81,60 +71,43 @@ public class CommonMethods {
 	 *
 	 * @param <T> the type of elements in this list.
 	 * @param query {@code String} value of SQL-query
-	 * @param maker {@link ListMaker} object
+	 * @param maker {@link IListMaker} object
 	 * @return {@link List} of <b>T</b>-objects
 	 * @throws DAOException
 	 */
-	protected static <T> List<T> getList(String query, ListMaker maker) throws DAOException {
 
-		logger.log(Level.INFO, "DAO getList() query: " + query);
-		List<T> list = new ArrayList<>();
+	protected static <T> List<T> getList(String query, IListMaker<T> maker) throws DAOException {
 
-		Connection con = null;
-		Statement st = null;
-		ResultSet rs = null;
+		// logger.log(Level.INFO, "DAO getList() query: " + query);
 
-		try {
-			con = pool.getConnection();
-			st = con.createStatement();
-			rs = st.executeQuery(query);
-			maker.makeList(rs, list);
-		}
+		List<T> list;
 
-		catch (ConnectionPoolException e) {
+		try (Connection con = pool.getConnection();
+				Statement st = con.createStatement();
+				ResultSet rs = st.executeQuery(query)) {
+
+			list = maker.makeList(rs);
+
+		} catch (ConnectionPoolException e) {
 			throw new DAOException("Error getting connection in getList()", e);
-		}
-
-		catch (SQLException e1) {
+		} catch (SQLException e1) {
 			throw new DAOException("SQL Error in getList()", e1);
 		}
 
-		finally {
-			closeConStatementResultSet(con, st, rs);
-		}
 		return list;
 	}
 
-	protected static void closeConAndStatement(Connection con, Statement st) {
-		if (st != null) {
-			try {
-				st.close();
-			} catch (SQLException e) {
-				logger.log(Level.ERROR, "Error closing statement in closeConAndStatement()");
-			}
-		}
+	/*
+	 * protected static void closeConAndStatement(Connection con, Statement st) { if
+	 * (st != null) { try { st.close(); } catch (SQLException e) {
+	 * logger.log(Level.ERROR, "Error closing statement in closeConAndStatement()");
+	 * } } if (con != null) { try { pool.releaseConnection(con); } catch
+	 * (SQLException e) { logger.log(Level.ERROR,
+	 * "Error closing connection in closeConAndStatement()"); } } }
+	 */
 
-		if (con != null) {
-			try {
-				pool.releaseConnection(con);
-			} catch (SQLException e) {
-				logger.log(Level.ERROR, "Error closing connection in closeConAndStatement()");
-			}
-		}
-
-	}
-
-	protected static void closeConAndPreStatement(Connection con, PreparedStatement ps) {
+	protected static void closeConAndPreStatement(Connection con, PreparedStatement ps)
+			throws DAOException {
 
 		if (ps != null) {
 			try {
@@ -142,6 +115,8 @@ public class CommonMethods {
 			} catch (SQLException e) {
 				logger.log(Level.ERROR,
 						"Error closing prepared statement in closeConAndPreStatement()");
+				throw new DAOException(
+						"Error closing prepared statement in closeConAndPreStatement()", e);
 			}
 		}
 
@@ -150,34 +125,8 @@ public class CommonMethods {
 				pool.releaseConnection(con);
 			} catch (SQLException e) {
 				logger.log(Level.ERROR, "Error closing connection in closeConAndPreStatement()");
-			}
-		}
-
-	}
-
-	protected static void closeConStatementResultSet(Connection con, Statement st, ResultSet rs) {
-
-		if (rs != null) {
-			try {
-				rs.close();
-			} catch (SQLException e) {
-				logger.log(Level.ERROR, "Error closing resultset in closeConStatementResultSet()");
-			}
-		}
-
-		if (st != null) {
-			try {
-				st.close();
-			} catch (SQLException e) {
-				logger.log(Level.ERROR, "Error closing statement in closeConStatementResultSet()");
-			}
-		}
-
-		if (con != null) {
-			try {
-				pool.releaseConnection(con);
-			} catch (SQLException e) {
-				logger.log(Level.ERROR, "Error closing connection in closeConStatementResultSet()");
+				throw new DAOException(
+						"Error closing prepared connection in closeConAndPreStatement()", e);
 			}
 		}
 

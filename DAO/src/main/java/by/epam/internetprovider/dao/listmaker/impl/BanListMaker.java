@@ -1,12 +1,14 @@
-package by.epam.internetprovider.dao.impl.listmaker;
+package by.epam.internetprovider.dao.listmaker.impl;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 import by.epam.internetprovider.bean.Ban;
+import by.epam.internetprovider.dao.listmaker.IListMaker;
 
-public class BanListMaker implements ListMaker {
+public class BanListMaker implements IListMaker<Ban> {
 
 	private static final BanListMaker instance = new BanListMaker();
 
@@ -18,30 +20,28 @@ public class BanListMaker implements ListMaker {
 	private static final int BAN_USER_FIELD = 6;
 
 	private BanListMaker() {
-	};
+	}
 
 	public static BanListMaker getIstance() {
 		return instance;
 	}
 
-	@SuppressWarnings("unchecked")
 	@Override
-	public <T> void makeList(ResultSet rs, List<T> list) throws SQLException {
+	public List<Ban> makeList(ResultSet rs) throws SQLException {
 
-		list.clear();
+		List<Ban> list = new ArrayList<>();
 
 		while (rs.next()) {
 			Ban ban = new Ban();
-
 			ban.setId(rs.getInt(BAN_ID_FIELD));
 			ban.setBanDate(rs.getTimestamp(BAN_DATE_FIELD));
 			ban.setUnbanDate(rs.getTimestamp(UNBAN_DATE_FIELD));
 			ban.setComment(rs.getString(COMMENT_FIELD));
 			ban.setBanReason(rs.getInt(BAN_REASON_FIELD));
 			ban.setUser(rs.getInt(BAN_USER_FIELD));
-
-			list.add((T) ban);
+			list.add(ban);
 		}
+		return list;
 
 	}
 

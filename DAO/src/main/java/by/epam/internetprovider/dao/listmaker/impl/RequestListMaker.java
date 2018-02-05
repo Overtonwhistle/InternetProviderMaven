@@ -1,12 +1,14 @@
-package by.epam.internetprovider.dao.impl.listmaker;
+package by.epam.internetprovider.dao.listmaker.impl;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 import by.epam.internetprovider.bean.Request;
+import by.epam.internetprovider.dao.listmaker.IListMaker;
 
-public class RequestListMaker implements ListMaker {
+public class RequestListMaker implements IListMaker<Request> {
 
 	private static final RequestListMaker instance = new RequestListMaker();
 
@@ -18,31 +20,28 @@ public class RequestListMaker implements ListMaker {
 	private static final int REQUEST_TARIFF_ID_FIELD = 6;
 
 	private RequestListMaker() {
-	};
+	}
 
 	public static RequestListMaker getIstance() {
 		return instance;
 	}
 
-	@SuppressWarnings("unchecked")
 	@Override
-	public <T> void makeList(ResultSet rs, List<T> list) throws SQLException {
+	public List<Request> makeList(ResultSet rs) throws SQLException {
 
-		list.clear();
+		List<Request> list = new ArrayList<>();
 
 		while (rs.next()) {
 			Request request = new Request();
-
 			request.setId(rs.getInt(REQUEST_ID_FIELD));
 			request.setRequestDate(rs.getTimestamp(REQUEST_DATE_FIELD));
 			request.setProcessedDate(rs.getTimestamp(REQUEST_PROCESS_DATE_FIELD));
 			request.setProcessedBy(rs.getInt(REQUEST_PROCESSED_BY_FIELD));
 			request.setUserId(rs.getInt(REQUEST_USER_ID_FIELD));
 			request.setTariffId(rs.getInt(REQUEST_TARIFF_ID_FIELD));
-
-			list.add((T) request);
+			list.add(request);
 		}
-
+		return list;
 	}
 
 }

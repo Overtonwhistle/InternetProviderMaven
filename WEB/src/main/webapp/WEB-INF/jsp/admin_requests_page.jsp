@@ -12,14 +12,11 @@
 <fmt:message bundle="${loc}" key="local.button_reset" var="button_reset" />
 <fmt:message bundle="${loc}" key="local.button_search" var="button_search" />
 <fmt:message bundle="${loc}" key="local.no_data" var="no_data" />
-<fmt:message bundle="${loc}" key="local.admin_requests.request_serching_text"
-	var="request_serching_text" />
+<fmt:message bundle="${loc}" key="local.admin_requests.request_serching_text" var="request_serching_text" />
 <fmt:message bundle="${loc}" key="local.admin_requests.request_status" var="request_status" />
 <fmt:message bundle="${loc}" key="local.admin_requests.request_status_all" var="request_status_all" />
-<fmt:message bundle="${loc}" key="local.admin_requests.request_status_active"
-	var="request_status_active" />
-<fmt:message bundle="${loc}" key="local.admin_requests.request_status_proc"
-	var="request_status_proc" />
+<fmt:message bundle="${loc}" key="local.admin_requests.request_status_active" var="request_status_active" />
+<fmt:message bundle="${loc}" key="local.admin_requests.request_status_proc" var="request_status_proc" />
 <fmt:message bundle="${loc}" key="local.admin_requests.requested_tariff" var="requested_tariff" />
 <fmt:message bundle="${loc}" key="local.admin_requests.request_date" var="request_date" />
 <fmt:message bundle="${loc}" key="local.admin_requests.request_date_ph" var="request_date_ph" />
@@ -121,15 +118,13 @@
 							<tr <c:if test="${status.index%2 eq 0}">class="even"</c:if>>
 								<td><c:if test="${request.processedDate eq null}">
 										<c:set var="active_present" scope="page" value="true" />
-										<input type="radio" name="request_id_selector" value="<c:out value="${request.id}" />"
-											required>
+										<input type="radio" name="request_id_selector" value="<c:out value="${request.id}" />" required>
 									</c:if></td>
 								<td><c:out value="${requestScope.users_list[status.index].firstName}" /> <c:out
 										value="${requestScope.users_list[status.index].lastName}" /></td>
 								<td><c:out value="${requestScope.users_list[status.index].accountBallance}" /></td>
 								<td><c:out value="${tariffs_names_list[status.index]}" /></td>
-								<td><fmt:formatDate type="time" value="${request.requestDate}"
-										pattern="yyyy.MM.dd, HH:mm" /></td>
+								<td><fmt:formatDate type="time" value="${request.requestDate}" pattern="yyyy.MM.dd, HH:mm" /></td>
 								<td><c:if test="${request.processedDate eq null}">${proc_date_active}</c:if> <fmt:formatDate
 										type="time" value="${request.processedDate}" pattern="yyyy.MM.dd, HH:mm" /></td>
 								<td><c:out value="${requestScope.admins_names_list[status.index]}" /></td>

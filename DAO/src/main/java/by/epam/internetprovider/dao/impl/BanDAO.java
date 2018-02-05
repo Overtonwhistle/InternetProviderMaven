@@ -5,7 +5,15 @@ package by.epam.internetprovider.dao.impl;
 
 import static by.epam.internetprovider.dao.impl.CommonMethods.getExecuteUpdateResult;
 import static by.epam.internetprovider.dao.impl.CommonMethods.getList;
-import static by.epam.internetprovider.dao.impl.Constant.*;
+import static by.epam.internetprovider.dao.impl.Constant.BAN_USER_QUERY;
+import static by.epam.internetprovider.dao.impl.Constant.BAN_USER_QUERY_BAN_DATETIME_FIELD;
+import static by.epam.internetprovider.dao.impl.Constant.BAN_USER_QUERY_BAN_REASON_FIELD;
+import static by.epam.internetprovider.dao.impl.Constant.BAN_USER_QUERY_COMMENT_FIELD;
+import static by.epam.internetprovider.dao.impl.Constant.BAN_USER_QUERY_USER_ID_FIELD;
+import static by.epam.internetprovider.dao.impl.Constant.UNBAN_USER_QUERY;
+import static by.epam.internetprovider.dao.impl.Constant.UNBAN_USER_QUERY_RESET_DATETIME_FIELD;
+import static by.epam.internetprovider.dao.impl.Constant.UNBAN_USER_QUERY_USER_ID_FIELD;
+import static by.epam.internetprovider.dao.impl.Constant.USERS_TO_BAN_QUERY;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -19,9 +27,9 @@ import by.epam.internetprovider.bean.User;
 import by.epam.internetprovider.dao.IBanDAO;
 import by.epam.internetprovider.dao.database.connectionpool.impl.ConnectionPoolOne;
 import by.epam.internetprovider.dao.exception.DAOException;
-import by.epam.internetprovider.dao.impl.listmaker.BanListMaker;
-import by.epam.internetprovider.dao.impl.listmaker.BanReasonListMaker;
-import by.epam.internetprovider.dao.impl.listmaker.UserListMaker;
+import by.epam.internetprovider.dao.listmaker.impl.BanListMaker;
+import by.epam.internetprovider.dao.listmaker.impl.BanReasonListMaker;
+import by.epam.internetprovider.dao.listmaker.impl.UserListMaker;
 import by.epam.internetprovider.dao.searchfilter.impl.ban.BanSearchFilter;
 import by.epam.internetprovider.dao.searchfilter.impl.banreason.BanReasonSearchFilter;
 
@@ -79,6 +87,7 @@ public class BanDAO implements IBanDAO {
 
 	@Override
 	public List<Ban> getBansList(BanSearchFilter filter) throws DAOException {
+
 
 		return getList(filter.getSearchQuery(), BanListMaker.getIstance());
 

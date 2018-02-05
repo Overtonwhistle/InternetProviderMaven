@@ -36,7 +36,7 @@ import by.epam.internetprovider.dao.database.connectionpool.exception.Connection
 import by.epam.internetprovider.dao.database.connectionpool.impl.ConnectionPoolOne;
 import by.epam.internetprovider.dao.exception.DAOException;
 import by.epam.internetprovider.dao.exception.DAORequestNotFoundException;
-import by.epam.internetprovider.dao.impl.listmaker.RequestListMaker;
+import by.epam.internetprovider.dao.listmaker.impl.RequestListMaker;
 import by.epam.internetprovider.dao.searchfilter.FilterParameter;
 import by.epam.internetprovider.dao.searchfilter.SubFilter;
 import by.epam.internetprovider.dao.searchfilter.impl.request.RequestSearchFilter;
@@ -98,7 +98,8 @@ public class RequestDAO implements IRequestDAO {
 		int userId = getRequest(requestId).getUserId();
 		int tariffId = getRequest(requestId).getTariffId();
 
-		try {
+		try
+		{
 			con = pool.getConnection();
 			con.setAutoCommit(false);
 

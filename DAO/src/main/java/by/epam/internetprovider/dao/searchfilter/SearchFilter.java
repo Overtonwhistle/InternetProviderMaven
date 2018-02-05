@@ -17,9 +17,10 @@ import java.util.List;
 public abstract class SearchFilter {
 
 	private static final SubFilterCommandProvider provider = new SubFilterCommandProvider();
+	private static final String EMPTY_VALUE = "''";
+	
 	private List<SubFilter> filterList = new ArrayList<>();
 
-	private static final String EMPTY_VALUE = "''";
 
 	/**
 	 * Returns the SQL-query to search.
@@ -31,7 +32,6 @@ public abstract class SearchFilter {
 	protected String getSearchQuery(String startQuery) {
 
 		StringBuilder query = new StringBuilder(startQuery);
-
 		if (!filterList.isEmpty()) {
 			query.append(SQL_WHERE);
 		}
@@ -39,17 +39,13 @@ public abstract class SearchFilter {
 		Iterator<SubFilter> it = filterList.iterator();
 
 		while (it.hasNext()) {
-
 			SubFilter subFilter = (SubFilter) it.next();
 			FilterParameter commandName = subFilter.name;
 			ISubFilterCommand command = provider.getCommand(commandName);
-
 			command.execute(query, subFilter);
-
 			if (it.hasNext()) {
 				query.append(SQL_AND);
 			}
-
 		}
 
 		return query.toString();

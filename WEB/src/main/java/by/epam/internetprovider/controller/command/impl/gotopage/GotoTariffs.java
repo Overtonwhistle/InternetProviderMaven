@@ -38,15 +38,14 @@ public class GotoTariffs implements Command {
 		HttpSession session = request.getSession(true);
 
 		try {
-
 			request.setAttribute(ATTRIBUTE_TECHNOLOGY_LIST,
 					internetProviderService.getTechologiesList());
 			request.setAttribute(ATTRIBUTE_TARIFFS_LIST, internetProviderService
 					.getTariffsList(CommandUtil.getPlainParametersMap(request.getParameterMap())));
 
 		} catch (ServiceException e) {
-			logger.log(Level.ERROR, "Failed to get data in command:GotoClientChangeTariff");
-			throw new CommandException("Failed to get data in command:GotoClientChangeTariff.", e);
+			logger.log(Level.ERROR, "Failed to get data in command:GotoTariffs");
+			throw new CommandException("Failed to get data in command:GotoTariffs.", e);
 		}
 
 		session.setAttribute(ATTRIBUTE_URL, URL);

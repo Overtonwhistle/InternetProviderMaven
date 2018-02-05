@@ -25,7 +25,7 @@ import by.epam.internetprovider.dao.IPaymentDAO;
 import by.epam.internetprovider.dao.database.connectionpool.exception.ConnectionPoolException;
 import by.epam.internetprovider.dao.database.connectionpool.impl.ConnectionPoolOne;
 import by.epam.internetprovider.dao.exception.DAOException;
-import by.epam.internetprovider.dao.impl.listmaker.PaymentListMaker;
+import by.epam.internetprovider.dao.listmaker.impl.PaymentListMaker;
 import by.epam.internetprovider.dao.searchfilter.impl.payment.PaymentSearchFilter;
 
 /**

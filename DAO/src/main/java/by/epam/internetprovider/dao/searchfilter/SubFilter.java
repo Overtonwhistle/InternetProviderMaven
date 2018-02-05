@@ -25,6 +25,10 @@ public class SubFilter {
 	/** The value of expression. Optional. */
 	public String value;
 
+	/**
+	 * 
+	 * Overloaded version of SubFilter's constructors/
+	 */
 	public SubFilter(FilterParameter parameterName, String condition, String parameterValue) {
 		super();
 		this.name = parameterName;

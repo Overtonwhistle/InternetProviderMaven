@@ -1,12 +1,14 @@
-package by.epam.internetprovider.dao.impl.listmaker;
+package by.epam.internetprovider.dao.listmaker.impl;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 import by.epam.internetprovider.bean.Technology;
+import by.epam.internetprovider.dao.listmaker.IListMaker;
 
-public class TechnologyListMaker implements ListMaker {
+public class TechnologyListMaker implements IListMaker<Technology> {
 
 	private static final TechnologyListMaker instance = new TechnologyListMaker();
 
@@ -15,27 +17,25 @@ public class TechnologyListMaker implements ListMaker {
 	private static final int TECH_EQUIP_FIELD = 3;
 
 	private TechnologyListMaker() {
-	};
+	}
 
 	public static TechnologyListMaker getIstance() {
 		return instance;
 	}
 
-	@SuppressWarnings("unchecked")
 	@Override
-	public <T> void makeList(ResultSet rs, List<T> list) throws SQLException {
+	public List<Technology> makeList(ResultSet rs) throws SQLException {
 
-		list.clear();
+		List<Technology> list = new ArrayList<>();
 
 		while (rs.next()) {
 			Technology technology = new Technology();
-
 			technology.setId(rs.getInt(TECH_ID_FIELD));
 			technology.setTitle(rs.getString(TECH_TITLE_FIELD));
 			technology.setNeedRentEquipment(rs.getBoolean(TECH_EQUIP_FIELD));
-			
-			list.add((T) technology);
+			list.add(technology);
 		}
+		return list;
 
 	}
 

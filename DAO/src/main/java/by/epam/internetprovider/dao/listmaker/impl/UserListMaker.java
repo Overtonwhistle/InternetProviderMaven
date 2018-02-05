@@ -1,13 +1,15 @@
-package by.epam.internetprovider.dao.impl.listmaker;
+package by.epam.internetprovider.dao.listmaker.impl;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
-import by.epam.internetprovider.bean.User;
 import by.epam.internetprovider.bean.Param.UserRole;
+import by.epam.internetprovider.bean.User;
+import by.epam.internetprovider.dao.listmaker.IListMaker;
 
-public class UserListMaker implements ListMaker {
+public class UserListMaker implements IListMaker<User> {
 
 	private static final UserListMaker instance = new UserListMaker();
 
@@ -24,24 +26,20 @@ public class UserListMaker implements ListMaker {
 	private static final int USER_TOTAL_DATA_USAGE_FIELD = 11;
 	private static final int USER_ACCOUNT_BALLANCE_FIELD = 12;
 	private static final int USER_TARIFF_FIELD = 13;
-	
-	
+
 	private UserListMaker() {
-	};
+	}
 
 	public static UserListMaker getIstance() {
 		return instance;
 	}
 
-	@SuppressWarnings("unchecked")
 	@Override
-	public <T> void makeList(ResultSet rs, List<T> list) throws SQLException {
-
-		list.clear();
+	public List<User> makeList(ResultSet rs) throws SQLException {
+		List<User> list = new ArrayList<>();
 
 		while (rs.next()) {
 			User user = new User();
-
 			user.setId(rs.getInt(USER_ID_FIELD));
 			user.setRole(UserRole.valueOf(rs.getString(USER_ROLE_FIELD).toUpperCase()));
 			user.setLogin(rs.getString(USER_LOGIN_FIELD));
@@ -55,11 +53,9 @@ public class UserListMaker implements ListMaker {
 			user.setTotalDataUsage(rs.getLong(USER_TOTAL_DATA_USAGE_FIELD));
 			user.setAccountBallance(rs.getBigDecimal(USER_ACCOUNT_BALLANCE_FIELD));
 			user.setTariffId(rs.getInt(USER_TARIFF_FIELD));
-
-			list.add ((T) user);
+			list.add(user);
 		}
-
+		return list;
 	}
-
 
 }

@@ -20,7 +20,7 @@ import by.epam.internetprovider.dao.database.connectionpool.exception.Connection
 import by.epam.internetprovider.dao.database.connectionpool.impl.ConnectionPoolOne;
 import by.epam.internetprovider.dao.exception.DAOException;
 import by.epam.internetprovider.dao.exception.DAOUserNotFoundException;
-import by.epam.internetprovider.dao.impl.listmaker.UserListMaker;
+import by.epam.internetprovider.dao.listmaker.impl.UserListMaker;
 import by.epam.internetprovider.dao.searchfilter.FilterParameter;
 import by.epam.internetprovider.dao.searchfilter.SubFilter;
 import by.epam.internetprovider.dao.searchfilter.impl.user.UserSearchFilter;
@@ -58,6 +58,7 @@ public class UserDAO implements IUserDAO {
 
 		} catch (ConnectionPoolException e) {
 			throw new DAOException("Error getting connection in addUser()", e);
+
 		} catch (SQLException e1) {
 			throw new DAOException("SQL Error in addUser()", e1);
 		}

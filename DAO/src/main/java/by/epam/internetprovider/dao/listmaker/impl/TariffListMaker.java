@@ -1,12 +1,14 @@
-package by.epam.internetprovider.dao.impl.listmaker;
+package by.epam.internetprovider.dao.listmaker.impl;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 import by.epam.internetprovider.bean.Tariff;
+import by.epam.internetprovider.dao.listmaker.IListMaker;
 
-public class TariffListMaker implements ListMaker {
+public class TariffListMaker implements IListMaker<Tariff> {
 
 	private static final TariffListMaker instance = new TariffListMaker();
 
@@ -20,21 +22,19 @@ public class TariffListMaker implements ListMaker {
 	private static final int TARIFF_TECH_ID_FIELD = 8;
 
 	private TariffListMaker() {
-	};
+	}
 
 	public static TariffListMaker getIstance() {
 		return instance;
 	}
 
-	@SuppressWarnings("unchecked")
 	@Override
-	public <T> void makeList(ResultSet rs, List<T> list) throws SQLException {
+	public List<Tariff> makeList(ResultSet rs) throws SQLException {
 
-		list.clear();
+		List<Tariff> list = new ArrayList<>();
 
 		while (rs.next()) {
 			Tariff tariff = new Tariff();
-
 			tariff.setId(rs.getInt(TARIFF_ID_FIELD));
 			tariff.setTitle(rs.getString(TARIFF_TITLE_FIELD));
 			tariff.setMonthlyCost(rs.getBigDecimal(TARIFF_MONTHLY_COST_FIELD));
@@ -43,10 +43,9 @@ public class TariffListMaker implements ListMaker {
 			tariff.setOverloadLimitCost(rs.getBigDecimal(TARIFF_OVERLOAD_COST_FIELD));
 			tariff.setDescription(rs.getString(TARIFF_DESCRIPTION_FIELD));
 			tariff.setTechnologyId(rs.getInt(TARIFF_TECH_ID_FIELD));
-
-			list.add((T) tariff);
+			list.add(tariff);
 		}
-
+		return list;
 	}
 
 }

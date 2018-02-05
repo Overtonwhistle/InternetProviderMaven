@@ -30,8 +30,8 @@ import by.epam.internetprovider.dao.database.connectionpool.exception.Connection
 import by.epam.internetprovider.dao.database.connectionpool.impl.ConnectionPoolOne;
 import by.epam.internetprovider.dao.exception.DAOException;
 import by.epam.internetprovider.dao.exception.DAOTariffNotFoundException;
-import by.epam.internetprovider.dao.impl.listmaker.TariffListMaker;
-import by.epam.internetprovider.dao.impl.listmaker.TechnologyListMaker;
+import by.epam.internetprovider.dao.listmaker.impl.TariffListMaker;
+import by.epam.internetprovider.dao.listmaker.impl.TechnologyListMaker;
 import by.epam.internetprovider.dao.searchfilter.FilterParameter;
 import by.epam.internetprovider.dao.searchfilter.SubFilter;
 import by.epam.internetprovider.dao.searchfilter.impl.tariff.TariffSearchFilter;
