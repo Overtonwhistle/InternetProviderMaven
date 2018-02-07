@@ -41,9 +41,6 @@
 <link rel="stylesheet" href="css/users_search_form.css" type="text/css">
 </head>
 <body>
-	<c:if test="${user.role ne 'ADMIN'}">
-		<jsp:forward page="../../index.jsp" />
-	</c:if>
 	<!--  HEADER -->
 	<%@ include file="admin_page_header.jsp"%>
 	<!-- CONTENT ========================================================= -->
@@ -98,8 +95,7 @@
 								<td><c:out value="${requestScope.users_list[status.index].firstName}" /> <c:out
 										value="${requestScope.users_list[status.index].lastName}" /></td>
 								<td><c:out value="${payment.amount}" /></td>
-								<td><fmt:formatDate type="time" value="${payment.paymentDate}"
-										pattern="yyyy.MM.dd, HH:mm" /></td>
+								<td><fmt:formatDate type="time" value="${payment.paymentDate}" pattern="yyyy.MM.dd, HH:mm" /></td>
 							</tr>
 						</c:forEach>
 					</table>

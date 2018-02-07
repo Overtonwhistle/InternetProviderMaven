@@ -29,27 +29,23 @@
 <fmt:message bundle="${loc}" key="local.admin_users_page.acc_ballance_ph" var="acc_ballance_ph" />
 <fmt:message bundle="${loc}" key="local.admin_users_page.block_status" var="block_status" />
 <fmt:message bundle="${loc}" key="local.admin_users_page.block_status_all" var="block_status_all" />
-<fmt:message bundle="${loc}" key="local.admin_users_page.block_status_blocked"
-	var="block_status_blocked" />
+<fmt:message bundle="${loc}" key="local.admin_users_page.block_status_blocked" var="block_status_blocked" />
 <fmt:message bundle="${loc}" key="local.admin_users_page.block_status_not_blocked"
 	var="block_status_not_blocked" />
 <fmt:message bundle="${loc}" key="local.admin_users_page.reset_button" var="reset_button" />
 <fmt:message bundle="${loc}" key="local.admin_users_page.search_button" var="search_button" />
-<fmt:message bundle="${loc}" key="local.admin_users_page.user_operation_title"
-	var="user_operation_title" />
+<fmt:message bundle="${loc}" key="local.admin_users_page.user_operation_title" var="user_operation_title" />
 <fmt:message bundle="${loc}" key="local.admin_users_page.table_role" var="table_role" />
 <fmt:message bundle="${loc}" key="local.admin_users_page.table_name" var="table_name" />
 <fmt:message bundle="${loc}" key="local.admin_users_page.table_passport" var="table_passport" />
-<fmt:message bundle="${loc}" key="local.admin_users_page.table_registration"
-	var="table_registration" />
+<fmt:message bundle="${loc}" key="local.admin_users_page.table_registration" var="table_registration" />
 <fmt:message bundle="${loc}" key="local.admin_users_page.table_m_data" var="table_m_data" />
 <fmt:message bundle="${loc}" key="local.admin_users_page.table_t_data" var="table_t_data" />
 <fmt:message bundle="${loc}" key="local.admin_users_page.table_ballance" var="table_ballance" />
 <fmt:message bundle="${loc}" key="local.admin_users_page.table_tariff" var="table_tariff" />
 <fmt:message bundle="${loc}" key="local.admin_users_page.block_button" var="block_button" />
 <fmt:message bundle="${loc}" key="local.admin_users_page.edit_user_button" var="edit_user_button" />
-<fmt:message bundle="${loc}" key="local.admin_users_page.delete_user_button"
-	var="delete_user_button" />
+<fmt:message bundle="${loc}" key="local.admin_users_page.delete_user_button" var="delete_user_button" />
 <fmt:message bundle="${loc}" key="local.admin_users_page.no_data" var="no_data_text" />
 <!DOCTYPE html>
 <html>
@@ -63,9 +59,6 @@
 <link rel="stylesheet" href="css/users_search_form.css" type="text/css">
 </head>
 <body>
-	<c:if test="${user.role ne 'ADMIN'}">
-		<jsp:forward page="../../index.jsp" />
-	</c:if>
 	<!--  HEADER -->
 	<%@ include file="admin_page_header.jsp"%>
 	<!-- CONTENT ========================================================= -->
@@ -83,8 +76,7 @@
 				</select></li>
 				<li><label> ${user_fname}: </label><input type="text" name="first_name"
 					placeholder="${user_fname_ph}"></li>
-				<li><label>${user_lname}: </label><input type="text" name="last_name"
-					placeholder="${user_lname_ph}"></li>
+				<li><label>${user_lname}: </label><input type="text" name="last_name" placeholder="${user_lname_ph}"></li>
 				<li><label> ${pass_number}:</label> <input type="text" name="passport"
 					placeholder="${pass_number_ph}"></li>
 				<li><label> ${reg_date_field}: </label><select size="1" name="reg_date_condition">
@@ -140,8 +132,7 @@
 						<c:forEach items="${requestScope.users_list}" var="user" varStatus="status">
 							<c:set var="tariff_id" value="${user.tariffId}" />
 							<tr <c:if test="${status.index%2 eq 0}">class="even"</c:if>>
-								<td><input type="radio" name="user_id_selector" value="<c:out value="${user.id}"/>"
-									required></td>
+								<td><input type="radio" name="user_id_selector" value="<c:out value="${user.id}"/>" required></td>
 								<td><c:if test="${user.role eq 'ADMIN'}">
             ${user_role_admin}</c:if> <c:if test="${user.role eq 'CLIENT'}">
             ${user_role_client}
@@ -153,8 +144,8 @@
 								<td><c:out value="${user.totalDataUsage}" /></td>
 								<td <c:if test="${user.accountBallance lt 0}">style="font-weight: bold;"</c:if>><c:out
 										value="${user.accountBallance}" /></td>
-								<td><c:set var="keyString">${tariff_id}</c:set> <c:out
-										value="${tariffs_map[tariff_id]}" /> <c:out value="${tariffs_map[keyString]}" /></td>
+								<td><c:set var="keyString">${tariff_id}</c:set> <c:out value="${tariffs_map[tariff_id]}" /> <c:out
+										value="${tariffs_map[keyString]}" /></td>
 							</tr>
 						</c:forEach>
 					</table>

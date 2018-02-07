@@ -3,12 +3,8 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <%@page import="by.epam.internetprovider.bean.User"%>
 <c:set var="page" scope="session" value="index.jsp" />
-<jsp:useBean id="now" class="java.util.Date" scope="page" />
 <c:if test="${local eq null}">
-  <c:set var="local" scope="session" value="en" />
-</c:if>
-<c:if test="${user.role ne 'ADMIN'}">
-  <jsp:forward page="../../index.jsp" />
+	<c:set var="local" scope="session" value="en" />
 </c:if>
 <fmt:requestEncoding value="utf-8" />
 <fmt:setLocale value="${sessionScope.local}" />
@@ -41,56 +37,57 @@
 <link rel="stylesheet" href="css/reg-form.css" type="text/css">
 </head>
 <body>
-  <%@ include file="admin_page_header.jsp"%>
-  <!-- CONTENT -->
-  <div class="content">
-    <form action="Controller" method="post" class="reg_form">
-      <ul>
-        <li>
-          <h2>${edit_text}</h2>
-        </li>
-        <li><label>${first_name}:</label> <input type="text" name="edit_firstname"
-          value="<c:out value="${sessionScope.user_to_work.firstName}" />" /></li>
-        <li><label>${last_name}:</label> <input type="text" name="edit_lastname"
-          value="<c:out value="${sessionScope.user_to_work.lastName}" />" /></li>
-        <li><label>${passport}:</label> <input type="text" name="edit_passport"
-          value="<c:out value="${sessionScope.user_to_work.passportNumber}" />" /></li>
-        <li><label>${email}:</label> <input type="text" name="edit_email"
-          value="<c:out value="${sessionScope.user_to_work.email}" />" /></li>
-        <li><label>${password}:</label> <input type="text" name="edit_password"
-          value="<c:out value="${sessionScope.user_to_work.password}" />"></li>
-        <li><label>${m_data}:</label> <input type="text" name="edit_mon_data"
-          value="<c:out value="${sessionScope.user_to_work.monthlyDataUsage}" />"></li>
-        <li><label>${t_data}:</label> <input type="text" name="edit_tot_data"
-          value="<c:out value="${sessionScope.user_to_work.totalDataUsage}" />"></li>
-        <li><label>${ballance}:</label> <input type="text" name="edit_ballance"
-          value="<c:out value="${sessionScope.user_to_work.accountBallance}" />"></li>
-        <li><label>${tariff}: </label><select size="1" name="edit_tariff">
-            <option value="0">${tariff_none}</option>
-            <c:forEach items="${requestScope.tariffs_list}" var="tariff">
-              <option value="<c:out value="${tariff.id}" />"
-                <c:if test="${sessionScope.user_to_work.tariffId eq tariff.id}">selected</c:if>>
-                <c:out value="${tariff.title}" />
-              </option>
-            </c:forEach>
-        </select></li>
-        <li><label>${role}:</label> <select size="1" name="edit_user_role">
-            <c:if test="${sessionScope.user_to_work.role eq 'CLIENT'}">
-              <option value="client" selected>${role_client}</option>
-              <option value="admin">${role_admin}</option>
-            </c:if>
-            <c:if test="${sessionScope.user_to_work.role eq 'ADMIN'}">
-              <option value="client">${role_client}</option>
-              <option value="admin" selected>${role_admin}</option>
-            </c:if>
-        </select></li>
-        <li>
-          <button class="submit" type="submit" name="command" value="goto_ad_users">${back_button}</button>
-          <button style="margin-left: 17%;" class="submit" type="submit" name="command" value="admin_edit_user_process">${apply_button}</button>
-        </li>
-      </ul>
-    </form>
-  </div>
-  <%@ include file="footer.jsp"%>
+	<%@ include file="admin_page_header.jsp"%>
+	<!-- CONTENT -->
+	<div class="content">
+		<form action="Controller" method="post" class="reg_form">
+			<ul>
+				<li>
+					<h2>${edit_text}</h2>
+				</li>
+				<li><label>${first_name}:</label> <input type="text" name="edit_firstname"
+					value="<c:out value="${sessionScope.user_to_work.firstName}" />" /></li>
+				<li><label>${last_name}:</label> <input type="text" name="edit_lastname"
+					value="<c:out value="${sessionScope.user_to_work.lastName}" />" /></li>
+				<li><label>${passport}:</label> <input type="text" name="edit_passport"
+					value="<c:out value="${sessionScope.user_to_work.passportNumber}" />" /></li>
+				<li><label>${email}:</label> <input type="text" name="edit_email"
+					value="<c:out value="${sessionScope.user_to_work.email}" />" /></li>
+				<li><label>${password}:</label> <input type="text" name="edit_password"
+					value="<c:out value="${sessionScope.user_to_work.password}" />"></li>
+				<li><label>${m_data}:</label> <input type="text" name="edit_mon_data"
+					value="<c:out value="${sessionScope.user_to_work.monthlyDataUsage}" />"></li>
+				<li><label>${t_data}:</label> <input type="text" name="edit_tot_data"
+					value="<c:out value="${sessionScope.user_to_work.totalDataUsage}" />"></li>
+				<li><label>${ballance}:</label> <input type="text" name="edit_ballance"
+					value="<c:out value="${sessionScope.user_to_work.accountBallance}" />"></li>
+				<li><label>${tariff}: </label><select size="1" name="edit_tariff">
+						<option value="0">${tariff_none}</option>
+						<c:forEach items="${requestScope.tariffs_list}" var="tariff">
+							<option value="<c:out value="${tariff.id}" />"
+								<c:if test="${sessionScope.user_to_work.tariffId eq tariff.id}">selected</c:if>>
+								<c:out value="${tariff.title}" />
+							</option>
+						</c:forEach>
+				</select></li>
+				<li><label>${role}:</label> <select size="1" name="edit_user_role">
+						<c:if test="${sessionScope.user_to_work.role eq 'CLIENT'}">
+							<option value="client" selected>${role_client}</option>
+							<option value="admin">${role_admin}</option>
+						</c:if>
+						<c:if test="${sessionScope.user_to_work.role eq 'ADMIN'}">
+							<option value="client">${role_client}</option>
+							<option value="admin" selected>${role_admin}</option>
+						</c:if>
+				</select></li>
+				<li>
+					<button class="submit" type="submit" name="command" value="goto_ad_users">${back_button}</button>
+					<button style="margin-left: 17%;" class="submit" type="submit" name="command"
+						value="admin_edit_user_process">${apply_button}</button>
+				</li>
+			</ul>
+		</form>
+	</div>
+	<%@ include file="footer.jsp"%>
 </body>
 </html>

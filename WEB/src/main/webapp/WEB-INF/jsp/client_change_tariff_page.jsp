@@ -1,18 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
-<jsp:useBean id="now" class="java.util.Date" scope="page" />
 <c:if test="${local eq null}">
 	<c:set var="local" scope="session" value="en" />
-</c:if>
-<c:if test="${user.role ne 'CLIENT'}">
-	<jsp:forward page="../../index.jsp" />
 </c:if>
 <fmt:requestEncoding value="utf-8" />
 <fmt:setLocale value="${sessionScope.local}" />
 <fmt:setBundle basename="localization.local" var="loc" />
-<fmt:message bundle="${loc}" key="local.client_tariffs_page.tariff_changing_text"
-	var="tariff_changing_text" />
+<fmt:message bundle="${loc}" key="local.client_tariffs_page.tariff_changing_text" var="tariff_changing_text" />
 <fmt:message bundle="${loc}" key="local.client_tariffs_page.no_data_text" var="no_data_text" />
 <fmt:message bundle="${loc}" key="local.client_tariffs_page.my_ballance_text" var="my_ballance_text" />
 <fmt:message bundle="${loc}" key="local.client_tariffs_page.searching_text" var="searching_text" />
@@ -32,8 +27,7 @@
 <fmt:message bundle="${loc}" key="local.client_tariffs_page.search_button" var="search_button" />
 <fmt:message bundle="${loc}" key="local.client_tariffs_page.operation_text" var="operation_text" />
 <fmt:message bundle="${loc}" key="local.client_tariffs_page.operation_hint" var="operation_hint" />
-<fmt:message bundle="${loc}" key="local.client_tariffs_page.current_tariff_hint"
-	var="current_tariff_hint" />
+<fmt:message bundle="${loc}" key="local.client_tariffs_page.current_tariff_hint" var="current_tariff_hint" />
 <fmt:message bundle="${loc}" key="local.client_tariffs_page.table_title" var="table_title" />
 <fmt:message bundle="${loc}" key="local.client_tariffs_page.table_m_cost" var="table_m_cost" />
 <fmt:message bundle="${loc}" key="local.client_tariffs_page.table_unlim" var="table_unlim" />
@@ -42,8 +36,7 @@
 <fmt:message bundle="${loc}" key="local.client_tariffs_page.table_technology" var="table_technology" />
 <fmt:message bundle="${loc}" key="local.client_tariffs_page.table_descr" var="table_descr" />
 <fmt:message bundle="${loc}" key="local.client_tariffs_page.button_back" var="button_back" />
-<fmt:message bundle="${loc}" key="local.client_tariffs_page.button_add_request"
-	var="button_add_request" />
+<fmt:message bundle="${loc}" key="local.client_tariffs_page.button_add_request" var="button_add_request" />
 <!DOCTYPE html>
 <html>
 <head>
@@ -84,8 +77,7 @@
 				<li><label> ${tech}: </label><select size="1" name="technology">
 						<option value="all" selected>${all}</option>
 						<c:forEach items="${requestScope.technology_list}" var="technology">
-							<option value="<c:out value="${technology.id}" />"><c:out
-									value="${technology.title}" /></option>
+							<option value="<c:out value="${technology.id}" />"><c:out value="${technology.title}" /></option>
 						</c:forEach>
 				</select></li>
 				<li><label>${m_cost} </label><select size="1" name="monthly_cost_condition">
@@ -136,8 +128,7 @@
 								<c:if test="${tariff.id eq sessionScope.user.tariffId}">style="color: grey; "</c:if>>
 								<td><c:if
 										test="${(tariff.monthlyCost <= sessionScope.user.accountBallance) && (tariff.id ne sessionScope.user.tariffId)}">
-										<input type="radio" name="tariff_id_selector" value="<c:out value="${tariff.id}" />"
-											required>
+										<input type="radio" name="tariff_id_selector" value="<c:out value="${tariff.id}" />" required>
 									</c:if></td>
 								<td><c:out value="${tariff.title}" /></td>
 								<td><c:out value="${tariff.monthlyCost}" />

@@ -4,9 +4,8 @@
 <c:set var="page" scope="session" value="index.jsp" />
 <jsp:useBean id="now" class="java.util.Date" scope="page" />
 <c:if test="${local eq null}">
-  <c:set var="local" scope="session" value="en" />
+	<c:set var="local" scope="session" value="en" />
 </c:if>
-<fmt:requestEncoding value="utf-8" />
 <fmt:setLocale value="${sessionScope.local}" />
 <fmt:setBundle basename="localization.local" var="loc" />
 <fmt:message bundle="${loc}" key="local.admin_tariffs_page.add_text" var="add_text" />
@@ -45,55 +44,53 @@
 <link rel="stylesheet" href="css/reg-form.css" type="text/css">
 </head>
 <body>
-  <c:if test="${user.role ne 'ADMIN'}">
-    <jsp:forward page="../../index.jsp" />
-  </c:if>
-  <%@ include file="admin_page_header.jsp"%>
-  <!-- CONTENT ====================== -->
-  <div class="content">
-    <form action="Controller" method="post" class="reg_form" onsubmit="return validateForm()" name="AddTariff">
-      <ul>
-        <li>
-          <h2>${add_text}</h2>
-        </li>
-        <li><label>${table_title }:</label> <input type="text" name="new_title"
-          value="<c:out value="${sessionScope.tariff_to_work.title}" />" /><span class="form_hint">${table_title_hint}</span><span
-          class="err" id="err-title"></span></li>
-        <li><label>${m_cost}:</label> <input type="text" name="new_monthly_cost"
-          value="<c:out value="${sessionScope.tariff_to_work.monthlyCost}" />" /> <span class="form_hint">${m_cost_hint}</span><span
-          class="err" id="err-cost"></span></li>
-        <li><label>${unlim}:</label> <select size="1" name="new_unlim">
-            <option value="yes">${yes}</option>
-            <option value="no">${no}</option>
-        </select></li>
-        <li><label>${m_limit}:</label> <input type="text" name="new_limit"
-          value="<c:out value="${sessionScope.tariff_to_work.monthlyDataLimit}" />" /> <span class="form_hint">${m_limit_hint}</span><span
-          class="err" id="err-limit"></span></li>
-        <li><label>${over_cost}:</label> <input type="text" name="new_overload_cost"
-          value="<c:out value="${sessionScope.tariff_to_work.overloadLimitCost}" />" /> <span class="form_hint">${over_cost_hint}</span><span
-          class="err" id="err-overload"></span></li>
-        <li><label> ${table_technology}: </label> <select size="1" name="new_technology">
-            <c:forEach items="${requestScope.technology_list}" var="technology">
-              <option value="<c:out value="${technology.id}" />">
-                <c:out value="${technology.title}" />
-              </option>
-            </c:forEach>
-        </select></li>
-        <li><label>${table_descr}:</label> <input type="text" name="new_description"
-          value="<c:out value="${sessionScope.tariff_to_work.description}" />" /><span class="form_hint">${table_descr_hint}</span></li>
-        <li>
-          <button class="submit" type="submit" name="command" value="goto_ad_tariffs">${back_button}</button>
-          <button style="margin-left: 17%;" class="submit" type="submit" name="command" value="admin_add_tariff_process">${add_button}</button>
-        </li>
-      </ul>
-    </form>
-  </div>
-  <%@ include file="footer.jsp"%>
-  <c:if test="${local eq 'en'}">
-    <script src="js/add_tariff_form_en.js"></script>
-  </c:if>
-  <c:if test="${local eq 'ru'}">
-    <script src="js/add_tariff_form_ru.js"></script>
-  </c:if>
+	<%@ include file="admin_page_header.jsp"%>
+	<%-- CONTENT ====================== --%>
+	<div class="content">
+		<form action="Controller" method="post" class="reg_form" onsubmit="return validateForm()" name="AddTariff">
+			<ul>
+				<li>
+					<h2>${add_text}</h2>
+				</li>
+				<li><label>${table_title }:</label> <input type="text" name="new_title"
+					value="<c:out value="${sessionScope.tariff_to_work.title}" />" /><span class="form_hint">${table_title_hint}</span><span
+					class="err" id="err-title"></span></li>
+				<li><label>${m_cost}:</label> <input type="text" name="new_monthly_cost"
+					value="<c:out value="${sessionScope.tariff_to_work.monthlyCost}" />" /> <span class="form_hint">${m_cost_hint}</span><span
+					class="err" id="err-cost"></span></li>
+				<li><label>${unlim}:</label> <select size="1" name="new_unlim">
+						<option value="yes">${yes}</option>
+						<option value="no">${no}</option>
+				</select></li>
+				<li><label>${m_limit}:</label> <input type="text" name="new_limit"
+					value="<c:out value="${sessionScope.tariff_to_work.monthlyDataLimit}" />" /> <span class="form_hint">${m_limit_hint}</span><span
+					class="err" id="err-limit"></span></li>
+				<li><label>${over_cost}:</label> <input type="text" name="new_overload_cost"
+					value="<c:out value="${sessionScope.tariff_to_work.overloadLimitCost}" />" /> <span class="form_hint">${over_cost_hint}</span><span
+					class="err" id="err-overload"></span></li>
+				<li><label> ${table_technology}: </label> <select size="1" name="new_technology">
+						<c:forEach items="${requestScope.technology_list}" var="technology">
+							<option value="<c:out value="${technology.id}" />">
+								<c:out value="${technology.title}" />
+							</option>
+						</c:forEach>
+				</select></li>
+				<li><label>${table_descr}:</label> <input type="text" name="new_description"
+					value="<c:out value="${sessionScope.tariff_to_work.description}" />" /><span class="form_hint">${table_descr_hint}</span></li>
+				<li>
+					<button class="submit" type="submit" name="command" value="goto_ad_tariffs">${back_button}</button>
+					<button style="margin-left: 17%;" class="submit" type="submit" name="command"
+						value="admin_add_tariff_process">${add_button}</button>
+				</li>
+			</ul>
+		</form>
+	</div>
+	<%@ include file="footer.jsp"%>
+	<c:if test="${local eq 'en'}">
+		<script src="js/add_tariff_form_en.js"></script>
+	</c:if>
+	<c:if test="${local eq 'ru'}">
+		<script src="js/add_tariff_form_ru.js"></script>
+	</c:if>
 </body>
 </html>

@@ -1,14 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
-<jsp:useBean id="now" class="java.util.Date" scope="page" />
 <c:if test="${local eq null}">
 	<c:set var="local" scope="session" value="en" />
 </c:if>
-<c:if test="${user.role ne 'CLIENT'}">
-	<jsp:forward page="../../index.jsp" />
-</c:if>
-<%-- <c:set var="url" scope="session" value="Controller?command=goto_client_payments" /> --%>
 <fmt:requestEncoding value="utf-8" />
 <fmt:setLocale value="${sessionScope.local}" />
 <fmt:setBundle basename="localization.local" var="loc" />
@@ -22,12 +17,10 @@
 <fmt:message bundle="${loc}" key="local.client_profile_page.email" var="new_email" />
 <fmt:message bundle="${loc}" key="local.client_profile_page.email_hint" var="email_hint" />
 <fmt:message bundle="${loc}" key="local.client_profile_page.new_password" var="new_password" />
-<fmt:message bundle="${loc}" key="local.client_profile_page.new_password_hint"
-	var="new_password_hint" />
+<fmt:message bundle="${loc}" key="local.client_profile_page.new_password_hint" var="new_password_hint" />
 <fmt:message bundle="${loc}" key="local.client_profile_page.new_password_ph" var="new_password_ph" />
 <fmt:message bundle="${loc}" key="local.client_profile_page.current_password" var="current_password" />
-<fmt:message bundle="${loc}" key="local.client_profile_page.current_password_hint"
-	var="current_password_hint" />
+<fmt:message bundle="${loc}" key="local.client_profile_page.current_password_hint" var="current_password_hint" />
 <fmt:message bundle="${loc}" key="local.client_profile_page.wrong_current_password_text"
 	var="wrong_current_password_text" />
 <fmt:message bundle="${loc}" key="local.client_profile_page.apply_button" var="apply_button" />
@@ -64,13 +57,13 @@
 					value=${sessionScope.user.passportNumber }><span class="form_hint">${passport_hint}</span><span
 					class="err" id="err-passport"></span></li>
 				<li><label>${new_email}:</label> <input type="text" name="new_email"
-					value=${sessionScope.user.email }><span class="form_hint">${email_hint}</span><span
-					class="err" id="err-email"></span></li>
+					value=${sessionScope.user.email }><span class="form_hint">${email_hint}</span><span class="err"
+					id="err-email"></span></li>
 				<li><label>${new_password}:</label> <input type="password" name="new_password"
 					placeholder="${new_password_ph}"><span class="form_hint">${new_password_hint}</span><span
 					class="err" id="err-pwd1"></span></li>
-				<li><label>${current_password}:</label> <input type="password" name="current_password"
-					required><span class="form_hint">${current_password_hint}</span></li>
+				<li><label>${current_password}:</label> <input type="password" name="current_password" required><span
+					class="form_hint">${current_password_hint}</span></li>
 				<c:if test="${requestScope.wrong_current_password eq true}">
 					<li><span class="err">${wrong_current_password_text}</span>
 				</c:if>

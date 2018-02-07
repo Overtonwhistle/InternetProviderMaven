@@ -25,9 +25,6 @@
 <link rel="stylesheet" href="css/users_search_form.css" type="text/css">
 </head>
 <body>
-	<c:if test="${user.role ne 'ADMIN'}">
-		<jsp:forward page="../../index.jsp" />
-	</c:if>
 	<%@ include file="admin_page_header.jsp"%>
 	<!-- CONTENT -->
 	<div class="content">

@@ -38,9 +38,6 @@
 <link rel="stylesheet" href="css/users_search_form.css" type="text/css">
 </head>
 <body>
-	<c:if test="${user.role ne 'CLIENT'}">
-		<jsp:forward page="../../index.jsp" />
-	</c:if>
 	<!--  HEADER -->
 	<%@ include file="client_page_header.jsp"%>
 	<!-- CONTENT -->
@@ -93,8 +90,7 @@
 					<c:if test="${requestScope.is_blocked eq true}">
 						<tr class="even">
 							<td>${blocked_since}</td>
-							<td><fmt:formatDate type="both" value="${requestScope.user_ban.banDate}"
-									dateStyle="long" />
+							<td><fmt:formatDate type="both" value="${requestScope.user_ban.banDate}" dateStyle="long" />
 						</tr>
 						<tr>
 							<td>${blocking_reason}</td>

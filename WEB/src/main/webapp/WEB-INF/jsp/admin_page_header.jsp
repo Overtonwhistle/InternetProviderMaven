@@ -38,48 +38,19 @@
         </a>
         <li><a href="#"><img src="images/user.png" alt="${user_menu}"><span>&nbsp;${user_menu}</span></a>
           <ul class="items">
-            <c:if test="${sessionScope.logged eq true}">
               <li>
                 <div class="user-string">
                   <c:out value="${sessionScope.user.firstName} ${sessionScope.user.lastName}" />
                 </div>
               </li>
-            </c:if>
-            <c:if test="${sessionScope.logged ne true}">
-              <li>
-                <form class="login-form" action="Controller" method="post">
-                  <input type="hidden" name="command" value="log_in" /> <input type="text" name="login" value=""
-                    placeholder="${login}" required> <input type="password" name="password" value=""
-                    placeholder="${password}" required /> <input type="submit" value="${log_in}" class="login_button" />
-                </form>
-              </li>
-            </c:if>
-            <c:if test="${sessionScope.logged eq true}">
-              <c:if test="${user.role eq 'ADMIN'}">
                 <li><form class="login-form" action="Controller" method="post">
                     <input type="hidden" name="command" value="goto_admin" /> <input class="login_button" type="submit"
                       value="${admin_page}" />
                   </form></li>
-              </c:if>
-              <c:if test="${sessionScope.user.role eq 'CLIENT'}">
-                <li><form class="login-form" action="Controller" method="post">
-                    <input type="hidden" name="command" value="goto_client" /> <input class="login_button"
-                      type="submit" value="${client_page}" />
-                  </form></li>
-              </c:if>
               <li><form class="login-form" action="Controller" method="post">
                   <input type="hidden" name="command" value="log_off" /> <input class="login_button" type="submit"
                     value="${log_off}" />
                 </form></li>
-            </c:if>
-            <c:if test="${sessionScope.logged ne true}">
-              <li>
-                <form class="login-form" action="Controller" method="post">
-                  <input type="hidden" name="command" value="register" /> <input type="submit" value="${new_user}"
-                    class="login_button" />
-                </form>
-              </li>
-            </c:if>
           </ul></li>
       </ul>
     </div>

@@ -10,13 +10,11 @@
 <fmt:setLocale value="${sessionScope.local}" />
 <fmt:setBundle basename="localization.local" var="loc" />
 <fmt:message bundle="${loc}" key="local.admin_requests.proc_request_text" var="proc_request_text" />
-<fmt:message bundle="${loc}" key="local.admin_requests.proc_request_details"
-	var="proc_request_details" />
+<fmt:message bundle="${loc}" key="local.admin_requests.proc_request_details" var="proc_request_details" />
 <fmt:message bundle="${loc}" key="local.admin_requests.user" var="request_user" />
 <fmt:message bundle="${loc}" key="local.admin_requests.ballance" var="ballance" />
 <fmt:message bundle="${loc}" key="local.admin_requests.current_tariff" var="current_tariff_text" />
-<fmt:message bundle="${loc}" key="local.admin_requests.current_tariff_empty"
-	var="current_tariff_empty" />
+<fmt:message bundle="${loc}" key="local.admin_requests.current_tariff_empty" var="current_tariff_empty" />
 <fmt:message bundle="${loc}" key="local.admin_requests.requested_tariff" var="requested_tariff" />
 <fmt:message bundle="${loc}" key="local.admin_requests.neg_ballace" var="neg_ballace" />
 <fmt:message bundle="${loc}" key="local.button_back" var="button_back" />
@@ -33,9 +31,6 @@
 <link rel="stylesheet" href="css/users_search_form.css" type="text/css">
 </head>
 <body>
-	<c:if test="${sessionScope.user.role ne 'ADMIN'}">
-		<jsp:forward page="../../index.jsp" />
-	</c:if>
 	<!--  HEADER -->
 	<%@ include file="admin_page_header.jsp"%>
 	<!-- CONTENT -->

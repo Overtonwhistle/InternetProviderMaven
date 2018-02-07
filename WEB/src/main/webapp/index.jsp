@@ -1,13 +1,13 @@
-<%@ page language="java" contentType="text/html; charset=utf-8"
-	pageEncoding="utf-8"%>
+<%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 
+<%-- Localization init --%>
 <c:set var="url" scope="session" value="index.jsp" />
-<c:if test="${empty sessionScope.locale and not empty cookie.locale}" >
-    <c:set var="local" value="${cookie.locale.value}" scope="session" />
+<c:if test="${empty sessionScope.locale and not empty cookie.locale}">
+	<c:set var="local" value="${cookie.locale.value}" scope="session" />
 </c:if>
-<c:if test="${empty sessionScope.locale and empty cookie.locale}" >
+<c:if test="${empty sessionScope.locale and empty cookie.locale}">
 	<c:set var="local" scope="session" value="${initParam['start_lang']}" />
 </c:if>
 

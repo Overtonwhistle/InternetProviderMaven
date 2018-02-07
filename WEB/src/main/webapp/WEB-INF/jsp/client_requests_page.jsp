@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
-<jsp:useBean id="now" class="java.util.Date" scope="page" />
 <c:if test="${local eq null}">
 	<c:set var="local" scope="session" value="en" />
 </c:if>
@@ -34,9 +33,6 @@
 <link rel="stylesheet" href="css/users_search_form.css" type="text/css">
 </head>
 <body>
-	<c:if test="${user.role ne 'CLIENT'}">
-		<jsp:forward page="../../index.jsp" />
-	</c:if>
 	<!--  HEADER -->
 	<%@ include file="client_page_header.jsp"%>
 	<!-- CONTENT -->
