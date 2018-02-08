@@ -32,10 +32,10 @@ import org.apache.logging.log4j.Logger;
 
 import by.epam.internetprovider.bean.Request;
 import by.epam.internetprovider.dao.IRequestDAO;
-import by.epam.internetprovider.dao.database.connectionpool.exception.ConnectionPoolException;
-import by.epam.internetprovider.dao.database.connectionpool.impl.ConnectionPoolOne;
 import by.epam.internetprovider.dao.exception.DAOException;
 import by.epam.internetprovider.dao.exception.DAORequestNotFoundException;
+import by.epam.internetprovider.dao.impl.database.connectionpool.exception.ConnectionPoolException;
+import by.epam.internetprovider.dao.impl.database.connectionpool.impl.ConnectionPoolOne;
 import by.epam.internetprovider.dao.listmaker.impl.RequestListMaker;
 import by.epam.internetprovider.dao.searchfilter.FilterParameter;
 import by.epam.internetprovider.dao.searchfilter.SubFilter;

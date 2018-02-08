@@ -1,9 +1,9 @@
-package by.epam.internetprovider.dao.database.connectionpool;
+package by.epam.internetprovider.dao.impl.database.connectionpool;
 
 import java.sql.Connection;
 import java.sql.SQLException;
 
-import by.epam.internetprovider.dao.database.connectionpool.exception.ConnectionPoolException;
+import by.epam.internetprovider.dao.impl.database.connectionpool.exception.ConnectionPoolException;
 
 /**
  * Describes Connection Pool to Data Base. A connection pool is a cache of

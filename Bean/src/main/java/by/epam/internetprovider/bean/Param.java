@@ -7,7 +7,7 @@ package by.epam.internetprovider.bean;
  *         <p>
  */
 public class Param {
-	
+
 	public enum UserRole {
 		ADMIN, CLIENT
 	}

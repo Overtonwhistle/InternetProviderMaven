@@ -50,8 +50,8 @@
 		<filter-class>by.epam.internetprovider.controller.filter.AuthorizationFilter</filter-class>
 		<init-param>
 			<param-name>goto-auth-error-page</param-name>
-	<!-- 'no' value or the absence of this parameter will lead to the redirect to index page -->
-			<param-value>yes</param-value> 
+			<!-- 'no' value or the absence of this parameter will lead to the redirect to index page -->
+			<param-value>yes</param-value>
 		</init-param>
 	</filter>
 	<filter-mapping>

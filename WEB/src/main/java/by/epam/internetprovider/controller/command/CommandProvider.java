@@ -24,6 +24,8 @@ import by.epam.internetprovider.controller.command.impl.client.ClientDeleteReque
 import by.epam.internetprovider.controller.command.impl.client.ClientEditProfileProcess;
 import by.epam.internetprovider.controller.command.impl.client.ClientMakePaymentProcess;
 import by.epam.internetprovider.controller.command.impl.client.ClientRequestTariffProcess;
+import by.epam.internetprovider.controller.command.impl.gotopage.GotoNextPage;
+import by.epam.internetprovider.controller.command.impl.gotopage.GotoPreviousPage;
 import by.epam.internetprovider.controller.command.impl.gotopage.GotoRegister;
 import by.epam.internetprovider.controller.command.impl.gotopage.GotoRegisterDone;
 import by.epam.internetprovider.controller.command.impl.gotopage.GotoTariffInfo;
@@ -71,6 +73,9 @@ public class CommandProvider {
 		commands.put(CommandName.GOTO_REGISTER_DONE, new GotoRegisterDone());
 
 		commands.put(CommandName.GOTO_TARIFFS, new GotoTariffs());
+
+		commands.put(CommandName.NEXT_RESULT_PAGE, new GotoNextPage());
+		commands.put(CommandName.PREVIOUS_RESULT_PAGE, new GotoPreviousPage());
 
 		commands.put(CommandName.GOTO_CLIENT, new GotoClient());
 		commands.put(CommandName.GOTO_ADMIN, new GotoAdmin());

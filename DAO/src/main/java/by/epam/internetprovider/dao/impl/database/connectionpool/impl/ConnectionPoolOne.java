@@ -1,7 +1,7 @@
 /**
  * @author Pavel Sorokoletov
  */
-package by.epam.internetprovider.dao.database.connectionpool.impl;
+package by.epam.internetprovider.dao.impl.database.connectionpool.impl;
 
 import java.sql.Array;
 import java.sql.Blob;
@@ -31,11 +31,11 @@ import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import by.epam.internetprovider.dao.database.connectionpool.IConnectionPool;
-import by.epam.internetprovider.dao.database.connectionpool.exception.ConnectionPoolException;
-import by.epam.internetprovider.dao.database.dbresourcemanager.DBParameter;
-import by.epam.internetprovider.dao.database.dbresourcemanager.DBResourceManager;
-import by.epam.internetprovider.dao.database.dbresourcemanager.exception.ResourceManagerException;
+import by.epam.internetprovider.dao.impl.database.connectionpool.IConnectionPool;
+import by.epam.internetprovider.dao.impl.database.connectionpool.exception.ConnectionPoolException;
+import by.epam.internetprovider.dao.impl.database.dbresourcemanager.DBParameter;
+import by.epam.internetprovider.dao.impl.database.dbresourcemanager.DBResourceManager;
+import by.epam.internetprovider.dao.impl.database.dbresourcemanager.exception.ResourceManagerException;
 
 public final class ConnectionPoolOne implements IConnectionPool {
 

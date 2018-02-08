@@ -1,4 +1,4 @@
-package by.epam.internetprovider.dao.database.connectionpool.exception;
+package by.epam.internetprovider.dao.impl.database.connectionpool.exception;
 
 import java.sql.SQLException;
 

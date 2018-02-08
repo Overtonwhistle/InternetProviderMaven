@@ -38,8 +38,6 @@ public class GotoAdminPayments implements Command {
 	public void execute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		CommandUtil.clearSession(request);
-
 		List<Payment> paymentsList = new ArrayList<>();
 		List<User> usersList = new ArrayList<>();
 
@@ -61,8 +59,8 @@ public class GotoAdminPayments implements Command {
 			throw new CommandException("Failed to get data in command:GotoAdminPayments", e);
 		}
 
-		request.setAttribute(ATTRIBUTE_PAYMENTS_LIST, paymentsList);
-		request.setAttribute(ATTRIBUTE_USERS_LIST, usersList);
+		session.setAttribute(ATTRIBUTE_RESULT_LIST, paymentsList);
+		session.setAttribute(ATTRIBUTE_USERS_LIST, usersList);
 
 		RequestDispatcher dispatcher = request.getRequestDispatcher(PAGE);
 		dispatcher.forward(request, response);

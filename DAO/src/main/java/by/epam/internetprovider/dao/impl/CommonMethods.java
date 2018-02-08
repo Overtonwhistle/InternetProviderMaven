@@ -11,9 +11,9 @@ import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import by.epam.internetprovider.dao.database.connectionpool.exception.ConnectionPoolException;
-import by.epam.internetprovider.dao.database.connectionpool.impl.ConnectionPoolOne;
 import by.epam.internetprovider.dao.exception.DAOException;
+import by.epam.internetprovider.dao.impl.database.connectionpool.exception.ConnectionPoolException;
+import by.epam.internetprovider.dao.impl.database.connectionpool.impl.ConnectionPoolOne;
 import by.epam.internetprovider.dao.listmaker.IListMaker;
 
 public class CommonMethods {

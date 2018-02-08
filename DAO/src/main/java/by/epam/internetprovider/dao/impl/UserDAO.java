@@ -16,10 +16,10 @@ import java.util.List;
 
 import by.epam.internetprovider.bean.User;
 import by.epam.internetprovider.dao.IUserDAO;
-import by.epam.internetprovider.dao.database.connectionpool.exception.ConnectionPoolException;
-import by.epam.internetprovider.dao.database.connectionpool.impl.ConnectionPoolOne;
 import by.epam.internetprovider.dao.exception.DAOException;
 import by.epam.internetprovider.dao.exception.DAOUserNotFoundException;
+import by.epam.internetprovider.dao.impl.database.connectionpool.exception.ConnectionPoolException;
+import by.epam.internetprovider.dao.impl.database.connectionpool.impl.ConnectionPoolOne;
 import by.epam.internetprovider.dao.listmaker.impl.UserListMaker;
 import by.epam.internetprovider.dao.searchfilter.FilterParameter;
 import by.epam.internetprovider.dao.searchfilter.SubFilter;

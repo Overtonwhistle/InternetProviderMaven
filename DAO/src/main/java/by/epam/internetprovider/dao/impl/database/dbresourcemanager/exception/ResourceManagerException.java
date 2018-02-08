@@ -1,4 +1,4 @@
-package by.epam.internetprovider.dao.database.dbresourcemanager.exception;
+package by.epam.internetprovider.dao.impl.database.dbresourcemanager.exception;
 
 import java.sql.SQLException;
 

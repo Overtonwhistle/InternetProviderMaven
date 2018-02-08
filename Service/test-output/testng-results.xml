@@ -2,12 +2,12 @@
 <testng-results skipped="0" failed="0" ignored="0" total="32" passed="32">
   <reporter-output>
   </reporter-output>
-  <suite name="Default suite" duration-ms="1017" started-at="2018-02-01T19:31:21Z" finished-at="2018-02-01T19:31:22Z">
+  <suite name="Default suite" duration-ms="675" started-at="2018-02-08T19:38:25Z" finished-at="2018-02-08T19:38:26Z">
     <groups>
     </groups>
-    <test name="Default test" duration-ms="1017" started-at="2018-02-01T19:31:21Z" finished-at="2018-02-01T19:31:22Z">
+    <test name="Default test" duration-ms="675" started-at="2018-02-08T19:38:25Z" finished-at="2018-02-08T19:38:26Z">
       <class name="by.epam.internetprovider.service.impl.util.ValidationTest">
-        <test-method status="PASS" signature="checkInvalidBallance(java.math.BigDecimal)[pri:0, instance:by.epam.internetprovider.service.impl.util.ValidationTest@8bd1b6a]" name="checkInvalidBallance" duration-ms="773" started-at="2018-02-01T22:31:21Z" data-provider="invalidBallance" finished-at="2018-02-01T22:31:21Z">
+        <test-method status="PASS" signature="checkInvalidBallance(java.math.BigDecimal)[pri:0, instance:by.epam.internetprovider.service.impl.util.ValidationTest@cc285f4]" name="checkInvalidBallance" duration-ms="500" started-at="2018-02-08T22:38:25Z" data-provider="invalidBallance" finished-at="2018-02-08T22:38:26Z">
           <params>
             <param index="0">
               <value>
@@ -18,7 +18,7 @@
           <reporter-output>
           </reporter-output>
         </test-method> <!-- checkInvalidBallance -->
-        <test-method status="PASS" signature="checkInvalidBallance(java.math.BigDecimal)[pri:0, instance:by.epam.internetprovider.service.impl.util.ValidationTest@8bd1b6a]" name="checkInvalidBallance" duration-ms="2" started-at="2018-02-01T22:31:21Z" data-provider="invalidBallance" finished-at="2018-02-01T22:31:21Z">
+        <test-method status="PASS" signature="checkInvalidBallance(java.math.BigDecimal)[pri:0, instance:by.epam.internetprovider.service.impl.util.ValidationTest@cc285f4]" name="checkInvalidBallance" duration-ms="2" started-at="2018-02-08T22:38:26Z" data-provider="invalidBallance" finished-at="2018-02-08T22:38:26Z">
           <params>
             <param index="0">
               <value>
@@ -29,7 +29,7 @@
           <reporter-output>
           </reporter-output>
         </test-method> <!-- checkInvalidBallance -->
-        <test-method status="PASS" signature="checkInvalidBallance(java.math.BigDecimal)[pri:0, instance:by.epam.internetprovider.service.impl.util.ValidationTest@8bd1b6a]" name="checkInvalidBallance" duration-ms="2" started-at="2018-02-01T22:31:21Z" data-provider="invalidBallance" finished-at="2018-02-01T22:31:21Z">
+        <test-method status="PASS" signature="checkInvalidBallance(java.math.BigDecimal)[pri:0, instance:by.epam.internetprovider.service.impl.util.ValidationTest@cc285f4]" name="checkInvalidBallance" duration-ms="1" started-at="2018-02-08T22:38:26Z" data-provider="invalidBallance" finished-at="2018-02-08T22:38:26Z">
           <params>
             <param index="0">
               <value is-null="true"/>
@@ -38,7 +38,7 @@
           <reporter-output>
           </reporter-output>
         </test-method> <!-- checkInvalidBallance -->
-        <test-method status="PASS" signature="checkInvalidLogin(java.lang.String)[pri:0, instance:by.epam.internetprovider.service.impl.util.ValidationTest@8bd1b6a]" name="checkInvalidLogin" duration-ms="1" started-at="2018-02-01T22:31:21Z" data-provider="invalidLogin" finished-at="2018-02-01T22:31:21Z">
+        <test-method status="PASS" signature="checkInvalidLogin(java.lang.String)[pri:0, instance:by.epam.internetprovider.service.impl.util.ValidationTest@cc285f4]" name="checkInvalidLogin" duration-ms="1" started-at="2018-02-08T22:38:26Z" data-provider="invalidLogin" finished-at="2018-02-08T22:38:26Z">
           <params>
             <param index="0">
               <value>
@@ -49,7 +49,7 @@
           <reporter-output>
           </reporter-output>
         </test-method> <!-- checkInvalidLogin -->
-        <test-method status="PASS" signature="checkInvalidLogin(java.lang.String)[pri:0, instance:by.epam.internetprovider.service.impl.util.ValidationTest@8bd1b6a]" name="checkInvalidLogin" duration-ms="1" started-at="2018-02-01T22:31:21Z" data-provider="invalidLogin" finished-at="2018-02-01T22:31:21Z">
+        <test-method status="PASS" signature="checkInvalidLogin(java.lang.String)[pri:0, instance:by.epam.internetprovider.service.impl.util.ValidationTest@cc285f4]" name="checkInvalidLogin" duration-ms="1" started-at="2018-02-08T22:38:26Z" data-provider="invalidLogin" finished-at="2018-02-08T22:38:26Z">
           <params>
             <param index="0">
               <value>
@@ -60,7 +60,7 @@
           <reporter-output>
           </reporter-output>
         </test-method> <!-- checkInvalidLogin -->
-        <test-method status="PASS" signature="checkInvalidLogin(java.lang.String)[pri:0, instance:by.epam.internetprovider.service.impl.util.ValidationTest@8bd1b6a]" name="checkInvalidLogin" duration-ms="1" started-at="2018-02-01T22:31:21Z" data-provider="invalidLogin" finished-at="2018-02-01T22:31:21Z">
+        <test-method status="PASS" signature="checkInvalidLogin(java.lang.String)[pri:0, instance:by.epam.internetprovider.service.impl.util.ValidationTest@cc285f4]" name="checkInvalidLogin" duration-ms="1" started-at="2018-02-08T22:38:26Z" data-provider="invalidLogin" finished-at="2018-02-08T22:38:26Z">
           <params>
             <param index="0">
               <value>
@@ -71,7 +71,7 @@
           <reporter-output>
           </reporter-output>
         </test-method> <!-- checkInvalidLogin -->
-        <test-method status="PASS" signature="checkInvalidLogin(java.lang.String)[pri:0, instance:by.epam.internetprovider.service.impl.util.ValidationTest@8bd1b6a]" name="checkInvalidLogin" duration-ms="0" started-at="2018-02-01T22:31:21Z" data-provider="invalidLogin" finished-at="2018-02-01T22:31:21Z">
+        <test-method status="PASS" signature="checkInvalidLogin(java.lang.String)[pri:0, instance:by.epam.internetprovider.service.impl.util.ValidationTest@cc285f4]" name="checkInvalidLogin" duration-ms="1" started-at="2018-02-08T22:38:26Z" data-provider="invalidLogin" finished-at="2018-02-08T22:38:26Z">
           <params>
             <param index="0">
               <value is-null="true"/>
@@ -80,7 +80,7 @@
           <reporter-output>
           </reporter-output>
         </test-method> <!-- checkInvalidLogin -->
-        <test-method status="PASS" signature="checkInvalidMail(java.lang.String)[pri:0, instance:by.epam.internetprovider.service.impl.util.ValidationTest@8bd1b6a]" name="checkInvalidMail" duration-ms="1" started-at="2018-02-01T22:31:21Z" data-provider="invalidmail" finished-at="2018-02-01T22:31:21Z">
+        <test-method status="PASS" signature="checkInvalidMail(java.lang.String)[pri:0, instance:by.epam.internetprovider.service.impl.util.ValidationTest@cc285f4]" name="checkInvalidMail" duration-ms="1" started-at="2018-02-08T22:38:26Z" data-provider="invalidmail" finished-at="2018-02-08T22:38:26Z">
           <params>
             <param index="0">
               <value is-null="true"/>
@@ -89,7 +89,7 @@
           <reporter-output>
           </reporter-output>
         </test-method> <!-- checkInvalidMail -->
-        <test-method status="PASS" signature="checkInvalidMail(java.lang.String)[pri:0, instance:by.epam.internetprovider.service.impl.util.ValidationTest@8bd1b6a]" name="checkInvalidMail" duration-ms="2" started-at="2018-02-01T22:31:21Z" data-provider="invalidmail" finished-at="2018-02-01T22:31:21Z">
+        <test-method status="PASS" signature="checkInvalidMail(java.lang.String)[pri:0, instance:by.epam.internetprovider.service.impl.util.ValidationTest@cc285f4]" name="checkInvalidMail" duration-ms="2" started-at="2018-02-08T22:38:26Z" data-provider="invalidmail" finished-at="2018-02-08T22:38:26Z">
           <params>
             <param index="0">
               <value>
@@ -100,7 +100,7 @@
           <reporter-output>
           </reporter-output>
         </test-method> <!-- checkInvalidMail -->
-        <test-method status="PASS" signature="checkInvalidMail(java.lang.String)[pri:0, instance:by.epam.internetprovider.service.impl.util.ValidationTest@8bd1b6a]" name="checkInvalidMail" duration-ms="4" started-at="2018-02-01T22:31:22Z" data-provider="invalidmail" finished-at="2018-02-01T22:31:22Z">
+        <test-method status="PASS" signature="checkInvalidMail(java.lang.String)[pri:0, instance:by.epam.internetprovider.service.impl.util.ValidationTest@cc285f4]" name="checkInvalidMail" duration-ms="5" started-at="2018-02-08T22:38:26Z" data-provider="invalidmail" finished-at="2018-02-08T22:38:26Z">
           <params>
             <param index="0">
               <value>
@@ -111,7 +111,7 @@
           <reporter-output>
           </reporter-output>
         </test-method> <!-- checkInvalidMail -->
-        <test-method status="PASS" signature="checkInvalidMail(java.lang.String)[pri:0, instance:by.epam.internetprovider.service.impl.util.ValidationTest@8bd1b6a]" name="checkInvalidMail" duration-ms="5" started-at="2018-02-01T22:31:22Z" data-provider="invalidmail" finished-at="2018-02-01T22:31:22Z">
+        <test-method status="PASS" signature="checkInvalidMail(java.lang.String)[pri:0, instance:by.epam.internetprovider.service.impl.util.ValidationTest@cc285f4]" name="checkInvalidMail" duration-ms="1" started-at="2018-02-08T22:38:26Z" data-provider="invalidmail" finished-at="2018-02-08T22:38:26Z">
           <params>
             <param index="0">
               <value>
@@ -122,7 +122,7 @@
           <reporter-output>
           </reporter-output>
         </test-method> <!-- checkInvalidMail -->
-        <test-method status="PASS" signature="checkInvalidMail(java.lang.String)[pri:0, instance:by.epam.internetprovider.service.impl.util.ValidationTest@8bd1b6a]" name="checkInvalidMail" duration-ms="18" started-at="2018-02-01T22:31:22Z" data-provider="invalidmail" finished-at="2018-02-01T22:31:22Z">
+        <test-method status="PASS" signature="checkInvalidMail(java.lang.String)[pri:0, instance:by.epam.internetprovider.service.impl.util.ValidationTest@cc285f4]" name="checkInvalidMail" duration-ms="1" started-at="2018-02-08T22:38:26Z" data-provider="invalidmail" finished-at="2018-02-08T22:38:26Z">
           <params>
             <param index="0">
               <value>
@@ -133,7 +133,7 @@
           <reporter-output>
           </reporter-output>
         </test-method> <!-- checkInvalidMail -->
-        <test-method status="PASS" signature="checkInvalidName(java.lang.String)[pri:0, instance:by.epam.internetprovider.service.impl.util.ValidationTest@8bd1b6a]" name="checkInvalidName" duration-ms="3" started-at="2018-02-01T22:31:22Z" data-provider="invalidName" finished-at="2018-02-01T22:31:22Z">
+        <test-method status="PASS" signature="checkInvalidName(java.lang.String)[pri:0, instance:by.epam.internetprovider.service.impl.util.ValidationTest@cc285f4]" name="checkInvalidName" duration-ms="4" started-at="2018-02-08T22:38:26Z" data-provider="invalidName" finished-at="2018-02-08T22:38:26Z">
           <params>
             <param index="0">
               <value>
@@ -144,7 +144,7 @@
           <reporter-output>
           </reporter-output>
         </test-method> <!-- checkInvalidName -->
-        <test-method status="PASS" signature="checkInvalidName(java.lang.String)[pri:0, instance:by.epam.internetprovider.service.impl.util.ValidationTest@8bd1b6a]" name="checkInvalidName" duration-ms="4" started-at="2018-02-01T22:31:22Z" data-provider="invalidName" finished-at="2018-02-01T22:31:22Z">
+        <test-method status="PASS" signature="checkInvalidName(java.lang.String)[pri:0, instance:by.epam.internetprovider.service.impl.util.ValidationTest@cc285f4]" name="checkInvalidName" duration-ms="22" started-at="2018-02-08T22:38:26Z" data-provider="invalidName" finished-at="2018-02-08T22:38:26Z">
           <params>
             <param index="0">
               <value>
@@ -155,7 +155,7 @@
           <reporter-output>
           </reporter-output>
         </test-method> <!-- checkInvalidName -->
-        <test-method status="PASS" signature="checkInvalidName(java.lang.String)[pri:0, instance:by.epam.internetprovider.service.impl.util.ValidationTest@8bd1b6a]" name="checkInvalidName" duration-ms="1" started-at="2018-02-01T22:31:22Z" data-provider="invalidName" finished-at="2018-02-01T22:31:22Z">
+        <test-method status="PASS" signature="checkInvalidName(java.lang.String)[pri:0, instance:by.epam.internetprovider.service.impl.util.ValidationTest@cc285f4]" name="checkInvalidName" duration-ms="1" started-at="2018-02-08T22:38:26Z" data-provider="invalidName" finished-at="2018-02-08T22:38:26Z">
           <params>
             <param index="0">
               <value>
@@ -166,7 +166,7 @@
           <reporter-output>
           </reporter-output>
         </test-method> <!-- checkInvalidName -->
-        <test-method status="PASS" signature="checkInvalidName(java.lang.String)[pri:0, instance:by.epam.internetprovider.service.impl.util.ValidationTest@8bd1b6a]" name="checkInvalidName" duration-ms="2" started-at="2018-02-01T22:31:22Z" data-provider="invalidName" finished-at="2018-02-01T22:31:22Z">
+        <test-method status="PASS" signature="checkInvalidName(java.lang.String)[pri:0, instance:by.epam.internetprovider.service.impl.util.ValidationTest@cc285f4]" name="checkInvalidName" duration-ms="2" started-at="2018-02-08T22:38:26Z" data-provider="invalidName" finished-at="2018-02-08T22:38:26Z">
           <params>
             <param index="0">
               <value is-null="true"/>
@@ -175,7 +175,7 @@
           <reporter-output>
           </reporter-output>
         </test-method> <!-- checkInvalidName -->
-        <test-method status="PASS" signature="checkValidBallance(java.math.BigDecimal)[pri:0, instance:by.epam.internetprovider.service.impl.util.ValidationTest@8bd1b6a]" name="checkValidBallance" duration-ms="1" started-at="2018-02-01T22:31:22Z" data-provider="validBallance" finished-at="2018-02-01T22:31:22Z">
+        <test-method status="PASS" signature="checkValidBallance(java.math.BigDecimal)[pri:0, instance:by.epam.internetprovider.service.impl.util.ValidationTest@cc285f4]" name="checkValidBallance" duration-ms="1" started-at="2018-02-08T22:38:26Z" data-provider="validBallance" finished-at="2018-02-08T22:38:26Z">
           <params>
             <param index="0">
               <value>
@@ -186,7 +186,7 @@
           <reporter-output>
           </reporter-output>
         </test-method> <!-- checkValidBallance -->
-        <test-method status="PASS" signature="checkValidBallance(java.math.BigDecimal)[pri:0, instance:by.epam.internetprovider.service.impl.util.ValidationTest@8bd1b6a]" name="checkValidBallance" duration-ms="1" started-at="2018-02-01T22:31:22Z" data-provider="validBallance" finished-at="2018-02-01T22:31:22Z">
+        <test-method status="PASS" signature="checkValidBallance(java.math.BigDecimal)[pri:0, instance:by.epam.internetprovider.service.impl.util.ValidationTest@cc285f4]" name="checkValidBallance" duration-ms="1" started-at="2018-02-08T22:38:26Z" data-provider="validBallance" finished-at="2018-02-08T22:38:26Z">
           <params>
             <param index="0">
               <value>
@@ -197,7 +197,7 @@
           <reporter-output>
           </reporter-output>
         </test-method> <!-- checkValidBallance -->
-        <test-method status="PASS" signature="checkValidBallance(java.math.BigDecimal)[pri:0, instance:by.epam.internetprovider.service.impl.util.ValidationTest@8bd1b6a]" name="checkValidBallance" duration-ms="5" started-at="2018-02-01T22:31:22Z" data-provider="validBallance" finished-at="2018-02-01T22:31:22Z">
+        <test-method status="PASS" signature="checkValidBallance(java.math.BigDecimal)[pri:0, instance:by.epam.internetprovider.service.impl.util.ValidationTest@cc285f4]" name="checkValidBallance" duration-ms="0" started-at="2018-02-08T22:38:26Z" data-provider="validBallance" finished-at="2018-02-08T22:38:26Z">
           <params>
             <param index="0">
               <value>
@@ -208,7 +208,7 @@
           <reporter-output>
           </reporter-output>
         </test-method> <!-- checkValidBallance -->
-        <test-method status="PASS" signature="checkValidBallance(java.math.BigDecimal)[pri:0, instance:by.epam.internetprovider.service.impl.util.ValidationTest@8bd1b6a]" name="checkValidBallance" duration-ms="1" started-at="2018-02-01T22:31:22Z" data-provider="validBallance" finished-at="2018-02-01T22:31:22Z">
+        <test-method status="PASS" signature="checkValidBallance(java.math.BigDecimal)[pri:0, instance:by.epam.internetprovider.service.impl.util.ValidationTest@cc285f4]" name="checkValidBallance" duration-ms="1" started-at="2018-02-08T22:38:26Z" data-provider="validBallance" finished-at="2018-02-08T22:38:26Z">
           <params>
             <param index="0">
               <value>
@@ -219,7 +219,7 @@
           <reporter-output>
           </reporter-output>
         </test-method> <!-- checkValidBallance -->
-        <test-method status="PASS" signature="checkValidBallance(java.math.BigDecimal)[pri:0, instance:by.epam.internetprovider.service.impl.util.ValidationTest@8bd1b6a]" name="checkValidBallance" duration-ms="4" started-at="2018-02-01T22:31:22Z" data-provider="validBallance" finished-at="2018-02-01T22:31:22Z">
+        <test-method status="PASS" signature="checkValidBallance(java.math.BigDecimal)[pri:0, instance:by.epam.internetprovider.service.impl.util.ValidationTest@cc285f4]" name="checkValidBallance" duration-ms="1" started-at="2018-02-08T22:38:26Z" data-provider="validBallance" finished-at="2018-02-08T22:38:26Z">
           <params>
             <param index="0">
               <value>
@@ -230,7 +230,7 @@
           <reporter-output>
           </reporter-output>
         </test-method> <!-- checkValidBallance -->
-        <test-method status="PASS" signature="checkValidBallance(java.math.BigDecimal)[pri:0, instance:by.epam.internetprovider.service.impl.util.ValidationTest@8bd1b6a]" name="checkValidBallance" duration-ms="6" started-at="2018-02-01T22:31:22Z" data-provider="validBallance" finished-at="2018-02-01T22:31:22Z">
+        <test-method status="PASS" signature="checkValidBallance(java.math.BigDecimal)[pri:0, instance:by.epam.internetprovider.service.impl.util.ValidationTest@cc285f4]" name="checkValidBallance" duration-ms="1" started-at="2018-02-08T22:38:26Z" data-provider="validBallance" finished-at="2018-02-08T22:38:26Z">
           <params>
             <param index="0">
               <value>
@@ -241,7 +241,7 @@
           <reporter-output>
           </reporter-output>
         </test-method> <!-- checkValidBallance -->
-        <test-method status="PASS" signature="checkValidmail(java.lang.String)[pri:0, instance:by.epam.internetprovider.service.impl.util.ValidationTest@8bd1b6a]" name="checkValidmail" duration-ms="3" started-at="2018-02-01T22:31:22Z" data-provider="validmail" finished-at="2018-02-01T22:31:22Z">
+        <test-method status="PASS" signature="checkValidmail(java.lang.String)[pri:0, instance:by.epam.internetprovider.service.impl.util.ValidationTest@cc285f4]" name="checkValidmail" duration-ms="1" started-at="2018-02-08T22:38:26Z" data-provider="validmail" finished-at="2018-02-08T22:38:26Z">
           <params>
             <param index="0">
               <value>
@@ -252,7 +252,7 @@
           <reporter-output>
           </reporter-output>
         </test-method> <!-- checkValidmail -->
-        <test-method status="PASS" signature="checkValidmail(java.lang.String)[pri:0, instance:by.epam.internetprovider.service.impl.util.ValidationTest@8bd1b6a]" name="checkValidmail" duration-ms="8" started-at="2018-02-01T22:31:22Z" data-provider="validmail" finished-at="2018-02-01T22:31:22Z">
+        <test-method status="PASS" signature="checkValidmail(java.lang.String)[pri:0, instance:by.epam.internetprovider.service.impl.util.ValidationTest@cc285f4]" name="checkValidmail" duration-ms="5" started-at="2018-02-08T22:38:26Z" data-provider="validmail" finished-at="2018-02-08T22:38:26Z">
           <params>
             <param index="0">
               <value>
@@ -263,7 +263,7 @@
           <reporter-output>
           </reporter-output>
         </test-method> <!-- checkValidmail -->
-        <test-method status="PASS" signature="checkValidmail(java.lang.String)[pri:0, instance:by.epam.internetprovider.service.impl.util.ValidationTest@8bd1b6a]" name="checkValidmail" duration-ms="3" started-at="2018-02-01T22:31:22Z" data-provider="validmail" finished-at="2018-02-01T22:31:22Z">
+        <test-method status="PASS" signature="checkValidmail(java.lang.String)[pri:0, instance:by.epam.internetprovider.service.impl.util.ValidationTest@cc285f4]" name="checkValidmail" duration-ms="1" started-at="2018-02-08T22:38:26Z" data-provider="validmail" finished-at="2018-02-08T22:38:26Z">
           <params>
             <param index="0">
               <value>
@@ -274,7 +274,7 @@
           <reporter-output>
           </reporter-output>
         </test-method> <!-- checkValidmail -->
-        <test-method status="PASS" signature="checkvalidLogin(java.lang.String)[pri:0, instance:by.epam.internetprovider.service.impl.util.ValidationTest@8bd1b6a]" name="checkvalidLogin" duration-ms="2" started-at="2018-02-01T22:31:22Z" data-provider="validLogin" finished-at="2018-02-01T22:31:22Z">
+        <test-method status="PASS" signature="checkvalidLogin(java.lang.String)[pri:0, instance:by.epam.internetprovider.service.impl.util.ValidationTest@cc285f4]" name="checkvalidLogin" duration-ms="2" started-at="2018-02-08T22:38:26Z" data-provider="validLogin" finished-at="2018-02-08T22:38:26Z">
           <params>
             <param index="0">
               <value>
@@ -285,7 +285,7 @@
           <reporter-output>
           </reporter-output>
         </test-method> <!-- checkvalidLogin -->
-        <test-method status="PASS" signature="checkvalidLogin(java.lang.String)[pri:0, instance:by.epam.internetprovider.service.impl.util.ValidationTest@8bd1b6a]" name="checkvalidLogin" duration-ms="2" started-at="2018-02-01T22:31:22Z" data-provider="validLogin" finished-at="2018-02-01T22:31:22Z">
+        <test-method status="PASS" signature="checkvalidLogin(java.lang.String)[pri:0, instance:by.epam.internetprovider.service.impl.util.ValidationTest@cc285f4]" name="checkvalidLogin" duration-ms="0" started-at="2018-02-08T22:38:26Z" data-provider="validLogin" finished-at="2018-02-08T22:38:26Z">
           <params>
             <param index="0">
               <value>
@@ -296,7 +296,7 @@
           <reporter-output>
           </reporter-output>
         </test-method> <!-- checkvalidLogin -->
-        <test-method status="PASS" signature="checkvalidLogin(java.lang.String)[pri:0, instance:by.epam.internetprovider.service.impl.util.ValidationTest@8bd1b6a]" name="checkvalidLogin" duration-ms="2" started-at="2018-02-01T22:31:22Z" data-provider="validLogin" finished-at="2018-02-01T22:31:22Z">
+        <test-method status="PASS" signature="checkvalidLogin(java.lang.String)[pri:0, instance:by.epam.internetprovider.service.impl.util.ValidationTest@cc285f4]" name="checkvalidLogin" duration-ms="5" started-at="2018-02-08T22:38:26Z" data-provider="validLogin" finished-at="2018-02-08T22:38:26Z">
           <params>
             <param index="0">
               <value>
@@ -307,7 +307,7 @@
           <reporter-output>
           </reporter-output>
         </test-method> <!-- checkvalidLogin -->
-        <test-method status="PASS" signature="checkvalidName(java.lang.String)[pri:0, instance:by.epam.internetprovider.service.impl.util.ValidationTest@8bd1b6a]" name="checkvalidName" duration-ms="5" started-at="2018-02-01T22:31:22Z" data-provider="validName" finished-at="2018-02-01T22:31:22Z">
+        <test-method status="PASS" signature="checkvalidName(java.lang.String)[pri:0, instance:by.epam.internetprovider.service.impl.util.ValidationTest@cc285f4]" name="checkvalidName" duration-ms="1" started-at="2018-02-08T22:38:26Z" data-provider="validName" finished-at="2018-02-08T22:38:26Z">
           <params>
             <param index="0">
               <value>
@@ -318,7 +318,7 @@
           <reporter-output>
           </reporter-output>
         </test-method> <!-- checkvalidName -->
-        <test-method status="PASS" signature="checkvalidName(java.lang.String)[pri:0, instance:by.epam.internetprovider.service.impl.util.ValidationTest@8bd1b6a]" name="checkvalidName" duration-ms="2" started-at="2018-02-01T22:31:22Z" data-provider="validName" finished-at="2018-02-01T22:31:22Z">
+        <test-method status="PASS" signature="checkvalidName(java.lang.String)[pri:0, instance:by.epam.internetprovider.service.impl.util.ValidationTest@cc285f4]" name="checkvalidName" duration-ms="0" started-at="2018-02-08T22:38:26Z" data-provider="validName" finished-at="2018-02-08T22:38:26Z">
           <params>
             <param index="0">
               <value>
@@ -329,7 +329,7 @@
           <reporter-output>
           </reporter-output>
         </test-method> <!-- checkvalidName -->
-        <test-method status="PASS" signature="checkvalidName(java.lang.String)[pri:0, instance:by.epam.internetprovider.service.impl.util.ValidationTest@8bd1b6a]" name="checkvalidName" duration-ms="1" started-at="2018-02-01T22:31:22Z" data-provider="validName" finished-at="2018-02-01T22:31:22Z">
+        <test-method status="PASS" signature="checkvalidName(java.lang.String)[pri:0, instance:by.epam.internetprovider.service.impl.util.ValidationTest@cc285f4]" name="checkvalidName" duration-ms="1" started-at="2018-02-08T22:38:26Z" data-provider="validName" finished-at="2018-02-08T22:38:26Z">
           <params>
             <param index="0">
               <value>
@@ -340,7 +340,7 @@
           <reporter-output>
           </reporter-output>
         </test-method> <!-- checkvalidName -->
-        <test-method status="PASS" signature="checkvalidName(java.lang.String)[pri:0, instance:by.epam.internetprovider.service.impl.util.ValidationTest@8bd1b6a]" name="checkvalidName" duration-ms="2" started-at="2018-02-01T22:31:22Z" data-provider="validName" finished-at="2018-02-01T22:31:22Z">
+        <test-method status="PASS" signature="checkvalidName(java.lang.String)[pri:0, instance:by.epam.internetprovider.service.impl.util.ValidationTest@cc285f4]" name="checkvalidName" duration-ms="4" started-at="2018-02-08T22:38:26Z" data-provider="validName" finished-at="2018-02-08T22:38:26Z">
           <params>
             <param index="0">
               <value>

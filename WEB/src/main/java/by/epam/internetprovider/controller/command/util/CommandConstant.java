@@ -16,6 +16,10 @@ public class CommandConstant {
 	public static final String ATTRIBUTE_PAGE = "page";
 	public static final String ATTRIBUTE_LOCAL = "local";
 	public static final String ATTRIBUTE_URL = "url";
+	public static final String ATTRIBUTE_CURRENT_PAGE = "current_page";
+	public static final String ATTRIBUTE_START_INDEX = "start_index";
+	public static final int TABLE_ROWS_PER_PAGE = 15;
+	public static final int FIRST_ARRAY_INDEX = 0;
 	public static final String ATTRIBUTE_DEFAULT_LOCAL = "en";
 	public static final String ATTRIBUTE_USER_BAN = "user_ban";
 	public static final String ATTRIBUTE_CURRENT_TARIFF = "current_tariff";
@@ -24,6 +28,7 @@ public class CommandConstant {
 	public static final String ATTRIBUTE_TECHNOLOGY_LIST = "technology_list";
 	public static final String ATTRIBUTE_TARIFFS_LIST = "tariffs_list";
 	public static final String ATTRIBUTE_PAYMENTS_LIST = "payments_list";
+	public static final String ATTRIBUTE_RESULT_LIST = "result_list";
 	public static final String ATTRIBUTE_ACTIVE_REQUEST = "active_request";
 	public static final String ATTRIBUTE_REQUESTED_TARIFF = "requested_tariff";
 	public static final String ATTRIBUTE_HISTORY_REQUESTS_LIST = "history_requests_list";

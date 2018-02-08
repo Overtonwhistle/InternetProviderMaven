@@ -1,4 +1,4 @@
-package by.epam.internetprovider.dao.database.dbresourcemanager;
+package by.epam.internetprovider.dao.impl.database.dbresourcemanager;
 
 /**
  * Сontains text constants describing the parameters of the database used.

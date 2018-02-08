@@ -9,7 +9,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
 
-import by.epam.internetprovider.dao.database.connectionpool.impl.ConnectionPoolOne;
+import by.epam.internetprovider.dao.impl.database.connectionpool.impl.ConnectionPoolOne;
 
 public interface IListMaker <T> {
 

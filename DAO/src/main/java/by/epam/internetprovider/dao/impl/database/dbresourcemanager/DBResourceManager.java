@@ -2,7 +2,7 @@
  * @author Pavel Sorokoletov
  */
 
-package by.epam.internetprovider.dao.database.dbresourcemanager;
+package by.epam.internetprovider.dao.impl.database.dbresourcemanager;
 
 import java.util.ResourceBundle;
 
@@ -10,7 +10,7 @@ import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import by.epam.internetprovider.dao.database.dbresourcemanager.exception.ResourceManagerException;
+import by.epam.internetprovider.dao.impl.database.dbresourcemanager.exception.ResourceManagerException;
 
 /**
  * Provides retrieving database parameters from {@code ResourceBundle}

@@ -2,7 +2,6 @@
 package by.epam.internetprovider.controller;
 
 import java.io.IOException;
-import java.util.Enumeration;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -71,8 +70,6 @@ public class Controller extends HttpServlet {
 		String commandName = request.getParameter(REQUEST_COMMAND);
 
 		Command command = provider.getCommand(commandName);
-		logger.log(Level.DEBUG, "Command: " + commandName);
-
 		command.execute(request, response);
 
 	}

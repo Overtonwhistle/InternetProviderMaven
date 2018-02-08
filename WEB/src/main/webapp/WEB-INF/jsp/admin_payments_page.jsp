@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
-<jsp:useBean id="now" class="java.util.Date" scope="page" />
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <c:if test="${local eq null}">
 	<c:set var="local" scope="session" value="en" />
 </c:if>
@@ -28,6 +28,8 @@
 <fmt:message bundle="${loc}" key="local.admin_payments.user_name" var="user_name" />
 <fmt:message bundle="${loc}" key="local.admin_payments.ballance" var="ballance" />
 <fmt:message bundle="${loc}" key="local.admin_payments.amount" var="amount" />
+<fmt:message bundle="${loc}" key="local.page_navigation.next_page" var="next_page" />
+<fmt:message bundle="${loc}" key="local.page_navigation.previous_page" var="previous_page" />
 
 <!DOCTYPE html>
 <html>
@@ -40,6 +42,11 @@
 <link rel="stylesheet" href="css/style.css" type="text/css">
 <link rel="stylesheet" href="css/users_search_form.css" type="text/css">
 </head>
+
+<c:set var="current_page" scope="session" value="WEB-INF/jsp/admin_payments_page.jsp" />
+<c:set var="num_rows" scope="page" value="${14}" />
+<c:set var="res_rows" scope="page" value="${fn:length(sessionScope.result_list)}" />
+
 <body>
 	<!--  HEADER -->
 	<%@ include file="admin_page_header.jsp"%>
@@ -79,21 +86,30 @@
 		</form>
 		<div>
 			<form name="payment_operation" method="post" action="Controller">
-				<c:if test="${requestScope.payments_list[0] eq null}">
+				<c:if test="${sessionScope.result_list[0] eq null}">
 					<h4>${no_data}</h4>
 				</c:if>
-				<c:if test="${requestScope.payments_list[0] ne null}">
+
+				<c:if test="${sessionScope.result_list[0] ne null}">
 					<table style="width: 70%;">
 						<tr>
+							<th style="width: 2%;">№</th>
 							<th style="width: 14%;">${user_name}</th>
 							<th style="width: 13%;">${amount}</th>
 							<th style="width: 13%;">${pay_date_time}</th>
 						</tr>
-						<c:forEach items="${requestScope.payments_list}" var="payment" varStatus="status">
+
+						<c:if test="${sessionScope.start_index eq null}">
+							<c:set var="end_index" value="9" scope="session" />
+						</c:if>
+
+						<c:forEach items="${sessionScope.result_list}" var="payment" varStatus="status"
+							begin="${sessionScope.start_index}" end="${sessionScope.start_index+num_rows}">
 							<c:set var="tariff_id" value="${request.tariffId}" />
 							<tr <c:if test="${status.index%2 eq 0}">class="even"</c:if>>
-								<td><c:out value="${requestScope.users_list[status.index].firstName}" /> <c:out
-										value="${requestScope.users_list[status.index].lastName}" /></td>
+								<td><c:out value="${status.index+1}" /></td>
+								<td><c:out value="${sessionScope.users_list[status.index].firstName}" /> <c:out
+										value="${sessionScope.users_list[status.index].lastName}" /></td>
 								<td><c:out value="${payment.amount}" /></td>
 								<td><fmt:formatDate type="time" value="${payment.paymentDate}" pattern="yyyy.MM.dd, HH:mm" /></td>
 							</tr>
@@ -101,6 +117,17 @@
 					</table>
 				</c:if>
 			</form>
+
+			<!-- PREVIOUS NEXT block -->
+			<form class="reg_form" name="payment_serching" method="post" action="Controller">
+				<c:if test="${sessionScope.start_index gt 0}">
+					<button class="submit" type="submit" name="command" value="previous_result_page">${previous_page}</button>
+				</c:if>
+				<c:if test="${(res_rows - sessionScope.start_index) gt num_rows}">
+					<button class="submit" type="submit" name="command" value="next_result_page">${next_page}</button>
+				</c:if>
+			</form>
+
 		</div>
 	</div>
 	<%@ include file="footer.jsp"%>

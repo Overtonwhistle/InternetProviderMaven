@@ -4,8 +4,8 @@ import org.testng.Assert;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
-import by.epam.internetprovider.dao.database.dbresourcemanager.DBResourceManager;
-import by.epam.internetprovider.dao.database.dbresourcemanager.exception.ResourceManagerException;
+import by.epam.internetprovider.dao.impl.database.dbresourcemanager.DBResourceManager;
+import by.epam.internetprovider.dao.impl.database.dbresourcemanager.exception.ResourceManagerException;
 
 public class DBResourceManagerTest {
 

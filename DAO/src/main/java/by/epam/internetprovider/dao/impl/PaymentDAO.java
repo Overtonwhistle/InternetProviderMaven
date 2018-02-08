@@ -22,9 +22,9 @@ import org.apache.logging.log4j.Logger;
 import by.epam.internetprovider.bean.Payment;
 import by.epam.internetprovider.bean.User;
 import by.epam.internetprovider.dao.IPaymentDAO;
-import by.epam.internetprovider.dao.database.connectionpool.exception.ConnectionPoolException;
-import by.epam.internetprovider.dao.database.connectionpool.impl.ConnectionPoolOne;
 import by.epam.internetprovider.dao.exception.DAOException;
+import by.epam.internetprovider.dao.impl.database.connectionpool.exception.ConnectionPoolException;
+import by.epam.internetprovider.dao.impl.database.connectionpool.impl.ConnectionPoolOne;
 import by.epam.internetprovider.dao.listmaker.impl.PaymentListMaker;
 import by.epam.internetprovider.dao.searchfilter.impl.payment.PaymentSearchFilter;
 
