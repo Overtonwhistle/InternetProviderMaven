@@ -7,20 +7,20 @@
 <c:set var="url" scope="session" value="Controller?command=goto_client_payments" />
 <fmt:requestEncoding value="utf-8" />
 <fmt:setLocale value="${sessionScope.local}" />
-<fmt:setBundle basename="localization.local" var="loc" />
-<fmt:message bundle="${loc}" key="local.client_payments.pay_searching" var="pay_searching" />
-<fmt:message bundle="${loc}" key="local.client_payments.pay_no_data" var="no_data" />
-<fmt:message bundle="${loc}" key="local.client_payments.pay_date" var="pay_date" />
-<fmt:message bundle="${loc}" key="local.client_payments.pay_date_ph" var="pay_date_ph" />
-<fmt:message bundle="${loc}" key="local.client_payments.pay_date_time" var="pay_date_time" />
-<fmt:message bundle="${loc}" key="local.client_payments.pay_amount" var="pay_amount" />
-<fmt:message bundle="${loc}" key="local.client_payments.pay_amount_ph" var="pay_amount_ph" />
-<fmt:message bundle="${loc}" key="local.client_payments.sort_list" var="sort_list" />
-<fmt:message bundle="${loc}" key="local.client_payments.sort_by_date" var="sort_by_date" />
-<fmt:message bundle="${loc}" key="local.client_payments.sort_by_amount" var="sort_by_amount" />
-<fmt:message bundle="${loc}" key="local.client_payments.make_payment" var="make_payment" />
-<fmt:message bundle="${loc}" key="local.button_reset" var="button_reset" />
-<fmt:message bundle="${loc}" key="local.button_search" var="button_search" />
+<fmt:setBundle basename="localization.local" />
+<fmt:message key="local.client_payments.pay_searching" var="pay_searching" />
+<fmt:message key="local.client_payments.pay_no_data" var="no_data" />
+<fmt:message key="local.client_payments.pay_date" var="pay_date" />
+<fmt:message key="local.client_payments.pay_date_ph" var="pay_date_ph" />
+<fmt:message key="local.client_payments.pay_date_time" var="pay_date_time" />
+<fmt:message key="local.client_payments.pay_amount" var="pay_amount" />
+<fmt:message key="local.client_payments.pay_amount_ph" var="pay_amount_ph" />
+<fmt:message key="local.client_payments.sort_list" var="sort_list" />
+<fmt:message key="local.client_payments.sort_by_date" var="sort_by_date" />
+<fmt:message key="local.client_payments.sort_by_amount" var="sort_by_amount" />
+<fmt:message key="local.client_payments.make_payment" var="make_payment" />
+<fmt:message key="local.button_reset" var="button_reset" />
+<fmt:message key="local.button_search" var="button_search" />
 <!DOCTYPE html>
 <html>
 <head>
@@ -34,7 +34,7 @@
 </head>
 <body>
 	<!--  HEADER -->
-	<%@ include file="client_page_header.jsp"%>
+	<c:import url="client_page_header.jsp" />
 	<!-- CONTENT -->
 	<div class="content">
 		<form class="reg_form" name="payment_serching" method="post" action="Controller">
@@ -90,6 +90,6 @@
 			</form>
 		</div>
 	</div>
-	<%@ include file="footer.jsp"%>
+	<c:import url="footer.jsp" />
 </body>
 </html>

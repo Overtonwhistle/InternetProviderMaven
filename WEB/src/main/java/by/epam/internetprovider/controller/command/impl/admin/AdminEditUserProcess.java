@@ -16,13 +16,13 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import by.epam.internetprovider.bean.data_object.UserData;
-import by.epam.internetprovider.controller.command.Command;
+import by.epam.internetprovider.controller.command.ICommand;
 import by.epam.internetprovider.controller.command.exception.CommandException;
 import by.epam.internetprovider.service.IInternetProviderService;
 import by.epam.internetprovider.service.exception.ServiceException;
 import by.epam.internetprovider.service.factory.ServiceFactory;
 
-public class AdminEditUserProcess implements Command {
+public class AdminEditUserProcess implements ICommand {
 
 	private static final Logger logger = LogManager.getLogger();
 	private static final String DONE_PAGE = "Controller?command=goto_ad_users";
@@ -48,7 +48,11 @@ public class AdminEditUserProcess implements Command {
 		userData.setLastName(request.getParameter(PARAMETER_EDIT_LASTNAME));
 		userData.setPassportNumber(request.getParameter(PARAMETER_EDIT_PASSPORT));
 		userData.setEmail(request.getParameter(PARAMETER_EDIT_EMAIL));
-		userData.setPassword(request.getParameter(PARAMETER_EDIT_PASSWORD));
+
+		if (!request.getParameter(PARAMETER_EDIT_PASSWORD).isEmpty()) {
+			userData.setPassword(request.getParameter(PARAMETER_EDIT_PASSWORD));
+		}
+
 		userData.setAccountBallance(request.getParameter(PARAMETER_EDIT_BALLANCE));
 		userData.setMonthlyDataUsage(request.getParameter(PARAMETER_EDIT_MONTH_DATA));
 		userData.setTotalDataUsage(request.getParameter(PARAMETER_EDIT_TOTAL_DATA));

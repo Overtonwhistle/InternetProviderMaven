@@ -75,7 +75,6 @@ public class RequestDAO implements IRequestDAO {
 
 	@Override
 	public Request getRequest(int requestId) throws DAORequestNotFoundException, DAOException {
-
 		RequestSearchFilter filter = new RequestSearchFilter();
 		filter.addSubFilter(new SubFilter(FilterParameter.REQUEST_ID, Integer.toString(requestId)));
 
@@ -98,8 +97,7 @@ public class RequestDAO implements IRequestDAO {
 		int userId = getRequest(requestId).getUserId();
 		int tariffId = getRequest(requestId).getTariffId();
 
-		try
-		{
+		try {
 			con = pool.getConnection();
 			con.setAutoCommit(false);
 

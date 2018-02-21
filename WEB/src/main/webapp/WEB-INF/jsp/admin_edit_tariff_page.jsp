@@ -8,31 +8,31 @@
 </c:if>
 <fmt:requestEncoding value="utf-8" />
 <fmt:setLocale value="${sessionScope.local}" />
-<fmt:setBundle basename="localization.local" var="loc" />
-<fmt:message bundle="${loc}" key="local.admin_tariffs_page.add_text" var="add_text" />
-<fmt:message bundle="${loc}" key="local.admin_tariffs_page.unlim" var="unlim" />
-<fmt:message bundle="${loc}" key="local.admin_tariffs_page.all" var="all" />
-<fmt:message bundle="${loc}" key="local.admin_tariffs_page.yes" var="yes" />
-<fmt:message bundle="${loc}" key="local.admin_tariffs_page.no" var="no" />
-<fmt:message bundle="${loc}" key="local.admin_tariffs_page.m_cost" var="m_cost" />
-<fmt:message bundle="${loc}" key="local.admin_tariffs_page.over_cost" var="over_cost" />
-<fmt:message bundle="${loc}" key="local.admin_tariffs_page.over_cost_hint" var="over_cost_hint" />
-<fmt:message bundle="${loc}" key="local.admin_tariffs_page.table_title" var="table_title" />
-<fmt:message bundle="${loc}" key="local.admin_tariffs_page.table_title_hint" var="table_title_hint" />
-<fmt:message bundle="${loc}" key="local.admin_tariffs_page.m_cost_hint" var="m_cost_hint" />
-<fmt:message bundle="${loc}" key="local.admin_tariffs_page.m_limit" var="m_limit" />
-<fmt:message bundle="${loc}" key="local.admin_tariffs_page.m_limit_hint" var="m_limit_hint" />
-<fmt:message bundle="${loc}" key="local.admin_tariffs_page.table_m_cost" var="table_m_cost" />
-<fmt:message bundle="${loc}" key="local.admin_tariffs_page.table_unlim" var="table_unlim" />
-<fmt:message bundle="${loc}" key="local.admin_tariffs_page.table_m_limit" var="table_m_limit" />
-<fmt:message bundle="${loc}" key="local.admin_tariffs_page.table_over_cost" var="table_over_cost" />
-<fmt:message bundle="${loc}" key="local.admin_tariffs_page.table_technology" var="table_technology" />
-<fmt:message bundle="${loc}" key="local.admin_tariffs_page.table_descr" var="table_descr" />
-<fmt:message bundle="${loc}" key="local.admin_tariffs_page.table_descr_hint" var="table_descr_hint" />
-<fmt:message bundle="${loc}" key="local.admin_tariffs_page.edit_apply" var="edit_apply" />
-<fmt:message bundle="${loc}" key="local.admin_tariffs_page.delete_button" var="delete_button" />
-<fmt:message bundle="${loc}" key="local.admin_tariffs_page.editing_text" var="editing_text" />
-<fmt:message bundle="${loc}" key="local.admin_edit_users_page.back_button" var="back_button" />
+<fmt:setBundle basename="localization.local" />
+<fmt:message key="local.admin_tariffs_page.add_text" var="add_text" />
+<fmt:message key="local.admin_tariffs_page.unlim" var="unlim" />
+<fmt:message key="local.admin_tariffs_page.all" var="all" />
+<fmt:message key="local.admin_tariffs_page.yes" var="yes" />
+<fmt:message key="local.admin_tariffs_page.no" var="no" />
+<fmt:message key="local.admin_tariffs_page.m_cost" var="m_cost" />
+<fmt:message key="local.admin_tariffs_page.over_cost" var="over_cost" />
+<fmt:message key="local.admin_tariffs_page.over_cost_hint" var="over_cost_hint" />
+<fmt:message key="local.admin_tariffs_page.table_title" var="table_title" />
+<fmt:message key="local.admin_tariffs_page.table_title_hint" var="table_title_hint" />
+<fmt:message key="local.admin_tariffs_page.m_cost_hint" var="m_cost_hint" />
+<fmt:message key="local.admin_tariffs_page.m_limit" var="m_limit" />
+<fmt:message key="local.admin_tariffs_page.m_limit_hint" var="m_limit_hint" />
+<fmt:message key="local.admin_tariffs_page.table_m_cost" var="table_m_cost" />
+<fmt:message key="local.admin_tariffs_page.table_unlim" var="table_unlim" />
+<fmt:message key="local.admin_tariffs_page.table_m_limit" var="table_m_limit" />
+<fmt:message key="local.admin_tariffs_page.table_over_cost" var="table_over_cost" />
+<fmt:message key="local.admin_tariffs_page.table_technology" var="table_technology" />
+<fmt:message key="local.admin_tariffs_page.table_descr" var="table_descr" />
+<fmt:message key="local.admin_tariffs_page.table_descr_hint" var="table_descr_hint" />
+<fmt:message key="local.admin_tariffs_page.edit_apply" var="edit_apply" />
+<fmt:message key="local.admin_tariffs_page.delete_button" var="delete_button" />
+<fmt:message key="local.admin_tariffs_page.editing_text" var="editing_text" />
+<fmt:message key="local.admin_edit_users_page.back_button" var="back_button" />
 <!DOCTYPE html>
 <html>
 <head>
@@ -43,10 +43,9 @@
 <link rel="stylesheet" href="css/normalize.css">
 <link rel="stylesheet" href="css/style.css" type="text/css">
 <link rel="stylesheet" href="css/reg-form.css" type="text/css">
-<!-- <link rel="stylesheet" href="css/users_search_form.css" type="text/css"> -->
 </head>
 <body>
-	<%@ include file="admin_page_header.jsp"%>
+	<c:import url="admin_page_header.jsp" />
 	<!-- CONTENT -->
 	<div class="content">
 		<form action="Controller" method="post" class="reg_form">
@@ -82,12 +81,12 @@
 				</select></li>
 				<li><label>${table_descr}:</label> <input type="text" name="edit_description"
 					value="<c:out value="${sessionScope.tariff_to_work.description}" />" /></li>
-				<li><button class="submit" type="submit" name="command" value="goto_ad_tariffs">${back_button}</button>
+				<li><button class="submit" type="submit" onclick="history.back();">${back_button}</button>
 					<button style="margin-left: 17%;" class="submit" type="submit" name="command"
 						value="admin_edit_tariff_process">${edit_apply}</button></li>
 			</ul>
 		</form>
 	</div>
-	<%@ include file="footer.jsp"%>
+	<c:import url="footer.jsp" />
 </body>
 </html>

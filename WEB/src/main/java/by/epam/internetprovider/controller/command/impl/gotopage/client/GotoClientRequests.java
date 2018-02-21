@@ -18,14 +18,14 @@ import org.apache.logging.log4j.Logger;
 
 import by.epam.internetprovider.bean.Request;
 import by.epam.internetprovider.bean.User;
-import by.epam.internetprovider.controller.command.Command;
+import by.epam.internetprovider.controller.command.ICommand;
 import by.epam.internetprovider.controller.command.exception.CommandException;
 import by.epam.internetprovider.controller.command.util.CommandUtil;
 import by.epam.internetprovider.service.IInternetProviderService;
 import by.epam.internetprovider.service.exception.ServiceException;
 import by.epam.internetprovider.service.factory.ServiceFactory;
 
-public class GotoClientRequests implements Command {
+public class GotoClientRequests implements ICommand {
 
 	private static final Logger logger = LogManager.getLogger();
 	private static final String PAGE = "WEB-INF/jsp/client_requests_page.jsp";

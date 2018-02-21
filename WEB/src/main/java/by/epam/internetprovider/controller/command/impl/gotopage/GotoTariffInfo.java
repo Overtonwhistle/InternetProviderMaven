@@ -15,13 +15,13 @@ import org.apache.logging.log4j.Logger;
 
 import by.epam.internetprovider.bean.Tariff;
 import by.epam.internetprovider.bean.Technology;
-import by.epam.internetprovider.controller.command.Command;
+import by.epam.internetprovider.controller.command.ICommand;
 import by.epam.internetprovider.controller.command.exception.CommandException;
 import by.epam.internetprovider.service.IInternetProviderService;
 import by.epam.internetprovider.service.exception.ServiceException;
 import by.epam.internetprovider.service.factory.ServiceFactory;
 
-public class GotoTariffInfo implements Command {
+public class GotoTariffInfo implements ICommand {
 	private static final Logger logger = LogManager.getLogger();
 	private static final String PAGE = "WEB-INF/jsp/tariff_info_page.jsp";
 

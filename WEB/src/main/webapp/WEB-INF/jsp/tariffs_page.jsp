@@ -6,32 +6,32 @@
 </c:if>
 <fmt:requestEncoding value="utf-8" />
 <fmt:setLocale value="${sessionScope.local}" />
-<fmt:setBundle basename="localization.local" var="loc" />
-<fmt:message bundle="${loc}" key="local.tariffs_page.header_text" var="header_text" />
-<fmt:message bundle="${loc}" key="local.tariffs_page.tariff_view_text" var="tariff_view_text" />
-<fmt:message bundle="${loc}" key="local.tariffs_page.no_data_text" var="no_data_text" />
-<fmt:message bundle="${loc}" key="local.tariffs_page.searching_text" var="searching_text" />
-<fmt:message bundle="${loc}" key="local.tariffs_page.unlim" var="unlim" />
-<fmt:message bundle="${loc}" key="local.tariffs_page.all" var="all" />
-<fmt:message bundle="${loc}" key="local.tariffs_page.yes" var="yes" />
-<fmt:message bundle="${loc}" key="local.tariffs_page.no" var="no" />
-<fmt:message bundle="${loc}" key="local.tariffs_page.rent" var="rent" />
-<fmt:message bundle="${loc}" key="local.tariffs_page.tech" var="tech" />
-<fmt:message bundle="${loc}" key="local.tariffs_page.m_cost" var="m_cost" />
-<fmt:message bundle="${loc}" key="local.tariffs_page.m_cost_ph" var="m_cost_ph" />
-<fmt:message bundle="${loc}" key="local.tariffs_page.m_limit" var="m_limit" />
-<fmt:message bundle="${loc}" key="local.tariffs_page.m_limit_ph" var="m_limit_ph" />
-<fmt:message bundle="${loc}" key="local.tariffs_page.over_cost" var="over_cost" />
-<fmt:message bundle="${loc}" key="local.tariffs_page.over_cost_ph" var="over_cost_ph" />
-<fmt:message bundle="${loc}" key="local.tariffs_page.reset_button" var="reset_button" />
-<fmt:message bundle="${loc}" key="local.tariffs_page.search_button" var="search_button" />
-<fmt:message bundle="${loc}" key="local.tariffs_page.table_title" var="table_title" />
-<fmt:message bundle="${loc}" key="local.tariffs_page.table_m_cost" var="table_m_cost" />
-<fmt:message bundle="${loc}" key="local.tariffs_page.table_unlim" var="table_unlim" />
-<fmt:message bundle="${loc}" key="local.tariffs_page.table_m_limit" var="table_m_limit" />
-<fmt:message bundle="${loc}" key="local.tariffs_page.table_over_cost" var="table_over_cost" />
-<fmt:message bundle="${loc}" key="local.tariffs_page.table_technology" var="table_technology" />
-<fmt:message bundle="${loc}" key="local.tariffs_page.table_descr" var="table_descr" />
+<fmt:setBundle basename="localization.local"/>
+<fmt:message  key="local.tariffs_page.header_text" var="header_text" />
+<fmt:message  key="local.tariffs_page.tariff_view_text" var="tariff_view_text" />
+<fmt:message  key="local.tariffs_page.no_data_text" var="no_data_text" />
+<fmt:message  key="local.tariffs_page.searching_text" var="searching_text" />
+<fmt:message  key="local.tariffs_page.unlim" var="unlim" />
+<fmt:message  key="local.tariffs_page.all" var="all" />
+<fmt:message  key="local.tariffs_page.yes" var="yes" />
+<fmt:message  key="local.tariffs_page.no" var="no" />
+<fmt:message  key="local.tariffs_page.rent" var="rent" />
+<fmt:message  key="local.tariffs_page.tech" var="tech" />
+<fmt:message  key="local.tariffs_page.m_cost" var="m_cost" />
+<fmt:message  key="local.tariffs_page.m_cost_ph" var="m_cost_ph" />
+<fmt:message  key="local.tariffs_page.m_limit" var="m_limit" />
+<fmt:message  key="local.tariffs_page.m_limit_ph" var="m_limit_ph" />
+<fmt:message  key="local.tariffs_page.over_cost" var="over_cost" />
+<fmt:message  key="local.tariffs_page.over_cost_ph" var="over_cost_ph" />
+<fmt:message  key="local.tariffs_page.reset_button" var="reset_button" />
+<fmt:message  key="local.tariffs_page.search_button" var="search_button" />
+<fmt:message  key="local.tariffs_page.table_title" var="table_title" />
+<fmt:message  key="local.tariffs_page.table_m_cost" var="table_m_cost" />
+<fmt:message  key="local.tariffs_page.table_unlim" var="table_unlim" />
+<fmt:message  key="local.tariffs_page.table_m_limit" var="table_m_limit" />
+<fmt:message  key="local.tariffs_page.table_over_cost" var="table_over_cost" />
+<fmt:message  key="local.tariffs_page.table_technology" var="table_technology" />
+<fmt:message  key="local.tariffs_page.table_descr" var="table_descr" />
 <!DOCTYPE html>
 <html>
 <head>
@@ -45,7 +45,7 @@
 </head>
 <body>
 	<!--  HEADER -->
-	<%@ include file="index_page_header.jsp"%>
+	<c:import url="index_page_header.jsp" />
 	<!-- CONTENT -->
 	<div class="content">
 		<h4>${tariff_view_text}</h4>
@@ -130,6 +130,6 @@
 		</c:if>
 	</div>
 	<!-- CONTENT END -->
-	<%@ include file="footer.jsp"%>
+	<c:import url="footer.jsp" />
 </body>
 </html>

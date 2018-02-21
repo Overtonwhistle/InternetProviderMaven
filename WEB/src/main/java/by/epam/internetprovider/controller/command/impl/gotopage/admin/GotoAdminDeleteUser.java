@@ -14,13 +14,13 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import by.epam.internetprovider.bean.User;
-import by.epam.internetprovider.controller.command.Command;
+import by.epam.internetprovider.controller.command.ICommand;
 import by.epam.internetprovider.controller.command.exception.CommandException;
 import by.epam.internetprovider.service.IInternetProviderService;
 import by.epam.internetprovider.service.exception.ServiceException;
 import by.epam.internetprovider.service.factory.ServiceFactory;
 
-public class GotoAdminDeleteUser implements Command {
+public class GotoAdminDeleteUser implements ICommand {
 	private static final Logger logger = LogManager.getLogger();
 	private static final String PAGE = "WEB-INF/jsp/admin_del_user_page.jsp";
 	private static final String URL = "Controller?command=goto_ad_delete_user";

@@ -16,13 +16,13 @@ import org.apache.logging.log4j.Logger;
 import by.epam.internetprovider.bean.Request;
 import by.epam.internetprovider.bean.Tariff;
 import by.epam.internetprovider.bean.User;
-import by.epam.internetprovider.controller.command.Command;
+import by.epam.internetprovider.controller.command.ICommand;
 import by.epam.internetprovider.controller.command.exception.CommandException;
 import by.epam.internetprovider.service.IInternetProviderService;
 import by.epam.internetprovider.service.exception.ServiceException;
 import by.epam.internetprovider.service.factory.ServiceFactory;
 
-public class GotoAdminProcessRequest implements Command {
+public class GotoAdminProcessRequest implements ICommand {
 	private static final Logger logger = LogManager.getLogger();
 	private static final String URL = "Controller?command=goto_ad_process_request";
 	private static final String PAGE = "WEB-INF/jsp/admin_process_request_page.jsp";

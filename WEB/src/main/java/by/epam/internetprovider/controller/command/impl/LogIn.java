@@ -17,13 +17,13 @@ import org.apache.logging.log4j.Logger;
 
 import by.epam.internetprovider.bean.User;
 import by.epam.internetprovider.bean.Param.UserRole;
-import by.epam.internetprovider.controller.command.Command;
+import by.epam.internetprovider.controller.command.ICommand;
 import by.epam.internetprovider.service.IInternetProviderService;
 import by.epam.internetprovider.service.exception.ServiceException;
 import by.epam.internetprovider.service.exception.ServiceUserNotFoundException;
 import by.epam.internetprovider.service.factory.ServiceFactory;
 
-public class LogIn implements Command {
+public class LogIn implements ICommand {
 
 	private static final Logger logger = LogManager.getLogger();
 	private static final String ERROR_PAGE = "WEB-INF/jsp/errors-pages/login-error.jsp";

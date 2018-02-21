@@ -75,6 +75,30 @@ public class UserData implements Serializable {
 		return tariffId;
 	}
 
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+	public String getRepeatePassword() {
+		return repeatePassword;
+	}
+
+	public void setRepeatePassword(String repeatePassword) {
+		this.repeatePassword = repeatePassword;
+	}
+
+	public String getCurrentPassword() {
+		return currentPassword;
+	}
+
+	public void setCurrentPassword(String currentPassword) {
+		this.currentPassword = currentPassword;
+	}
+
 	public void setTariffId(String tariffId) {
 		this.tariffId = tariffId;
 	}
@@ -109,30 +133,6 @@ public class UserData implements Serializable {
 
 	public void setLogin(String login) {
 		this.login = login;
-	}
-
-	public String getPassword() {
-		return password;
-	}
-
-	public void setPassword(String password) {
-		this.password = password;
-	}
-
-	public String getRepeatePassword() {
-		return password;
-	}
-
-	public void setRepeatePassword(String password) {
-		this.password = password;
-	}
-
-	public String getCurrentPassword() {
-		return currentPassword;
-	}
-
-	public void setCurrentPassword(String currentPassword) {
-		this.currentPassword = currentPassword;
 	}
 
 	public String getEmail() {
@@ -184,9 +184,10 @@ public class UserData implements Serializable {
 		return "UserData [role=" + role + ", id=" + id + ", tariffId=" + tariffId
 				+ ", monthlyDataUsage=" + monthlyDataUsage + ", totalDataUsage=" + totalDataUsage
 				+ ", accountBallance=" + accountBallance + ", login=" + login + ", password="
-				+ password + ", repeatePassword=" + repeatePassword + ", currentPassword="
-				+ currentPassword + ", email=" + email + ", firstName=" + firstName + ", lastName="
-				+ lastName + ", passportNumber=" + passportNumber + ", regDate=" + regDate + "]";
+				+ password.hashCode() + ", repeatePassword=" + repeatePassword.hashCode()
+				+ ", currentPassword=" + currentPassword.toString() + ", email=" + email
+				+ ", firstName=" + firstName + ", lastName=" + lastName + ", passportNumber="
+				+ passportNumber + ", regDate=" + regDate + "]";
 	}
 
 }

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<taglib version="2.1" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee/web-jsptaglibrary_2_1.xsd">
+	<tlib-version>1.0</tlib-version>
+	<short-name>ctg</short-name>
+	<uri>customtags</uri>
+
+	<tag>
+		<name>info-time</name>
+		<tag-class>by.epam.internetprovider.controller.customtag.InfoTimeTag</tag-class>
+		<body-content>empty</body-content>
+	</tag>
+
+	<tag>
+		<name>full-name</name>
+		<tag-class>by.epam.internetprovider.controller.customtag.FullUserName</tag-class>
+		<body-content>empty</body-content>
+	</tag>
+	<tag>
+		<name>page-load-time</name>
+		<tag-class>by.epam.internetprovider.controller.customtag.PageLoadingTime</tag-class>
+		<body-content>empty</body-content>
+	</tag>
+
+	<tag>
+		<name>logged</name>
+		<tag-class>by.epam.internetprovider.controller.customtag.IsLogged</tag-class>
+		<body-content>scriptless</body-content>
+	</tag>
+
+	<tag>
+		<name>not-logged</name>
+		<tag-class>by.epam.internetprovider.controller.customtag.IsNotLogged</tag-class>
+		<body-content>scriptless</body-content>
+	</tag>
+
+	<tag>
+		<name>user-role</name>
+		<tag-class>by.epam.internetprovider.controller.customtag.UserRole</tag-class>
+		<body-content>scriptless</body-content>
+		<attribute>
+			<name>role</name>
+			<required>true</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+	</tag>
+
+</taglib>

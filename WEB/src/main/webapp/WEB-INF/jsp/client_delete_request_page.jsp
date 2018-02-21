@@ -12,14 +12,13 @@
 </c:if>
 <fmt:requestEncoding value="utf-8" />
 <fmt:setLocale value="${sessionScope.local}" />
-<fmt:setBundle basename="localization.local" var="loc" />
-<fmt:message bundle="${loc}" key="local.client_tariffs_page.delete_request_text" var="delete_request_text" />
-<fmt:message bundle="${loc}" key="local.client_tariffs_page.delete_request_question"
-	var="delete_request_question" />
-<fmt:message bundle="${loc}" key="local.client_tariffs_page.button_back" var="button_back" />
-<fmt:message bundle="${loc}" key="local.client_tariffs_page.button_delete" var="button_delete" />
+<fmt:setBundle basename="localization.local" />
+<fmt:message key="local.client_tariffs_page.delete_request_text" var="delete_request_text" />
+<fmt:message key="local.client_tariffs_page.delete_request_question" var="delete_request_question" />
+<fmt:message key="local.client_tariffs_page.button_back" var="button_back" />
+<fmt:message key="local.client_tariffs_page.button_delete" var="button_delete" />
 <!-- CLIENT BLOCK PART -->
-<fmt:message bundle="${loc}" key="local.client_payments.making_payment" var="making_payment" />
+<fmt:message key="local.client_payments.making_payment" var="making_payment" />
 <title>Internet Provider</title>
 <link rel="shortcut icon" href="images/icons/16.ico" type="image/x-icon">
 <link rel="stylesheet" href="css/normalize.css">
@@ -28,7 +27,7 @@
 </head>
 <body>
 	<!--  HEADER -->
-	<%@ include file="client_page_header.jsp"%>
+	<c:import url="client_page_header.jsp" />
 	<!-- CONTENT -->
 	<div class="content">
 		<h6>${delete_request_text}</h6>
@@ -44,6 +43,6 @@
 			</ul>
 		</form>
 	</div>
-	<%@ include file="footer.jsp"%>
+	<c:import url="footer.jsp" />
 </body>
 </html>

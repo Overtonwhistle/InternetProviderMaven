@@ -9,9 +9,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import by.epam.internetprovider.controller.command.Command;
+import by.epam.internetprovider.controller.command.ICommand;
 
-public class GotoClientMakePayment implements Command {
+public class GotoClientMakePayment implements ICommand {
 
 	private static final String PAGE = "WEB-INF/jsp/client_make_payment_page.jsp";
 	private static final String URL = "Controller?command=goto_client_make_payment";

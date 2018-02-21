@@ -49,6 +49,9 @@ import by.epam.internetprovider.service.exception.ServiceOpenDataSourceException
 import by.epam.internetprovider.service.exception.ServiceRequestNotFoundException;
 import by.epam.internetprovider.service.exception.ServiceTariffNotFoundException;
 import by.epam.internetprovider.service.exception.ServiceUserNotFoundException;
+import by.epam.internetprovider.service.impl.util.PasswordComputer;
+import by.epam.internetprovider.service.impl.util.PasswordComputer.CannotPerformOperationException;
+import by.epam.internetprovider.service.impl.util.PasswordComputer.InvalidHashException;
 import by.epam.internetprovider.service.impl.util.Validation;
 
 public class InternetProviderService implements IInternetProviderService {
@@ -109,15 +112,30 @@ public class InternetProviderService implements IInternetProviderService {
 		checkForNull(login);
 		checkForNull(password);
 
+		User user;
+
 		try {
-			return userDAO.getUserByLogin(login, password);
+			user = userDAO.getUserByLogin(login);
 		} catch (DAOUserNotFoundException e) {
-			throw new ServiceUserNotFoundException("User " + login + ":" + password + " not found.",
-					e);
+			throw new ServiceUserNotFoundException("User with login " + login + " not found.", e);
 		} catch (DAOException e) {
 			throw new ServiceException("Data source error in getUserByLogin()", e);
 		}
 
+		boolean isPasswordCorrect = false;
+
+		try {
+			isPasswordCorrect = PasswordComputer.verifyPassword(password, user.getPassword());
+		} catch (CannotPerformOperationException | InvalidHashException e) {
+			throw new ServiceException("Service error in getUserByLogin()", e);
+		}
+
+		if (isPasswordCorrect) {
+			return user;
+		} else {
+			throw new ServiceUserNotFoundException(
+					"User with login " + login + ":" + password + " not found.");
+		}
 	}
 
 	@Override
@@ -149,11 +167,11 @@ public class InternetProviderService implements IInternetProviderService {
 			user.setTotalDataUsage(INITIAL_TOTAL_DATA);
 			user.setAccountBallance(INITIAL_ACCOUNT_BALLANCE);
 			user.setTariffId(INITIAL_TARIFF_ID);
-			setUserData(user, userData);
 
 			try {
+				setUserData(user, userData);
 				userDAO.addUser(user);
-			} catch (DAOException e) {
+			} catch (DAOException | CannotPerformOperationException e) {
 				throw new ServiceException("Error in registerUser()", e);
 			}
 		}
@@ -170,12 +188,13 @@ public class InternetProviderService implements IInternetProviderService {
 
 		if (errors.isEmpty()) {
 			User user = new User();
-			setUserData(user, userData);
 			try {
+				setUserData(user, userData);
 				userDAO.editUser(userId, user);
-			} catch (DAOException e) {
+			} catch (DAOException | CannotPerformOperationException e) {
 				throw new ServiceException("Error in editUser()", e);
 			}
+
 		}
 		return errors;
 	}
@@ -192,8 +211,13 @@ public class InternetProviderService implements IInternetProviderService {
 
 		User user = getUserById(userId);
 
-		if (!userData.getCurrentPassword().equals(user.getPassword())) {
-			errors.add(errorsResource.getString(ERROR_WRONG_CURR_PASSWORD));
+		try {
+			if (!PasswordComputer.verifyPassword(userData.getCurrentPassword(),
+					user.getPassword())) {
+				errors.add(errorsResource.getString(ERROR_WRONG_CURR_PASSWORD));
+			}
+		} catch (CannotPerformOperationException | InvalidHashException e1) {
+			throw new ServiceException("Error in editClientProfile()", e1);
 		}
 
 		if (errors.isEmpty()) {
@@ -202,7 +226,14 @@ public class InternetProviderService implements IInternetProviderService {
 			user.setLastName(userData.getLastName());
 			user.setPassportNumber(userData.getPassportNumber());
 			user.setEmail(userData.getEmail());
-			user.setPassword(userData.getPassword());
+
+			if (userData.getPassword() != null) {
+				try {
+					user.setPassword(PasswordComputer.createHash(userData.getPassword()));
+				} catch (CannotPerformOperationException e) {
+					throw new ServiceException("Error in editClientProfile()", e);
+				}
+			}
 
 			try {
 				userDAO.editUser(userId, user);
@@ -422,6 +453,8 @@ public class InternetProviderService implements IInternetProviderService {
 
 	@Override
 	public Request getRequest(int requestId) throws ServiceException {
+
+		System.out.println("service::get request:" + requestId);
 
 		checkId(requestId);
 
@@ -1025,7 +1058,8 @@ public class InternetProviderService implements IInternetProviderService {
 		}
 	}
 
-	private static void setUserData(User user, UserData userData) {
+	private static void setUserData(User user, UserData userData)
+			throws CannotPerformOperationException {
 
 		if (userData.getRole() != null)
 			user.setRole(UserRole.valueOf(userData.getRole()));
@@ -1052,7 +1086,7 @@ public class InternetProviderService implements IInternetProviderService {
 			user.setLogin(userData.getLogin());
 
 		if (userData.getPassword() != null)
-			user.setPassword(userData.getPassword());
+			user.setPassword(PasswordComputer.createHash(userData.getPassword()));
 
 		if (userData.getMonthlyDataUsage() != null)
 			user.setMonthlyDataUsage(Long.parseLong(userData.getMonthlyDataUsage()));

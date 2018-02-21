@@ -9,9 +9,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import by.epam.internetprovider.controller.command.Command;
+import by.epam.internetprovider.controller.command.ICommand;
 
-public class GotoClientEditProfile implements Command {
+public class GotoClientEditProfile implements ICommand {
 
 	private static final String PAGE = "WEB-INF/jsp/client_edit_profile_page.jsp";
 	private static final String URL = "Controller?command=goto_client_edit_profile";

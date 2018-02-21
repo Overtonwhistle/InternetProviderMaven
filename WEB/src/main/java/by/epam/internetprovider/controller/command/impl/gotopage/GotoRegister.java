@@ -10,9 +10,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import by.epam.internetprovider.controller.command.Command;
+import by.epam.internetprovider.controller.command.ICommand;
 
-public class GotoRegister implements Command {
+public class GotoRegister implements ICommand {
 	private static final String PAGE = "WEB-INF/jsp/register.jsp";
 	private static final String URL = "Controller?command=register";
 

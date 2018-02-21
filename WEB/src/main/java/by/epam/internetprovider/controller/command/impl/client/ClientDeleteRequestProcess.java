@@ -15,13 +15,13 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import by.epam.internetprovider.bean.Request;
-import by.epam.internetprovider.controller.command.Command;
+import by.epam.internetprovider.controller.command.ICommand;
 import by.epam.internetprovider.controller.command.exception.CommandException;
 import by.epam.internetprovider.service.IInternetProviderService;
 import by.epam.internetprovider.service.exception.ServiceException;
 import by.epam.internetprovider.service.factory.ServiceFactory;
 
-public class ClientDeleteRequestProcess implements Command {
+public class ClientDeleteRequestProcess implements ICommand {
 
 	private static final Logger logger = LogManager.getLogger();
 	private static final String DONE_PAGE = "Controller?command=goto_client_requests";

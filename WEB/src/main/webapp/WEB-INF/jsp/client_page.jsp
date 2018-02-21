@@ -8,24 +8,24 @@
 <c:set var="url" scope="session" value="Controller?command=goto_client" />
 <fmt:requestEncoding value="utf-8" />
 <fmt:setLocale value="${sessionScope.local}" />
-<fmt:setBundle basename="localization.local" var="loc" />
-<fmt:message bundle="${loc}" key="local.client_page.summary_text" var="summary_text" />
-<fmt:message bundle="${loc}" key="local.client_page.data_at" var="data_at" />
-<fmt:message bundle="${loc}" key="local.client_page.menu_hint" var="menu_hint" />
-<fmt:message bundle="${loc}" key="local.client_page.reg_date" var="reg_date" />
-<fmt:message bundle="${loc}" key="local.client_page.passport" var="passport" />
-<fmt:message bundle="${loc}" key="local.client_page.email" var="email" />
-<fmt:message bundle="${loc}" key="local.client_page.m_data" var="m_data" />
-<fmt:message bundle="${loc}" key="local.client_page.t_data" var="t_data" />
-<fmt:message bundle="${loc}" key="local.client_page.megabytes" var="megabytes" />
-<fmt:message bundle="${loc}" key="local.client_page.ballance" var="ballance" />
-<fmt:message bundle="${loc}" key="local.client_page.tariff" var="tariff" />
-<fmt:message bundle="${loc}" key="local.client_page.tariff_not_set" var="tariff_not_set" />
-<fmt:message bundle="${loc}" key="local.client_page.blocked_since" var="blocked_since" />
-<fmt:message bundle="${loc}" key="local.client_page.blocking_reason" var="blocking_reason" />
-<fmt:message bundle="${loc}" key="local.client_page.blocking_reason_1" var="blocking_reason_1" />
-<fmt:message bundle="${loc}" key="local.client_page.blocking_reason_2" var="blocking_reason_2" />
-<fmt:message bundle="${loc}" key="local.client_page.blocking_reason_3" var="blocking_reason_3" />
+<fmt:setBundle basename="localization.local" />
+<fmt:message key="local.client_page.summary_text" var="summary_text" />
+<fmt:message key="local.client_page.data_at" var="data_at" />
+<fmt:message key="local.client_page.menu_hint" var="menu_hint" />
+<fmt:message key="local.client_page.reg_date" var="reg_date" />
+<fmt:message key="local.client_page.passport" var="passport" />
+<fmt:message key="local.client_page.email" var="email" />
+<fmt:message key="local.client_page.m_data" var="m_data" />
+<fmt:message key="local.client_page.t_data" var="t_data" />
+<fmt:message key="local.client_page.megabytes" var="megabytes" />
+<fmt:message key="local.client_page.ballance" var="ballance" />
+<fmt:message key="local.client_page.tariff" var="tariff" />
+<fmt:message key="local.client_page.tariff_not_set" var="tariff_not_set" />
+<fmt:message key="local.client_page.blocked_since" var="blocked_since" />
+<fmt:message key="local.client_page.blocking_reason" var="blocking_reason" />
+<fmt:message key="local.client_page.blocking_reason_1" var="blocking_reason_1" />
+<fmt:message key="local.client_page.blocking_reason_2" var="blocking_reason_2" />
+<fmt:message key="local.client_page.blocking_reason_3" var="blocking_reason_3" />
 <!DOCTYPE html>
 <html>
 <head>
@@ -39,7 +39,7 @@
 </head>
 <body>
 	<!--  HEADER -->
-	<%@ include file="client_page_header.jsp"%>
+	<c:import url="client_page_header.jsp" />
 	<!-- CONTENT -->
 	<div class="content">
 		<div class="row_of_two">
@@ -108,6 +108,6 @@
 			<div class="t_one_of_two"></div>
 		</div>
 	</div>
-	<%@ include file="footer.jsp"%>
+	<c:import url="footer.jsp" />
 </body>
 </html>

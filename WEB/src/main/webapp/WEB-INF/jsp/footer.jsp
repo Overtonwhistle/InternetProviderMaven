@@ -3,8 +3,8 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <fmt:requestEncoding value="utf-8" />
 <fmt:setLocale value="${sessionScope.local}" />
-<fmt:setBundle basename="localization.local" var="loc" />
-<fmt:message bundle="${loc}" key="local.made_by" var="made_by" />
+<fmt:setBundle basename="localization.local" />
+<fmt:message key="local.made_by" var="made_by" />
 <!-- FOOTER -->
 <div class="footer">
 	<div class="footer_row_of_three">

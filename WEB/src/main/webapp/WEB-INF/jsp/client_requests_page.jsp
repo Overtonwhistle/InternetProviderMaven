@@ -7,20 +7,20 @@
 <c:set var="url" scope="session" value="Controller?command=goto_client_requests" />
 <fmt:requestEncoding value="utf-8" />
 <fmt:setLocale value="${sessionScope.local}" />
-<fmt:setBundle basename="localization.local" var="loc" />
-<fmt:message bundle="${loc}" key="local.client_requests.current_tariff_text" var="current_tariff_text" />
-<fmt:message bundle="${loc}" key="local.client_requests.tariff_details_hint" var="tariff_details_hint" />
-<fmt:message bundle="${loc}" key="local.client_requests.tariff_changing_hint" var="tariff_changing_hint" />
-<fmt:message bundle="${loc}" key="local.client_requests.button_change_tariff" var="button_change_tariff" />
-<fmt:message bundle="${loc}" key="local.client_requests.active_request_text" var="active_request_text" />
-<fmt:message bundle="${loc}" key="local.client_requests.request_date_text" var="request_date_text" />
-<fmt:message bundle="${loc}" key="local.client_requests.requested_tariff_text" var="requested_tariff_text" />
-<fmt:message bundle="${loc}" key="local.client_requests.delete_request_hint" var="delete_request_hint" />
-<fmt:message bundle="${loc}" key="local.client_requests.button_delete_request" var="button_delete_request" />
-<fmt:message bundle="${loc}" key="local.client_requests.history_empty_text" var="history_empty_text" />
-<fmt:message bundle="${loc}" key="local.client_requests.history_text" var="history_text" />
-<fmt:message bundle="${loc}" key="local.client_requests.history_changing_date" var="history_changing_date" />
-<fmt:message bundle="${loc}" key="local.client_requests.history_tariff" var="history_tariff" />
+<fmt:setBundle basename="localization.local" />
+<fmt:message  key="local.client_requests.current_tariff_text" var="current_tariff_text" />
+<fmt:message  key="local.client_requests.tariff_details_hint" var="tariff_details_hint" />
+<fmt:message  key="local.client_requests.tariff_changing_hint" var="tariff_changing_hint" />
+<fmt:message  key="local.client_requests.button_change_tariff" var="button_change_tariff" />
+<fmt:message  key="local.client_requests.active_request_text" var="active_request_text" />
+<fmt:message  key="local.client_requests.request_date_text" var="request_date_text" />
+<fmt:message  key="local.client_requests.requested_tariff_text" var="requested_tariff_text" />
+<fmt:message  key="local.client_requests.delete_request_hint" var="delete_request_hint" />
+<fmt:message  key="local.client_requests.button_delete_request" var="button_delete_request" />
+<fmt:message  key="local.client_requests.history_empty_text" var="history_empty_text" />
+<fmt:message  key="local.client_requests.history_text" var="history_text" />
+<fmt:message  key="local.client_requests.history_changing_date" var="history_changing_date" />
+<fmt:message  key="local.client_requests.history_tariff" var="history_tariff" />
 <!DOCTYPE html>
 <html>
 <head>
@@ -34,7 +34,7 @@
 </head>
 <body>
 	<!--  HEADER -->
-	<%@ include file="client_page_header.jsp"%>
+	<c:import url="client_page_header.jsp" />
 	<!-- CONTENT -->
 	<div class="content">
 		<div class="row_of_two">
@@ -105,6 +105,6 @@
 			</div>
 		</div>
 	</div>
-	<%@ include file="footer.jsp"%>
+	<c:import url="footer.jsp" />
 </body>
 </html>

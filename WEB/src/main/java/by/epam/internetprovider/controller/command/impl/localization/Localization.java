@@ -8,9 +8,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import by.epam.internetprovider.controller.command.Command;
+import by.epam.internetprovider.controller.command.ICommand;
 
-public class Localization implements Command {
+public class Localization implements ICommand {
 	private static final String DEFAULT_PAGE = "index.jsp";
 	private static final String COOCKIE_LOCALE_NAME = "locale";
 	private static final String PARAMETER_LOCAL = "local";
@@ -56,10 +56,10 @@ public class Localization implements Command {
 
 		if (url != null) {
 			response.sendRedirect(url);
-
 		} else {
 			response.sendRedirect(DEFAULT_PAGE);
 		}
+		// response.sendRedirect(request.getHeader("referer"));
 
 	}
 

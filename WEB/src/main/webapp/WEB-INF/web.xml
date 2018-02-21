@@ -25,6 +25,13 @@
 		<welcome-file>default.jsp</welcome-file>
 	</welcome-file-list>
 
+	<jsp-config>
+		<taglib>
+			<taglib-uri>customtags</taglib-uri>
+			<taglib-location>/WEB-INF/tld/custom.tld</taglib-location>
+		</taglib>
+	</jsp-config>
+
 	<context-param> <!-- Starting language: "ru" or "en" only -->
 		<param-name>start_lang</param-name>
 		<param-value>ru</param-value>

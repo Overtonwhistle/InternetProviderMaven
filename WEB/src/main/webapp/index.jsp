@@ -1,9 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
+<%@ taglib prefix="ctg" uri="customtags"%>
+<c:set var="url" scope="session" value="index.jsp" />
 
 <%-- Localization init --%>
-<c:set var="url" scope="session" value="index.jsp" />
 <c:if test="${empty sessionScope.locale and not empty cookie.locale}">
 	<c:set var="local" value="${cookie.locale.value}" scope="session" />
 </c:if>
@@ -13,7 +14,6 @@
 
 <fmt:setLocale value="${sessionScope.local}" />
 <fmt:setBundle basename="localization.local" var="loc" />
-
 <fmt:message bundle="${loc}" key="local.main_message" var="header_text" />
 <fmt:message bundle="${loc}" key="local.article_one" var="article_one" />
 <fmt:message bundle="${loc}" key="local.link_one" var="link_one" />
@@ -36,7 +36,9 @@
 </head>
 <body>
 	<!--  HEADER -->
-	<%@ include file="WEB-INF/jsp/index_page_header.jsp"%>
+<%-- 	<%@ include file="WEB-INF/jsp/index_page_header.jsp"%> --%>
+		<c:import url="WEB-INF/jsp/index_page_header.jsp" />
+	
 	<!-- CONTENT -->
 	<div class="content">
 		<div class="row_of_two">
@@ -57,7 +59,13 @@
 				</p>
 			</div>
 		</div>
+		<p>
+			Page loading time:
+			<ctg:page-load-time />
+			ms.
+		</p>
 	</div>
-	<%@ include file="WEB-INF/jsp/footer.jsp"%>
+	<c:import url="WEB-INF/jsp/footer.jsp" />
+
 </body>
 </html>

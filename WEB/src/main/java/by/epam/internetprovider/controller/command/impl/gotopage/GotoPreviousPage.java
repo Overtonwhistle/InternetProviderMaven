@@ -10,9 +10,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import by.epam.internetprovider.controller.command.Command;
+import by.epam.internetprovider.controller.command.ICommand;
 
-public class GotoPreviousPage implements Command {
+public class GotoPreviousPage implements ICommand {
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response)

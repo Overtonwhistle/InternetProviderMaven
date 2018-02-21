@@ -35,11 +35,11 @@ public class queryConstant {
 	public static final String PAYMENT_AMOUNT_SUBFILTER = "p_amount";
 	public static final String PAYMENT_USER_ID_SUBFILTER = "user_u_id";
 	public static final String PAYMENT_DATE_SUBFILTER = "p_payment_date";
-	public static final String PAYMENT_BYDATE_SUBQUERY = " order by p_payment_date";
+	public static final String PAYMENT_BYDATE_SUBQUERY = " order by p_payment_date desc";
 	public static final String PAYMENT_BYUSER_SUBQUERY = " order by user_u_id";
 	public static final String PAYMENT_BYAMOUNT_SUBQUERY = " order by p_amount";
 
-	public static final String GET_REQUESTS_QUERY = "select r_id, r_request_date,"
+	public static final String GET_REQUESTS_QUERY = "select r_id,	 r_request_date,"
 			+ " r_processed_date, r_processed_by, user_u_id, tariff_t_id from "
 			+ "`internet_provider`.`request`";
 	public static final String REQUEST_ID_SUBFILTER = "r_id";
@@ -50,7 +50,7 @@ public class queryConstant {
 	public static final String REQUEST_PROCESSED_BY_SUBFILTER = "r_processed_by";
 	public static final String REQUEST_USER_ID_SUBFILTER = "user_u_id";
 	public static final String REQUEST_TARIFF_ID_SUBFILTER = "tariff_t_id";
-	public static final String REQUEST_BY_DATE_SUBQUERY = "order by r_request_date";
+	public static final String REQUEST_BY_DATE_SUBQUERY = "order by r_request_date desc";
 	public static final String REQUEST_BY_USER_SUBQUERY = "order by user_u_id";
 	public static final String REQUEST_BY_TARIFF_SUBQUERY = "order by tariff_t_id";
 

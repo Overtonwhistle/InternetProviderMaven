@@ -1,4 +1,5 @@
 package by.epam.internetprovider.controller.command.impl.gotopage.admin;
+
 import static by.epam.internetprovider.controller.command.util.CommandConstant.*;
 
 import java.io.IOException;
@@ -16,13 +17,13 @@ import org.apache.logging.log4j.Logger;
 import by.epam.internetprovider.bean.Request;
 import by.epam.internetprovider.bean.Tariff;
 import by.epam.internetprovider.bean.User;
-import by.epam.internetprovider.controller.command.Command;
+import by.epam.internetprovider.controller.command.ICommand;
 import by.epam.internetprovider.controller.command.exception.CommandException;
 import by.epam.internetprovider.service.IInternetProviderService;
 import by.epam.internetprovider.service.exception.ServiceException;
 import by.epam.internetprovider.service.factory.ServiceFactory;
 
-public class GotoAdminDeleteRequest implements Command {
+public class GotoAdminDeleteRequest implements ICommand {
 	private static final Logger logger = LogManager.getLogger();
 	private static final String PAGE = "WEB-INF/jsp/admin_del_request_page.jsp";
 	private static final String URL = "Controller?command=goto_ad_delete_request";
@@ -51,18 +52,20 @@ public class GotoAdminDeleteRequest implements Command {
 		User user = null;
 		Request req = null;
 		Tariff req_tariff = null;
-		String cur_tariff;
+		String cur_tariff = null;
 
 		try {
 
 			req = internetProviderService.getRequest(reqId);
 			user = internetProviderService.getUserById(req.getUserId());
 			req_tariff = internetProviderService.getTariff(req.getTariffId());
-			cur_tariff = internetProviderService.getTariff(user.getTariffId()).getTitle();
+			if (user.getTariffId() > 0) {
+				cur_tariff = internetProviderService.getTariff(user.getTariffId()).getTitle();
+			}
 
 		} catch (ServiceException e) {
-			logger.log(Level.ERROR, "Failed to get data in command:GotoAdminProcessRequest");
-			throw new CommandException("Failed to get data in command:GotoAdminProcessRequest", e);
+			logger.log(Level.ERROR, "Failed to get data in command:GotoAdminDeleteRequest");
+			throw new CommandException("Failed to get data in command:GotoAdminDeleteRequest", e);
 		}
 
 		session.setAttribute(ATTRIBUTE_REQUEST_ID, req.getId());

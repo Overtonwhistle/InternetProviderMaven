@@ -17,16 +17,19 @@ import org.apache.logging.log4j.Logger;
 
 import by.epam.internetprovider.bean.User;
 import by.epam.internetprovider.bean.data_object.UserData;
-import by.epam.internetprovider.controller.command.Command;
+import by.epam.internetprovider.controller.command.ICommand;
 import by.epam.internetprovider.controller.command.exception.CommandException;
 import by.epam.internetprovider.service.IInternetProviderService;
 import by.epam.internetprovider.service.exception.ServiceException;
 import by.epam.internetprovider.service.factory.ServiceFactory;
+import by.epam.internetprovider.service.impl.util.PasswordComputer;
+import by.epam.internetprovider.service.impl.util.PasswordComputer.CannotPerformOperationException;
+import by.epam.internetprovider.service.impl.util.PasswordComputer.InvalidHashException;
 
-public class ClientEditProfileProcess implements Command {
+public class ClientEditProfileProcess implements ICommand {
 
 	private static final Logger logger = LogManager.getLogger();
-	private static String DONE_PAGE = "Controller?command=goto_client_edit_profile";
+	private static String DONE_PAGE = "Controller?command=goto_client";
 	private static String WRONG_CURRENT_PASSWORD_PAGE = "Controller?command=goto_client_edit_profile";
 	private static String ERROR_PAGE = "WEB-INF/jsp/errors-pages/client_edit_profile_error.jsp";
 
@@ -44,12 +47,17 @@ public class ClientEditProfileProcess implements Command {
 		User user = (User) session.getAttribute(ATTRIBUTE_USER);
 		String currentPassword = request.getParameter(PARAMETER_CURR_PASSWORD);
 
-		if (!currentPassword.equals(user.getPassword())) {
-			request.setAttribute(ATTRIBUTE_WRONG_CURR_PASSWORD, true);
-			RequestDispatcher dispatcher = request
-					.getRequestDispatcher(WRONG_CURRENT_PASSWORD_PAGE);
-			dispatcher.forward(request, response);
-			return;
+		try {
+			if (!PasswordComputer.verifyPassword(currentPassword, user.getPassword())) {
+				request.setAttribute(ATTRIBUTE_WRONG_CURR_PASSWORD, true);
+				RequestDispatcher dispatcher = request
+						.getRequestDispatcher(WRONG_CURRENT_PASSWORD_PAGE);
+				dispatcher.forward(request, response);
+				return;
+			}
+		} catch (CannotPerformOperationException | InvalidHashException e1) {
+			logger.log(Level.ERROR, "Failed to edit user data in command:ClientEditProfileProcess");
+			throw new CommandException("Error executing command:ClientEditProfileProcess", e1);
 		}
 
 		UserData userData = new UserData();
@@ -62,8 +70,6 @@ public class ClientEditProfileProcess implements Command {
 
 		if (!request.getParameter(PARAMETER_NEW_PASSWORD).isEmpty()) {
 			userData.setPassword(request.getParameter(PARAMETER_NEW_PASSWORD));
-		} else {
-			userData.setPassword(user.getPassword());
 		}
 
 		try {

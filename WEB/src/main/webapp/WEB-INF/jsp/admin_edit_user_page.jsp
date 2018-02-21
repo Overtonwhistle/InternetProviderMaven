@@ -1,30 +1,28 @@
 <%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
-<%@page import="by.epam.internetprovider.bean.User"%>
-<c:set var="page" scope="session" value="index.jsp" />
 <c:if test="${local eq null}">
 	<c:set var="local" scope="session" value="en" />
 </c:if>
 <fmt:requestEncoding value="utf-8" />
 <fmt:setLocale value="${sessionScope.local}" />
-<fmt:setBundle basename="localization.local" var="loc" />
-<fmt:message bundle="${loc}" key="local.admin_edit_users_page.edit_text" var="edit_text" />
-<fmt:message bundle="${loc}" key="local.admin_edit_users_page.first_name" var="first_name" />
-<fmt:message bundle="${loc}" key="local.admin_edit_users_page.last_name" var="last_name" />
-<fmt:message bundle="${loc}" key="local.admin_edit_users_page.passport" var="passport" />
-<fmt:message bundle="${loc}" key="local.admin_edit_users_page.email" var="email" />
-<fmt:message bundle="${loc}" key="local.admin_edit_users_page.password" var="password" />
-<fmt:message bundle="${loc}" key="local.admin_edit_users_page.m_data" var="m_data" />
-<fmt:message bundle="${loc}" key="local.admin_edit_users_page.t_data" var="t_data" />
-<fmt:message bundle="${loc}" key="local.admin_edit_users_page.ballance" var="ballance" />
-<fmt:message bundle="${loc}" key="local.admin_edit_users_page.tariff" var="tariff" />
-<fmt:message bundle="${loc}" key="local.admin_edit_users_page.tariff_none" var="tariff_none" />
-<fmt:message bundle="${loc}" key="local.admin_edit_users_page.role" var="role" />
-<fmt:message bundle="${loc}" key="local.admin_edit_users_page.role_client" var="role_client" />
-<fmt:message bundle="${loc}" key="local.admin_edit_users_page.role_admin" var="role_admin" />
-<fmt:message bundle="${loc}" key="local.admin_edit_users_page.back_button" var="back_button" />
-<fmt:message bundle="${loc}" key="local.admin_edit_users_page.apply_button" var="apply_button" />
+<fmt:setBundle basename="localization.local" />
+<fmt:message key="local.admin_edit_users_page.edit_text" var="edit_text" />
+<fmt:message key="local.admin_edit_users_page.first_name" var="first_name" />
+<fmt:message key="local.admin_edit_users_page.last_name" var="last_name" />
+<fmt:message key="local.admin_edit_users_page.passport" var="passport" />
+<fmt:message key="local.admin_edit_users_page.email" var="email" />
+<fmt:message key="local.admin_edit_users_page.password" var="password" />
+<fmt:message key="local.admin_edit_users_page.m_data" var="m_data" />
+<fmt:message key="local.admin_edit_users_page.t_data" var="t_data" />
+<fmt:message key="local.admin_edit_users_page.ballance" var="ballance" />
+<fmt:message key="local.admin_edit_users_page.tariff" var="tariff" />
+<fmt:message key="local.admin_edit_users_page.tariff_none" var="tariff_none" />
+<fmt:message key="local.admin_edit_users_page.role" var="role" />
+<fmt:message key="local.admin_edit_users_page.role_client" var="role_client" />
+<fmt:message key="local.admin_edit_users_page.role_admin" var="role_admin" />
+<fmt:message key="local.admin_edit_users_page.back_button" var="back_button" />
+<fmt:message key="local.admin_edit_users_page.apply_button" var="apply_button" />
 <!DOCTYPE html>
 <html>
 <head>
@@ -37,7 +35,7 @@
 <link rel="stylesheet" href="css/reg-form.css" type="text/css">
 </head>
 <body>
-	<%@ include file="admin_page_header.jsp"%>
+	<c:import url="admin_page_header.jsp" />
 	<!-- CONTENT -->
 	<div class="content">
 		<form action="Controller" method="post" class="reg_form">
@@ -53,8 +51,7 @@
 					value="<c:out value="${sessionScope.user_to_work.passportNumber}" />" /></li>
 				<li><label>${email}:</label> <input type="text" name="edit_email"
 					value="<c:out value="${sessionScope.user_to_work.email}" />" /></li>
-				<li><label>${password}:</label> <input type="text" name="edit_password"
-					value="<c:out value="${sessionScope.user_to_work.password}" />"></li>
+				<li><label>${password}:</label> <input type="text" name="edit_password" placeholder="******"></li>
 				<li><label>${m_data}:</label> <input type="text" name="edit_mon_data"
 					value="<c:out value="${sessionScope.user_to_work.monthlyDataUsage}" />"></li>
 				<li><label>${t_data}:</label> <input type="text" name="edit_tot_data"
@@ -88,6 +85,6 @@
 			</ul>
 		</form>
 	</div>
-	<%@ include file="footer.jsp"%>
+	<c:import url="footer.jsp" />
 </body>
 </html>

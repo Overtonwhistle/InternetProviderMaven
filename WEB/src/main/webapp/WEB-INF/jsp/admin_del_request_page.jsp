@@ -7,16 +7,17 @@
 	<c:set var="local" scope="session" value="en" />
 </c:if>
 <fmt:setLocale value="${sessionScope.local}" />
-<fmt:setBundle basename="localization.local" var="loc" />
-<fmt:message bundle="${loc}" key="local.admin_requests.del_request_text" var="del_request_text" />
-<fmt:message bundle="${loc}" key="local.admin_requests.proc_request_details" var="proc_request_details" />
-<fmt:message bundle="${loc}" key="local.admin_requests.user" var="request_user" />
-<fmt:message bundle="${loc}" key="local.admin_requests.ballance" var="ballance" />
-<fmt:message bundle="${loc}" key="local.admin_requests.current_tariff" var="current_tariff" />
-<fmt:message bundle="${loc}" key="local.admin_requests.requested_tariff" var="requested_tariff" />
-<fmt:message bundle="${loc}" key="local.admin_requests.del_request_warning" var="del_request_warning" />
-<fmt:message bundle="${loc}" key="local.button_back" var="button_back" />
-<fmt:message bundle="${loc}" key="local.admin_requests.button_delete_do" var="button_delete_do" />
+<fmt:setBundle basename="localization.local" />
+<fmt:message key="local.admin_requests.del_request_text" var="del_request_text" />
+<fmt:message key="local.admin_requests.proc_request_details" var="proc_request_details" />
+<fmt:message key="local.admin_requests.user" var="request_user" />
+<fmt:message key="local.admin_requests.ballance" var="ballance" />
+<fmt:message key="local.admin_requests.current_tariff" var="current_tariff_text" />
+<fmt:message key="local.admin_requests.current_tariff_empty" var="current_tariff_empty" />
+<fmt:message key="local.admin_requests.requested_tariff" var="requested_tariff" />
+<fmt:message key="local.admin_requests.del_request_warning" var="del_request_warning" />
+<fmt:message key="local.button_back" var="button_back" />
+<fmt:message key="local.admin_requests.button_delete_do" var="button_delete_do" />
 <!DOCTYPE html>
 <html>
 <head>
@@ -30,7 +31,7 @@
 <link rel="stylesheet" href="css/users_search_form.css" type="text/css">
 </head>
 <body>
-	<%@ include file="admin_page_header.jsp"%>
+	<c:import url="admin_page_header.jsp" />
 	<!-- CONTENT -->
 	<div class="content">
 		<h2>${del_request_text}</h2>
@@ -47,9 +48,13 @@
 				<li><p>
 						${ballance}: <strong><c:out value="${requestScope.user.accountBallance}" /></strong>
 					</p></li>
-				<li><p>
-						${current_tariff}: <strong><c:out value="${requestScope.current_tariff}" /></strong>
-					</p></li>
+				<li>
+					<p>
+						${current_tariff_text}: <strong> <c:if test="${requestScope.current_tariff eq null}"> 
+          ${current_tariff_empty}
+            </c:if> <c:out value="${requestScope.current_tariff}" /></strong>
+					</p>
+				</li>
 				<li><p>
 						${requested_tariff}:<strong> <c:out value="${requestScope.requested_tariff.title}" /></strong>
 					</p></li>
@@ -61,6 +66,6 @@
 			</ul>
 		</form>
 	</div>
-	<%@ include file="footer.jsp"%>
+	<c:import url="footer.jsp" />
 </body>
 </html>

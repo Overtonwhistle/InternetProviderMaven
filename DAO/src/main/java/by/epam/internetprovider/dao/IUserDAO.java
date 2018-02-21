@@ -38,14 +38,14 @@ public interface IUserDAO {
 	public boolean editUser(int userId, User user) throws DAOException;
 
 	/**
-	 * Returns the user by login and password.
+	 * Returns the user by login.
 	 *
 	 * @param login {@code String} login
-	 * @param password {@code String} password
 	 * @return {@link User}
 	 * @throws DAOException
 	 */
-	public User getUserByLogin(String login, String password) throws DAOException;
+//	public User getUserByLogin(String login, String password) throws DAOException;
+	public User getUserByLogin(String login) throws DAOException;
 
 	/**
 	 * Returns the user by id.

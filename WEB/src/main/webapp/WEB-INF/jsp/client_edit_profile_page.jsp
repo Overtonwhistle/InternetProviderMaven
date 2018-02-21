@@ -6,24 +6,23 @@
 </c:if>
 <fmt:requestEncoding value="utf-8" />
 <fmt:setLocale value="${sessionScope.local}" />
-<fmt:setBundle basename="localization.local" var="loc" />
-<fmt:message bundle="${loc}" key="local.client_profile_page.editing_text" var="editing_text" />
-<fmt:message bundle="${loc}" key="local.client_profile_page.first_name" var="new_first_name" />
-<fmt:message bundle="${loc}" key="local.client_profile_page.first_name_hint" var="first_name_hint" />
-<fmt:message bundle="${loc}" key="local.client_profile_page.last_name" var="new_last_name" />
-<fmt:message bundle="${loc}" key="local.client_profile_page.last_name_hint" var="last_name_hint" />
-<fmt:message bundle="${loc}" key="local.client_profile_page.passport" var="new_passport" />
-<fmt:message bundle="${loc}" key="local.client_profile_page.passport_hint" var="passport_hint" />
-<fmt:message bundle="${loc}" key="local.client_profile_page.email" var="new_email" />
-<fmt:message bundle="${loc}" key="local.client_profile_page.email_hint" var="email_hint" />
-<fmt:message bundle="${loc}" key="local.client_profile_page.new_password" var="new_password" />
-<fmt:message bundle="${loc}" key="local.client_profile_page.new_password_hint" var="new_password_hint" />
-<fmt:message bundle="${loc}" key="local.client_profile_page.new_password_ph" var="new_password_ph" />
-<fmt:message bundle="${loc}" key="local.client_profile_page.current_password" var="current_password" />
-<fmt:message bundle="${loc}" key="local.client_profile_page.current_password_hint" var="current_password_hint" />
-<fmt:message bundle="${loc}" key="local.client_profile_page.wrong_current_password_text"
-	var="wrong_current_password_text" />
-<fmt:message bundle="${loc}" key="local.client_profile_page.apply_button" var="apply_button" />
+<fmt:setBundle basename="localization.local" />
+<fmt:message key="local.client_profile_page.editing_text" var="editing_text" />
+<fmt:message key="local.client_profile_page.first_name" var="new_first_name" />
+<fmt:message key="local.client_profile_page.first_name_hint" var="first_name_hint" />
+<fmt:message key="local.client_profile_page.last_name" var="new_last_name" />
+<fmt:message key="local.client_profile_page.last_name_hint" var="last_name_hint" />
+<fmt:message key="local.client_profile_page.passport" var="new_passport" />
+<fmt:message key="local.client_profile_page.passport_hint" var="passport_hint" />
+<fmt:message key="local.client_profile_page.email" var="new_email" />
+<fmt:message key="local.client_profile_page.email_hint" var="email_hint" />
+<fmt:message key="local.client_profile_page.new_password" var="new_password" />
+<fmt:message key="local.client_profile_page.new_password_hint" var="new_password_hint" />
+<fmt:message key="local.client_profile_page.new_password_ph" var="new_password_ph" />
+<fmt:message key="local.client_profile_page.current_password" var="current_password" />
+<fmt:message key="local.client_profile_page.current_password_hint" var="current_password_hint" />
+<fmt:message key="local.client_profile_page.wrong_current_password_text" var="wrong_current_password_text" />
+<fmt:message key="local.client_profile_page.apply_button" var="apply_button" />
 
 <!DOCTYPE html>
 <html>
@@ -38,7 +37,7 @@
 </head>
 <body>
 	<!--  HEADER -->
-	<%@ include file="client_page_header.jsp"%>
+	<c:import url="client_page_header.jsp" />
 	<!-- CONTENT -->
 	<div class="content">
 		<form class="reg_form" name="editing_profile" method="post" action="Controller">
@@ -74,6 +73,6 @@
 			</ul>
 		</form>
 	</div>
-	<%@ include file="footer.jsp"%>
+	<c:import url="footer.jsp" />
 </body>
 </html>

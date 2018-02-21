@@ -22,7 +22,7 @@ public class User implements Serializable {
 	private long totalDataUsage;
 	private BigDecimal accountBallance;
 	private String login;
-	private char[] password;
+	private String password;
 	private String email;
 	private String firstName;
 	private String lastName;
@@ -57,11 +57,11 @@ public class User implements Serializable {
 	}
 
 	public String getPassword() {
-		return new String(this.password);
+		return password;
 	}
 
 	public void setPassword(String password) {
-		this.password = password.toCharArray();
+		this.password = password;
 	}
 
 	public String getEmail() {
@@ -220,12 +220,11 @@ public class User implements Serializable {
 
 	@Override
 	public String toString() {
-		return "User [id=" + id + ", role=" + role + ", login=" + login + ", password="
-				+ password.toString() + ", email=" + email + ", firstName=" + firstName
-				+ ", lastName=" + lastName + ", passportNumber=" + passportNumber + ", regDate="
-				+ regDate + ", monthlyDataUsage=" + monthlyDataUsage + ", totalDataUsage="
-				+ totalDataUsage + ", accountBallance=" + accountBallance + ", tariffId=" + tariffId
-				+ "]";
+		return "User [id=" + id + ", role=" + role + ", login=" + login + ", password=" + password
+				+ ", email=" + email + ", firstName=" + firstName + ", lastName=" + lastName
+				+ ", passportNumber=" + passportNumber + ", regDate=" + regDate
+				+ ", monthlyDataUsage=" + monthlyDataUsage + ", totalDataUsage=" + totalDataUsage
+				+ ", accountBallance=" + accountBallance + ", tariffId=" + tariffId + "]";
 	};
 
 }

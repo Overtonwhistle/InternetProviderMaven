@@ -12,7 +12,7 @@ import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import by.epam.internetprovider.controller.command.Command;
+import by.epam.internetprovider.controller.command.ICommand;
 import by.epam.internetprovider.controller.command.CommandProvider;
 import by.epam.internetprovider.controller.command.exception.CommandException;
 import by.epam.internetprovider.service.IInternetProviderService;
@@ -66,10 +66,9 @@ public class Controller extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException, CommandException {
-
 		String commandName = request.getParameter(REQUEST_COMMAND);
 
-		Command command = provider.getCommand(commandName);
+		ICommand command = provider.getCommand(commandName);
 		command.execute(request, response);
 
 	}

@@ -116,12 +116,10 @@ public class UserDAO implements IUserDAO {
 	}
 
 	@Override
-	public User getUserByLogin(String login, String password)
-			throws DAOUserNotFoundException, DAOException {
+	public User getUserByLogin(String login) throws DAOUserNotFoundException, DAOException {
 
 		UserSearchFilter filter = new UserSearchFilter();
 		filter.addSubFilter(new SubFilter(FilterParameter.USER_LOGIN, login));
-		filter.addSubFilter(new SubFilter(FilterParameter.USER_PASSWORD, password));
 
 		List<User> usersList = getUsersList(filter);
 

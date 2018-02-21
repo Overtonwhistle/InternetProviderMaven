@@ -6,18 +6,18 @@
 </c:if>
 <fmt:requestEncoding value="utf-8" />
 <fmt:setLocale value="${sessionScope.local}" />
-<fmt:setBundle basename="localization.local" var="loc" />
-<fmt:message bundle="${loc}" key="local.tariff_info.info_text" var="info_text" />
-<fmt:message bundle="${loc}" key="local.tariff_info.m_cost" var="m_cost" />
-<fmt:message bundle="${loc}" key="local.tariff_info.unlim" var="unlim" />
-<fmt:message bundle="${loc}" key="local.tariff_info.yes" var="yes" />
-<fmt:message bundle="${loc}" key="local.tariff_info.no" var="no" />
-<fmt:message bundle="${loc}" key="local.tariff_info.m_limit" var="m_limit" />
-<fmt:message bundle="${loc}" key="local.tariff_info.over_cost" var="over_cost" />
-<fmt:message bundle="${loc}" key="local.tariff_info.tech" var="tech" />
-<fmt:message bundle="${loc}" key="local.tariff_info.rent" var="rent" />
-<fmt:message bundle="${loc}" key="local.tariff_info.descr" var="descr" />
-<fmt:message bundle="${loc}" key="local.button_back" var="button_back" />
+<fmt:setBundle basename="localization.local"  />
+<fmt:message key="local.tariff_info.info_text" var="info_text" />
+<fmt:message key="local.tariff_info.m_cost" var="m_cost" />
+<fmt:message key="local.tariff_info.unlim" var="unlim" />
+<fmt:message key="local.tariff_info.yes" var="yes" />
+<fmt:message key="local.tariff_info.no" var="no" />
+<fmt:message key="local.tariff_info.m_limit" var="m_limit" />
+<fmt:message key="local.tariff_info.over_cost" var="over_cost" />
+<fmt:message key="local.tariff_info.tech" var="tech" />
+<fmt:message key="local.tariff_info.rent" var="rent" />
+<fmt:message key="local.tariff_info.descr" var="descr" />
+<fmt:message key="local.button_back" var="button_back" />
 <!DOCTYPE html>
 <html>
 <head>
@@ -31,7 +31,7 @@
 </head>
 <body>
 	<!--  HEADER -->
-	<%@ include file="client_page_header.jsp"%>
+	<c:import url="client_page_header.jsp" />
 	<!-- CONTENT -->
 	<div class="content">
 		<div class="row_of_two">
@@ -82,6 +82,6 @@
 			</div>
 		</div>
 	</div>
-	<%@ include file="footer.jsp"%>
+	<c:import url="footer.jsp" />
 </body>
 </html>

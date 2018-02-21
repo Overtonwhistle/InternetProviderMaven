@@ -65,7 +65,7 @@ public class Validation {
 	}
 
 	public static boolean checkPassword(String password) {
-		return checkToRegexp(password, PASSWORD_REGEXP);
+		return checkToRegexp(new String(password), PASSWORD_REGEXP);
 	}
 
 	public static boolean checkPasswords(String pwd1, String pwd2) {
@@ -143,13 +143,11 @@ public class Validation {
 			errors.add(errorMessageResource.getString(ERROR_WRONG_PASSWORDS));
 		}
 
-
 		errors.addAll(editClientProfileValidation(userData));
 
 		if (!checkLogin(userData.getLogin())) {
 			errors.add(errorMessageResource.getString(ERROR_WRONG_LOGIN));
-		}
-		else if (isLoginBusy(userData.getLogin())) {
+		} else if (isLoginBusy(userData.getLogin())) {
 			errors.add(errorMessageResource.getString(ERROR_LOGIN_BUSY));
 		}
 
@@ -206,8 +204,11 @@ public class Validation {
 		if (!checkEmail(userData.getEmail())) {
 			errors.add(errorsResource.getString(ERROR_WRONG_EMAIL));
 		}
-		if (!checkPassword(userData.getPassword())) {
-			errors.add(errorsResource.getString(ERROR_WRONG_PASSWORD));
+
+		if (userData.getPassword() != null) {
+			if (!checkPassword(userData.getPassword())) {
+				errors.add(errorsResource.getString(ERROR_WRONG_PASSWORD));
+			}
 		}
 
 		return errors;
@@ -255,7 +256,7 @@ public class Validation {
 	}
 
 	private static boolean checkToRegexp(String value, String regexp) {
-		
+
 		if (value == null) {
 			return false;
 		}

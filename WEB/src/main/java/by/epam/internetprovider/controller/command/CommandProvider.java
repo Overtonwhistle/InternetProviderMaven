@@ -61,7 +61,7 @@ public class CommandProvider {
 
 	private static final Logger logger = LogManager.getLogger();
 
-	private Map<CommandName, Command> commands = new EnumMap<>(CommandName.class);
+	private Map<CommandName, ICommand> commands = new EnumMap<>(CommandName.class);
 
 	public CommandProvider() {
 
@@ -120,10 +120,10 @@ public class CommandProvider {
 	/**
 	 * Provides a command by its string name.
 	 * 
-	 * @param name {@code String} presentation name of {@link Command}.
-	 * @return corresponding {@link Command}
+	 * @param name {@code String} presentation name of {@link ICommand}.
+	 * @return corresponding {@link ICommand}
 	 */
-	public Command getCommand(String name) {
+	public ICommand getCommand(String name) {
 
 		if (name != null) {
 			try {

@@ -1,52 +1,51 @@
 <%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
-<jsp:useBean id="now" class="java.util.Date" scope="page" />
 <c:if test="${local eq null}">
 	<c:set var="local" scope="session" value="en" />
 </c:if>
 <fmt:requestEncoding value="utf-8" />
 <fmt:setLocale value="${sessionScope.local}" />
-<fmt:setBundle basename="localization.local" var="loc" />
-<fmt:message bundle="${loc}" key="local.admin_users_page.searching_text" var="searching_text" />
-<fmt:message bundle="${loc}" key="local.admin_users_page.user_role" var="user_role_field" />
-<fmt:message bundle="${loc}" key="local.admin_users_page.user_role_all" var="user_role_all" />
-<fmt:message bundle="${loc}" key="local.admin_users_page.user_role_client" var="user_role_client" />
-<fmt:message bundle="${loc}" key="local.admin_users_page.user_role_admin" var="user_role_admin" />
-<fmt:message bundle="${loc}" key="local.admin_users_page.user_fname" var="user_fname" />
-<fmt:message bundle="${loc}" key="local.admin_users_page.user_fname_ph" var="user_fname_ph" />
-<fmt:message bundle="${loc}" key="local.admin_users_page.user_lname" var="user_lname" />
-<fmt:message bundle="${loc}" key="local.admin_users_page.user_lname_ph" var="user_lname_ph" />
-<fmt:message bundle="${loc}" key="local.admin_users_page.pass_number" var="pass_number" />
-<fmt:message bundle="${loc}" key="local.admin_users_page.pass_number_ph" var="pass_number_ph" />
-<fmt:message bundle="${loc}" key="local.admin_users_page.reg_date" var="reg_date_field" />
-<fmt:message bundle="${loc}" key="local.admin_users_page.reg_date_ph" var="reg_date_field_ph" />
-<fmt:message bundle="${loc}" key="local.admin_users_page.monthly_data" var="monthly_data" />
-<fmt:message bundle="${loc}" key="local.admin_users_page.monthly_data_ph" var="monthly_data_ph" />
-<fmt:message bundle="${loc}" key="local.admin_users_page.total_data" var="total_data_field" />
-<fmt:message bundle="${loc}" key="local.admin_users_page.total_data_ph" var="total_data_field_ph" />
-<fmt:message bundle="${loc}" key="local.admin_users_page.acc_ballance" var="acc_ballance" />
-<fmt:message bundle="${loc}" key="local.admin_users_page.acc_ballance_ph" var="acc_ballance_ph" />
-<fmt:message bundle="${loc}" key="local.admin_users_page.block_status" var="block_status" />
-<fmt:message bundle="${loc}" key="local.admin_users_page.block_status_all" var="block_status_all" />
-<fmt:message bundle="${loc}" key="local.admin_users_page.block_status_blocked" var="block_status_blocked" />
-<fmt:message bundle="${loc}" key="local.admin_users_page.block_status_not_blocked"
+<fmt:setBundle basename="localization.local" />
+<fmt:message  key="local.admin_users_page.searching_text" var="searching_text" />
+<fmt:message  key="local.admin_users_page.user_role" var="user_role_field" />
+<fmt:message  key="local.admin_users_page.user_role_all" var="user_role_all" />
+<fmt:message  key="local.admin_users_page.user_role_client" var="user_role_client" />
+<fmt:message  key="local.admin_users_page.user_role_admin" var="user_role_admin" />
+<fmt:message  key="local.admin_users_page.user_fname" var="user_fname" />
+<fmt:message  key="local.admin_users_page.user_fname_ph" var="user_fname_ph" />
+<fmt:message  key="local.admin_users_page.user_lname" var="user_lname" />
+<fmt:message  key="local.admin_users_page.user_lname_ph" var="user_lname_ph" />
+<fmt:message  key="local.admin_users_page.pass_number" var="pass_number" />
+<fmt:message  key="local.admin_users_page.pass_number_ph" var="pass_number_ph" />
+<fmt:message  key="local.admin_users_page.reg_date" var="reg_date_field" />
+<fmt:message  key="local.admin_users_page.reg_date_ph" var="reg_date_field_ph" />
+<fmt:message  key="local.admin_users_page.monthly_data" var="monthly_data" />
+<fmt:message  key="local.admin_users_page.monthly_data_ph" var="monthly_data_ph" />
+<fmt:message  key="local.admin_users_page.total_data" var="total_data_field" />
+<fmt:message  key="local.admin_users_page.total_data_ph" var="total_data_field_ph" />
+<fmt:message  key="local.admin_users_page.acc_ballance" var="acc_ballance" />
+<fmt:message  key="local.admin_users_page.acc_ballance_ph" var="acc_ballance_ph" />
+<fmt:message  key="local.admin_users_page.block_status" var="block_status" />
+<fmt:message  key="local.admin_users_page.block_status_all" var="block_status_all" />
+<fmt:message  key="local.admin_users_page.block_status_blocked" var="block_status_blocked" />
+<fmt:message  key="local.admin_users_page.block_status_not_blocked"
 	var="block_status_not_blocked" />
-<fmt:message bundle="${loc}" key="local.admin_users_page.reset_button" var="reset_button" />
-<fmt:message bundle="${loc}" key="local.admin_users_page.search_button" var="search_button" />
-<fmt:message bundle="${loc}" key="local.admin_users_page.user_operation_title" var="user_operation_title" />
-<fmt:message bundle="${loc}" key="local.admin_users_page.table_role" var="table_role" />
-<fmt:message bundle="${loc}" key="local.admin_users_page.table_name" var="table_name" />
-<fmt:message bundle="${loc}" key="local.admin_users_page.table_passport" var="table_passport" />
-<fmt:message bundle="${loc}" key="local.admin_users_page.table_registration" var="table_registration" />
-<fmt:message bundle="${loc}" key="local.admin_users_page.table_m_data" var="table_m_data" />
-<fmt:message bundle="${loc}" key="local.admin_users_page.table_t_data" var="table_t_data" />
-<fmt:message bundle="${loc}" key="local.admin_users_page.table_ballance" var="table_ballance" />
-<fmt:message bundle="${loc}" key="local.admin_users_page.table_tariff" var="table_tariff" />
-<fmt:message bundle="${loc}" key="local.admin_users_page.block_button" var="block_button" />
-<fmt:message bundle="${loc}" key="local.admin_users_page.edit_user_button" var="edit_user_button" />
-<fmt:message bundle="${loc}" key="local.admin_users_page.delete_user_button" var="delete_user_button" />
-<fmt:message bundle="${loc}" key="local.admin_users_page.no_data" var="no_data_text" />
+<fmt:message  key="local.admin_users_page.reset_button" var="reset_button" />
+<fmt:message  key="local.admin_users_page.search_button" var="search_button" />
+<fmt:message  key="local.admin_users_page.user_operation_title" var="user_operation_title" />
+<fmt:message  key="local.admin_users_page.table_role" var="table_role" />
+<fmt:message  key="local.admin_users_page.table_name" var="table_name" />
+<fmt:message  key="local.admin_users_page.table_passport" var="table_passport" />
+<fmt:message  key="local.admin_users_page.table_registration" var="table_registration" />
+<fmt:message  key="local.admin_users_page.table_m_data" var="table_m_data" />
+<fmt:message  key="local.admin_users_page.table_t_data" var="table_t_data" />
+<fmt:message  key="local.admin_users_page.table_ballance" var="table_ballance" />
+<fmt:message  key="local.admin_users_page.table_tariff" var="table_tariff" />
+<fmt:message  key="local.admin_users_page.block_button" var="block_button" />
+<fmt:message  key="local.admin_users_page.edit_user_button" var="edit_user_button" />
+<fmt:message  key="local.admin_users_page.delete_user_button" var="delete_user_button" />
+<fmt:message  key="local.admin_users_page.no_data" var="no_data_text" />
 <!DOCTYPE html>
 <html>
 <head>
@@ -60,7 +59,7 @@
 </head>
 <body>
 	<!--  HEADER -->
-	<%@ include file="admin_page_header.jsp"%>
+	<c:import url="admin_page_header.jsp" />
 	<!-- CONTENT ========================================================= -->
 	<div class="content">
 		<form class="reg_form" name="user_serching" method="post" action="Controller">
@@ -157,6 +156,6 @@
 			</form>
 		</div>
 	</div>
-	<%@ include file="footer.jsp"%>
+	<c:import url="footer.jsp" />
 </body>
 </html>

@@ -1,25 +1,23 @@
 <%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<!-- BASE CLIENT PART -->
+
 <c:if test="${local eq null}">
 	<c:set var="local" scope="session" value="en" />
 </c:if>
 <fmt:requestEncoding value="utf-8" />
 <fmt:setLocale value="${sessionScope.local}" />
-<fmt:setBundle basename="localization.local" var="loc" />
-<!-- CLIENT BLOCK PART -->
-<fmt:message bundle="${loc}" key="local.client_payments.making_payment" var="making_payment" />
-<fmt:message bundle="${loc}" key="local.client_payments.curr_ballance" var="curr_ballance" />
-<fmt:message bundle="${loc}" key="local.client_payments.enter_text" var="enter_text" />
-<fmt:message bundle="${loc}" key="local.client_payments.button_pay" var="button_pay" />
-<fmt:message bundle="${loc}" key="local.button_back" var="button_back" />
-<!-- END ADMIN PART -->
+<fmt:setBundle basename="localization.local" />
+<fmt:message key="local.client_payments.making_payment" var="making_payment" />
+<fmt:message key="local.client_payments.curr_ballance" var="curr_ballance" />
+<fmt:message key="local.client_payments.enter_text" var="enter_text" />
+<fmt:message key="local.client_payments.button_pay" var="button_pay" />
+<fmt:message key="local.button_back" var="button_back" />
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Internet Provider</title>
 <link rel="shortcut icon" href="images/icons/16.ico" type="image/x-icon">
 <link rel="stylesheet" href="css/normalize.css">
@@ -28,7 +26,7 @@
 </head>
 <body>
 	<!--  HEADER -->
-	<%@ include file="client_page_header.jsp"%>
+	<c:import url="client_page_header.jsp" />
 	<!-- CONTENT -->
 	<div class="content">
 		<h6>${curr_ballance}:
@@ -48,6 +46,6 @@
 			</ul>
 		</form>
 	</div>
-	<%@ include file="footer.jsp"%>
+	<c:import url="footer.jps" />
 </body>
 </html>

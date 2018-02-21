@@ -8,17 +8,17 @@
 </c:if>
 <fmt:requestEncoding value="utf-8" />
 <fmt:setLocale value="${sessionScope.local}" />
-<fmt:setBundle basename="localization.local" var="loc" />
-<fmt:message bundle="${loc}" key="local.admin_requests.proc_request_text" var="proc_request_text" />
-<fmt:message bundle="${loc}" key="local.admin_requests.proc_request_details" var="proc_request_details" />
-<fmt:message bundle="${loc}" key="local.admin_requests.user" var="request_user" />
-<fmt:message bundle="${loc}" key="local.admin_requests.ballance" var="ballance" />
-<fmt:message bundle="${loc}" key="local.admin_requests.current_tariff" var="current_tariff_text" />
-<fmt:message bundle="${loc}" key="local.admin_requests.current_tariff_empty" var="current_tariff_empty" />
-<fmt:message bundle="${loc}" key="local.admin_requests.requested_tariff" var="requested_tariff" />
-<fmt:message bundle="${loc}" key="local.admin_requests.neg_ballace" var="neg_ballace" />
-<fmt:message bundle="${loc}" key="local.button_back" var="button_back" />
-<fmt:message bundle="${loc}" key="local.admin_requests.button_process_do" var="button_process_do" />
+<fmt:setBundle basename="localization.local" />
+<fmt:message  key="local.admin_requests.proc_request_text" var="proc_request_text" />
+<fmt:message  key="local.admin_requests.proc_request_details" var="proc_request_details" />
+<fmt:message  key="local.admin_requests.user" var="request_user" />
+<fmt:message  key="local.admin_requests.ballance" var="ballance" />
+<fmt:message  key="local.admin_requests.current_tariff" var="current_tariff_text" />
+<fmt:message  key="local.admin_requests.current_tariff_empty" var="current_tariff_empty" />
+<fmt:message  key="local.admin_requests.requested_tariff" var="requested_tariff" />
+<fmt:message  key="local.admin_requests.neg_ballace" var="neg_ballace" />
+<fmt:message  key="local.button_back" var="button_back" />
+<fmt:message  key="local.admin_requests.button_process_do" var="button_process_do" />
 <!DOCTYPE html>
 <html>
 <head>
@@ -32,7 +32,7 @@
 </head>
 <body>
 	<!--  HEADER -->
-	<%@ include file="admin_page_header.jsp"%>
+	<c:import url="admin_page_header.jsp" />
 	<!-- CONTENT -->
 	<div class="content">
 		<h2>${proc_request_text}</h2>
@@ -67,6 +67,6 @@
 			</ul>
 		</form>
 	</div>
-	<%@ include file="footer.jsp"%>
+	<c:import url="footer.jsp" />
 </body>
 </html>

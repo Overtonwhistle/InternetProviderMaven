@@ -7,10 +7,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import by.epam.internetprovider.controller.command.Command;
+import by.epam.internetprovider.controller.command.ICommand;
 import by.epam.internetprovider.controller.command.util.CommandUtil;
 
-public class LogOff implements Command {
+public class LogOff implements ICommand {
 
 	private final static String REDIRECT_PAGE = "index.jsp";
 	private static final String ATTRIBUTE_USER = "user";

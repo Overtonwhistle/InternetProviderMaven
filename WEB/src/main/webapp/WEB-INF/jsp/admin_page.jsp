@@ -1,19 +1,19 @@
 <%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
-<jsp:useBean id="now" class="java.util.Date" scope="page" />
+<%@ taglib prefix="ctg" uri="customtags"%>
 <fmt:setLocale value="${sessionScope.local}" />
-<fmt:setBundle basename="localization.local" var="loc" />
-<fmt:message bundle="${loc}" key="local.admin_page.header_text" var="header_text" />
-<fmt:message bundle="${loc}" key="local.admin_page.summary_text" var="summary_text" />
-<fmt:message bundle="${loc}" key="local.admin_page.data_at" var="data_at" />
-<fmt:message bundle="${loc}" key="local.admin_page.total_clients" var="total_clients_info" />
-<fmt:message bundle="${loc}" key="local.admin_page.neg_clients" var="neg_clients_info" />
-<fmt:message bundle="${loc}" key="local.admin_page.block_clients" var="block_clients_info" />
-<fmt:message bundle="${loc}" key="local.admin_page.active_requests" var="active_requests_info" />
-<fmt:message bundle="${loc}" key="local.admin_page.total_tariffs" var="total_tariffs_info" />
-<fmt:message bundle="${loc}" key="local.admin_page.not_used_tariffs" var="not_used_tariffs_info" />
-<fmt:message bundle="${loc}" key="local.admin_page.menu_hint" var="menu_hint" />
+<fmt:setBundle basename="localization.local" />
+<fmt:message key="local.admin_page.header_text" var="header_text" />
+<fmt:message key="local.admin_page.summary_text" var="summary_text" />
+<fmt:message key="local.admin_page.data_at" var="data_at" />
+<fmt:message key="local.admin_page.total_clients" var="total_clients_info" />
+<fmt:message key="local.admin_page.neg_clients" var="neg_clients_info" />
+<fmt:message key="local.admin_page.block_clients" var="block_clients_info" />
+<fmt:message key="local.admin_page.active_requests" var="active_requests_info" />
+<fmt:message key="local.admin_page.total_tariffs" var="total_tariffs_info" />
+<fmt:message key="local.admin_page.not_used_tariffs" var="not_used_tariffs_info" />
+<fmt:message key="local.admin_page.menu_hint" var="menu_hint" />
 <c:if test="${local eq null}">
 	<c:set var="local" scope="session" value="en" />
 </c:if>
@@ -30,14 +30,14 @@
 <link rel="stylesheet" href="css/style.css" type="text/css">
 </head>
 <body>
-	<%@ include file="admin_page_header.jsp"%>
+	<c:import url="admin_page_header.jsp" />
 	<!-- CONTENT -->
 	<div class="content">
 		<div class="row_of_two">
 			<div class="t_one_of_two">
 				<h4>${summary_text}</h4>
 				<p>
-					<i>${data_at}: <fmt:formatDate type="both" value="${now}" /></i>
+					<i>${data_at}: <ctg:info-time /></i>
 				</p>
 				<p>
 					${total_clients_info}:
@@ -64,6 +64,6 @@
 			</div>
 		</div>
 	</div>
-	<%@ include file="footer.jsp"%>
+	<c:import url="footer.jsp" />
 </body>
 </html>

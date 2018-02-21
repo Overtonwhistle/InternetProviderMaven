@@ -13,13 +13,13 @@ import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import by.epam.internetprovider.controller.command.Command;
+import by.epam.internetprovider.controller.command.ICommand;
 import by.epam.internetprovider.controller.command.exception.CommandException;
 import by.epam.internetprovider.service.IInternetProviderService;
 import by.epam.internetprovider.service.exception.ServiceException;
 import by.epam.internetprovider.service.factory.ServiceFactory;
 
-public class AdminDeleteTariffProcess implements Command {
+public class AdminDeleteTariffProcess implements ICommand {
 
 	private static final Logger logger = LogManager.getLogger();
 	private static final String DONE_COMMAND = "Controller?command=goto_ad_tariffs";

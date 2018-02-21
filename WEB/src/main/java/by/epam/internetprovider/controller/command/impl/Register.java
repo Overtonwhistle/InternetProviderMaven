@@ -16,13 +16,13 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import by.epam.internetprovider.bean.data_object.UserData;
-import by.epam.internetprovider.controller.command.Command;
+import by.epam.internetprovider.controller.command.ICommand;
 import by.epam.internetprovider.controller.command.exception.CommandException;
 import by.epam.internetprovider.service.IInternetProviderService;
 import by.epam.internetprovider.service.exception.ServiceException;
 import by.epam.internetprovider.service.factory.ServiceFactory;
 
-public class Register implements Command {
+public class Register implements ICommand {
 	private static final Logger logger = LogManager.getLogger();
 	private static final String DONE_PAGE = "Controller?command=goto_register_done";
 	private static final String ERROR_PAGE = "WEB-INF/jsp/errors-pages/register-error.jsp";

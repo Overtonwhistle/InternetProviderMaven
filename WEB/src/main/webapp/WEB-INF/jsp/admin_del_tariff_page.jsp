@@ -3,12 +3,12 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <c:set var="page" scope="session" value="index.jsp" />
 <fmt:setLocale value="${sessionScope.local}" />
-<fmt:setBundle basename="localization.local" var="loc" />
+<fmt:setBundle basename="localization.local"/>
 <jsp:useBean id="now" class="java.util.Date" scope="page" />
-<fmt:message bundle="${loc}" key="local.admin_tariffs_page.deleting_text" var="deleting_text" />
-<fmt:message bundle="${loc}" key="local.admin_tariffs_page.warning" var="warning" />
-<fmt:message bundle="${loc}" key="local.admin_tariffs_page.delete_button" var="delete_button" />
-<fmt:message bundle="${loc}" key="local.admin_edit_users_page.back_button" var="back_button" />
+<fmt:message key="local.admin_tariffs_page.deleting_text" var="deleting_text" />
+<fmt:message key="local.admin_tariffs_page.warning" var="warning" />
+<fmt:message key="local.admin_tariffs_page.delete_button" var="delete_button" />
+<fmt:message key="local.admin_edit_users_page.back_button" var="back_button" />
 <!DOCTYPE html>
 <html>
 <head>
@@ -21,7 +21,7 @@
 <link rel="stylesheet" href="css/users_search_form.css" type="text/css">
 </head>
 <body>
-	<%@ include file="admin_page_header.jsp"%>
+	<c:import url="admin_page_header.jsp" />
 	<!-- CONTENT -->
 	<div class="content">
 		<h5>${deleting_text}:</h5>
@@ -38,6 +38,6 @@
 			</ul>
 		</form>
 	</div>
-	<%@ include file="footer.jsp"%>
+	<c:import url="footer.jsp" />
 </body>
 </html>

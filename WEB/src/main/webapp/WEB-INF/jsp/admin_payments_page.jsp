@@ -7,29 +7,33 @@
 </c:if>
 <fmt:requestEncoding value="utf-8" />
 <fmt:setLocale value="${sessionScope.local}" />
-<fmt:setBundle basename="localization.local" var="loc" />
-<fmt:message bundle="${loc}" key="local.no_data" var="no_data" />
-<fmt:message bundle="${loc}" key="local.admin_payments.pay_searching" var="pay_searching" />
-<fmt:message bundle="${loc}" key="local.admin_payments.fname" var="fname" />
-<fmt:message bundle="${loc}" key="local.admin_payments.fname_ph" var="fname_ph" />
-<fmt:message bundle="${loc}" key="local.admin_payments.lname" var="lname" />
-<fmt:message bundle="${loc}" key="local.admin_payments.lname_ph" var="lname_ph" />
-<fmt:message bundle="${loc}" key="local.admin_payments.pay_date" var="pay_date" />
-<fmt:message bundle="${loc}" key="local.admin_payments.pay_date_time" var="pay_date_time" />
-<fmt:message bundle="${loc}" key="local.admin_payments.pay_date_ph" var="pay_date_ph" />
-<fmt:message bundle="${loc}" key="local.admin_payments.pay_amount" var="pay_amount" />
-<fmt:message bundle="${loc}" key="local.admin_payments.pay_amount_ph" var="pay_amount_ph" />
-<fmt:message bundle="${loc}" key="local.admin_payments.sort_by" var="sort_by" />
-<fmt:message bundle="${loc}" key="local.admin_payments.sort_by_date" var="sort_by_date" />
-<fmt:message bundle="${loc}" key="local.admin_payments.sort_by_user" var="sort_by_user" />
-<fmt:message bundle="${loc}" key="local.admin_payments.sort_by_amount" var="sort_by_amount" />
-<fmt:message bundle="${loc}" key="local.admin_payments.button_reset" var="button_reset" />
-<fmt:message bundle="${loc}" key="local.admin_payments.button_search" var="button_search" />
-<fmt:message bundle="${loc}" key="local.admin_payments.user_name" var="user_name" />
-<fmt:message bundle="${loc}" key="local.admin_payments.ballance" var="ballance" />
-<fmt:message bundle="${loc}" key="local.admin_payments.amount" var="amount" />
-<fmt:message bundle="${loc}" key="local.page_navigation.next_page" var="next_page" />
-<fmt:message bundle="${loc}" key="local.page_navigation.previous_page" var="previous_page" />
+<fmt:setBundle basename="localization.local"/>
+<fmt:message key="local.no_data" var="no_data" />
+<fmt:message key="local.admin_payments.pay_searching" var="pay_searching" />
+<fmt:message key="local.admin_payments.fname" var="fname" />
+<fmt:message key="local.admin_payments.fname_ph" var="fname_ph" />
+<fmt:message key="local.admin_payments.lname" var="lname" />
+<fmt:message key="local.admin_payments.lname_ph" var="lname_ph" />
+<fmt:message key="local.admin_payments.pay_date" var="pay_date" />
+<fmt:message key="local.admin_payments.pay_date_time" var="pay_date_time" />
+<fmt:message key="local.admin_payments.pay_date_ph" var="pay_date_ph" />
+<fmt:message key="local.admin_payments.pay_amount" var="pay_amount" />
+<fmt:message key="local.admin_payments.pay_amount_ph" var="pay_amount_ph" />
+<fmt:message key="local.admin_payments.sort_by" var="sort_by" />
+<fmt:message key="local.admin_payments.sort_by_date" var="sort_by_date" />
+<fmt:message key="local.admin_payments.sort_by_user" var="sort_by_user" />
+<fmt:message key="local.admin_payments.sort_by_amount" var="sort_by_amount" />
+<fmt:message key="local.admin_payments.button_reset" var="button_reset" />
+<fmt:message key="local.admin_payments.button_search" var="button_search" />
+<fmt:message key="local.admin_payments.user_name" var="user_name" />
+<fmt:message key="local.admin_payments.ballance" var="ballance" />
+<fmt:message key="local.admin_payments.amount" var="amount" />
+<fmt:message key="local.page_navigation.next_page" var="next_page" />
+<fmt:message key="local.page_navigation.previous_page" var="previous_page" />
+
+<c:set var="current_page" scope="session" value="WEB-INF/jsp/admin_payments_page.jsp" />
+<c:set var="num_rows" scope="page" value="${14}" />
+<c:set var="res_rows" scope="page" value="${fn:length(sessionScope.result_list)}" />
 
 <!DOCTYPE html>
 <html>
@@ -43,13 +47,11 @@
 <link rel="stylesheet" href="css/users_search_form.css" type="text/css">
 </head>
 
-<c:set var="current_page" scope="session" value="WEB-INF/jsp/admin_payments_page.jsp" />
-<c:set var="num_rows" scope="page" value="${14}" />
-<c:set var="res_rows" scope="page" value="${fn:length(sessionScope.result_list)}" />
 
 <body>
 	<!--  HEADER -->
-	<%@ include file="admin_page_header.jsp"%>
+	<c:import url="admin_page_header.jsp" />
+
 	<!-- CONTENT ========================================================= -->
 	<div class="content">
 		<form class="reg_form" name="payment_serching" method="post" action="Controller">
@@ -99,10 +101,6 @@
 							<th style="width: 13%;">${pay_date_time}</th>
 						</tr>
 
-						<c:if test="${sessionScope.start_index eq null}">
-							<c:set var="end_index" value="9" scope="session" />
-						</c:if>
-
 						<c:forEach items="${sessionScope.result_list}" var="payment" varStatus="status"
 							begin="${sessionScope.start_index}" end="${sessionScope.start_index+num_rows}">
 							<c:set var="tariff_id" value="${request.tariffId}" />
@@ -114,12 +112,14 @@
 								<td><fmt:formatDate type="time" value="${payment.paymentDate}" pattern="yyyy.MM.dd, HH:mm" /></td>
 							</tr>
 						</c:forEach>
+
 					</table>
 				</c:if>
 			</form>
 
-			<!-- PREVIOUS NEXT block -->
-			<form class="reg_form" name="payment_serching" method="post" action="Controller">
+			<%-- PREVIOUS / NEXT block --%>
+
+			<form class="reg_form" name="requests_serching" method="post" action="Controller">
 				<c:if test="${sessionScope.start_index gt 0}">
 					<button class="submit" type="submit" name="command" value="previous_result_page">${previous_page}</button>
 				</c:if>
@@ -130,6 +130,6 @@
 
 		</div>
 	</div>
-	<%@ include file="footer.jsp"%>
+	<c:import url="footer.jsp" />
 </body>
 </html>

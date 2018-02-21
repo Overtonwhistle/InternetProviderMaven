@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
  * @author Pavel Sorokoletov
  *         <p>
  */
-public interface Command {
+public interface ICommand {
 	/**
 	 * Describes a method for executing commands in main Controller servlet.
 	 * 

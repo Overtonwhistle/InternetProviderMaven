@@ -1,17 +1,22 @@
 <%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
-<fmt:message bundle="${loc}" key="local.user_menu" var="user_menu" />
-<fmt:message bundle="${loc}" key="local.main" var="main" />
-<fmt:message bundle="${loc}" key="local.log_off" var="log_off" />
-<fmt:message bundle="${loc}" key="local.client_page" var="client_page" />
-<fmt:message bundle="${loc}" key="local.client_page.summary" var="summary" />
-<fmt:message bundle="${loc}" key="local.client_page.tariffs" var="tariffs" />
-<fmt:message bundle="${loc}" key="local.client_page.requests" var="requests" />
-<fmt:message bundle="${loc}" key="local.client_page.payments" var="payments" />
-<fmt:message bundle="${loc}" key="local.client_page.edit_profile" var="edit_profile" />
-<fmt:message bundle="${loc}" key="local.client_page.header_text" var="header_text" />
-<fmt:message bundle="${loc}" key="local.made_by" var="made_by" />
+<%@ taglib prefix="ctg" uri="customtags"%>
+
+<fmt:requestEncoding value="utf-8" />
+<fmt:setLocale value="${sessionScope.local}" />
+<fmt:setBundle basename="localization.local" />
+<fmt:message key="local.user_menu" var="user_menu" />
+<fmt:message key="local.main" var="main" />
+<fmt:message key="local.log_off" var="log_off" />
+<fmt:message key="local.client_page" var="client_page" />
+<fmt:message key="local.client_page.summary" var="summary" />
+<fmt:message key="local.client_page.tariffs" var="tariffs" />
+<fmt:message key="local.client_page.requests" var="requests" />
+<fmt:message key="local.client_page.payments" var="payments" />
+<fmt:message key="local.client_page.edit_profile" var="edit_profile" />
+<fmt:message key="local.client_page.header_text" var="header_text" />
+<fmt:message key="local.made_by" var="made_by" />
 <!--  HEADER -->
 <div>
 	<div class="menu">
@@ -36,7 +41,7 @@
 					<ul class="items">
 						<li>
 							<div class="user-string">
-								<c:out value="${sessionScope.user.firstName} ${sessionScope.user.lastName}" />
+								<ctg:full-name />
 							</div>
 						</li>
 						<li><form class="login-form" action="Controller" method="post">
